@@ -139,15 +139,16 @@ public class redigercvTest {
 //    }
        @Test
      public void tousLesUtilisateurs() {
+         
      // affichage les utilisateurs
-//     List<Users> users = metier.getALLutilisateur();
-//        
-//     System.out.println("******************************************************************************");
-//     System.out.println("******************************************************************************");
-//     System.out.println("******************************************************************************");
-//        
-//     System.out.println("*********************Lies des utilisateurs******************************");
-//         
-//     System.out.println(users);
+     List<Users> users = metier.getALLutilisateur();
+        
+     System.out.println("******************************************************************************");
+     System.out.println("******************************************************************************");
+     System.out.println("******************************************************************************");
+        
+     System.out.println("*********************Lies des utilisateurs******************************");
+         
+     System.out.println(users);
      }                    
 }

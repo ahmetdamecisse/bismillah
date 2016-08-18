@@ -29,7 +29,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getALLutilisateur() {
-        return getDaojpa().getALLutilisateur();
+      return getDaojpa().getALLutilisateur();
     }
 
     @Override

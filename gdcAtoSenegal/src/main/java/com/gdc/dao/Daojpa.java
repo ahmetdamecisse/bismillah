@@ -8,7 +8,6 @@ package com.gdc.dao;
 
 import com.gdc.exceptions.pfcgdcexception;
 import com.gdc.model.*;
-import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 import org.hibernate.SessionFactory;
@@ -21,20 +20,23 @@ public class Daojpa implements Idao{
     
 private SessionFactory sessionFactory;
 
+  @Override
+    public List getALLutilisateur() {
+        try {
+             List list =getSessionFactory().getCurrentSession().createQuery("from Users").list();
+             return list;
+        } catch (Throwable th) {
+             System.err.println("Erreurs lors de la recupération de tous les utilisateurs:" + th);
+            throw new pfcgdcexception(th, 1);
+        }
+    }
+
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-    }
-  @Override
-    public List getALLutilisateur() {
-        try {
-            return getSessionFactory().getCurrentSession().createQuery("from Users").list();
-        } catch (Throwable th) {
-            throw new pfcgdcexception(th, 1);
-        }
     }
 
     public Users getUtilisateurById(Integer id) {
