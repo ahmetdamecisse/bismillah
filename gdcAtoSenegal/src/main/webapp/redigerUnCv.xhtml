@@ -40,10 +40,10 @@
                 <h:form>  
                     <p:growl id="messages"/>
                     <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
-                        <p:menuitem value="accueil" url="http://localhost:8080/pfcwebGdc//" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Tableau de bord" url="http://localhost:8080/pfcwebGdc/faces/offresEmploi.xhtml" icon="ui-icon-blog" style="color:white"/>
-                        <p:menuitem value="Mon CV" url="http://localhost:8080/pfcwebGdc/faces/cvtheque.xhtml" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Offres d'emploi" url="http://localhost:8080/pfcwebGdc/faces/ficheTest.xhtml" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="accueil" url="http://localhost:8080/gdcAtoSenegal//" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Tableau de bord" url="http://localhost:8080/gdcAtoSenegal/offresEmploi.xhtml" icon="ui-icon-blog" style="color:white"/>
+                        <p:menuitem value="Mon CV" url="http://localhost:8080/gdcAtoSenegal/cvtheque.xhtml" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Offres d'emploi" url="http://localhost:8080/gdcAtoSenegal/ficheTest.xhtml" icon="ui-icon-home" style="color:white"/>
 
                         <f:facet name="options">
                             <p:inputText style="margin-right:10px" placeholder="Search"/>
@@ -66,33 +66,33 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nom: *"   style="color: #282828;font-size: 15px" />
-                                        <p:inputText id="nom" value="#{redigerCV.users.nom}" required="true" label="Nom" style="width: 300px; height: 35px"/>
+                                        <p:inputText id="nom" value="#{redigerCV.user.nom}" required="true" label="Nom" style="width: 300px; height: 35px" requiredMessage="Le champ nom est obligatoire"/>
 
                                         <h:outputText value="Prénom: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputText value="#{redigerCV.users.prenom}" required="true" label="Prénom" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigerCV.user.prenom}" required="true" label="Prénom" style="width: 300px; height: 35px" requiredMessage="Le champ prénom est obligatoire"/>
 
                                         <h:outputText value="Adresse: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputText value="#{redigerCV.users.localisation}" required="true" label="Adresse" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigerCV.user.localisation}" required="true" label="Adresse" style="width: 300px; height: 35px" requiredMessage="Le champ adresse est obligatoire"/>
 
                                         <h:outputText value="E-mail: *" style="color: #282828;font-size: 15px"/>
-                                        <p:inputText value="#{redigerCV.users.mail}" required="true" label="E-mail" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigerCV.user.mail}" required="true" label="E-mail" style="width: 300px; height: 35px" requiredMessage="Le champ email est obligatoire"/>
 
                                         <h:outputText value="Téléphone: *"  style="color: #282828;font-size: 15px"/>
-                                        <p:inputMask id="Telephone" value="#{redigerCV.users.telephone}" mask="(99999) 99-999-99-99" required="true" style="width: 300px; height: 35px"/>
+                                        <p:inputMask id="Telephone" value="#{redigerCV.user.telephone}" mask="(99) 999-99-99" required="true" style="width: 300px; height: 35px" requiredMessage="Le champ téléphone est obligatoire"/>
 
                                         <h:outputText value="Login: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputText value="#{redigerCV.users.usersname}" required="true" label="Login" style="width: 300px; height: 35px"/>
+                                        <p:inputText value="#{redigerCV.user.username}" required="true" label="Login" style="width: 300px; height: 35px" requiredMessage="Le champ login est obligatoire"/>
 
                                         <h:outputText value="Mot de passe: *" style="color: #282828;font-size: 15px" />
-                                        <p:password id="Motdepasse" value="#{redigerCV.users.password}" feedback="true" required="true" style="width: 300px; height: 35px"/>
+                                        <p:password id="Motdepasse" value="#{redigerCV.user.password}" feedback="true" required="true" style="width: 300px; height: 35px" requiredMessage="Le champ mot de passe est obligatoire"/>
 
                                         <h:outputText value="Spécialité: *" style="color: #282828;font-size: 15px" />
-                                        <p:inputTextarea rows="3" cols="18" counter="display2" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.users.specialite}" placeholder="Ingénieur en génie logiciel" style="width: 300px; height: 70px"/>
+                                        <p:inputTextarea rows="3" cols="18" counter="display2" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.user.specialite}" placeholder="Ingénieur en génie logiciel" style="width: 300px; height: 70px" requiredMessage="Le champ spécialité est obligatoire"/>
                                         <h:outputText id="display2" style="color: #282828;font-size: 15px" />
                                         <h:outputText value=""  style="width: 300px; height: 35px"/>
 
                                         <h:outputText value="Date de naissance: *" style="color: #282828;font-size: 15px" />
-                                        <p:calendar id="datenaiss1" value="#{redigerCV.users.dateDeNaissance}" pattern="dd-MM-yyyy" mask="true" required="true"  style="width: 300px; height: 35px"/>
+                                        <p:calendar id="datenaiss1" value="#{redigerCV.user.dateDeNaissance}" pattern="dd-MM-yyyy" mask="true" required="true"  style="width: 300px; height: 35px" requiredMessage="Le champ date de naissance est obligatoire"/>
 
                                         <h:outputText value="Passer à la dernière: "  style="color: #282828;font-size: 15px"/>
                                         <h:selectBooleanCheckbox value="#{redigerCV.skip}" />
@@ -126,17 +126,17 @@
                                 <p:panel header="Diplôme 2">
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
-                                        <h:outputText value="Nom du diplôme: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.formation.nomDiplome}" required="true"/>
+                                        <h:outputText value="Nom du diplôme: " style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation2.nomDiplome}"/>
 
-                                        <h:outputText value="Université/Ecole: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.formation.universite}" required="true"/>
+                                        <h:outputText value="Université/Ecole: " style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation2.universite}" />
 
-                                        <h:outputText value="Année d'obtention: *" style="color: #282828" />
-                                        <p:calendar id="anneeobtention3" value="#{redigerCV.formation.anneeObtention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <h:outputText value="Année d'obtention: " style="color: #282828" />
+                                        <p:calendar id="anneeobtention3" value="#{redigerCV.formation2.anneeObtention}" pattern="dd-MM-yyyy" mask="true" />
 
-                                        <h:outputText value="Mention: *" style="color: #282828" />
-                                        <p:selectOneMenu id="console33" value="#{redigerCV.formation.mention}" style="width:170px" required="true">
+                                        <h:outputText value="Mention: " style="color: #282828" />
+                                        <p:selectOneMenu id="console33" value="#{redigerCV.formation2.mention}" style="width:170px" >
                                             <f:selectItem itemLabel="Passable" itemValue="Passable" />
                                             <f:selectItem itemLabel="Assez-Bien" itemValue="Assez-Bien" />
                                             <f:selectItem itemLabel="Bien" itemValue="Bien" />
@@ -148,17 +148,17 @@
                                 <p:panel header="Diplôme 3">
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
-                                        <h:outputText value="Nom du diplôme: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.formation.nomDiplome}" required="true"/>
+                                        <h:outputText value="Nom du diplôme: " style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation3.nomDiplome}"/>
 
-                                        <h:outputText value="Université/Ecole: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.formation.universite}" required="true"/>
+                                        <h:outputText value="Université/Ecole: " style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation3.universite}" />
 
-                                        <h:outputText value="Année d'obtention: *" style="color: #282828" />
-                                        <p:calendar id="anneeobtention2" value="#{redigerCV.formation.anneeObtention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <h:outputText value="Année d'obtention: " style="color: #282828" />
+                                        <p:calendar id="anneeobtention2" value="#{redigerCV.formation3.anneeObtention}" pattern="dd-MM-yyyy" mask="true" />
 
-                                        <h:outputText value="Mention: *" style="color: #282828" />
-                                        <p:selectOneMenu id="console22" value="#{redigerCV.formation.mention}" style="width:170px" required="true">
+                                        <h:outputText value="Mention: " style="color: #282828" />
+                                        <p:selectOneMenu id="console22" value="#{redigerCV.formation3.mention}" style="width:170px">
                                             <f:selectItem itemLabel="Passable" itemValue="Passable" />
                                             <f:selectItem itemLabel="Assez-Bien" itemValue="Assez-Bien" />
                                             <f:selectItem itemLabel="Bien" itemValue="Bien" />
@@ -194,30 +194,30 @@
                                     <h:panelGrid columns="2" columnClasses="label, value">
 
                                         <h:outputText value="Anglais: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langue.nom}" required="true" label="Email"/>
+                                        <p:inputText value="#{redigerCV.langues.nom}" required="true" label="Email"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console1" value="#{redigerCV.langue.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console1" value="#{redigerCV.langues.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Français: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langue.nom}" required="true" label="Français"/>
+                                        <p:inputText value="#{redigerCV.langues.nom}" required="true" label="Français"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console2" value="#{redigerCV.langue.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console2" value="#{redigerCV.langues.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Autre: " style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langue.nom}"  label="Email"/>
+                                        <p:inputText value="#{redigerCV.langues.nom}"  label="Email"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
-                                        <p:selectOneMenu id="console3" value="#{redigerCV.langue.niveau}" style="width:170px" required="true">
+                                        <p:selectOneMenu id="console3" value="#{redigerCV.langues.niveau}" style="width:170px" required="true">
                                             <f:selectItem itemLabel="Lu" itemValue="Lu" />
                                             <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
@@ -487,13 +487,13 @@
                                         </h:panelGrid>
                                         <h:panelGrid columns="2" columnClasses="label, value">
                                             <h:outputText value="Street: " />
-                                            <h:outputText value="#{redigerCV.users.localisation}" styleClass="outputLabel"/>
+                                            <h:outputText value="#{redigerCV.user.localisation}" styleClass="outputLabel"/>
 
                                             <h:outputText value="Postal: " />
-                                            <h:outputText value="#{redigerCV.users.telephone}" styleClass="outputLabel"/>
+                                            <h:outputText value="#{redigerCV.user.telephone}" styleClass="outputLabel"/>
 
                                             <h:outputText value="City: " />
-                                            <h:outputText value="#{redigerCV.users.localisation}" styleClass="outputLabel"/>
+                                            <h:outputText value="#{redigerCV.user.localisation}" styleClass="outputLabel"/>
                                         </h:panelGrid>
                                         <h:panelGrid columns="2" >
                                             <f:facet name="header2">
