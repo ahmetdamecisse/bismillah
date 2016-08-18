@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>connexion</title>
+        </f:facet>
+        <f:facet name="middle">
+            <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+            <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+            <h:outputStylesheet name="bootstrap/css/responsive.css" />
+            <h:outputStylesheet name="css/dashboard.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+            <h:outputStylesheet library="css" name="style.css"/>
+
+        </f:facet>
+        <f:facet name="last">
+            <h:outputStylesheet name="css/font-awesome.css" />
+        </f:facet>
+    </h:head>
+    <h:body style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQowKYcQsdGJ0scyENcCKh_KJRDGyJEVpHcq4OeYcpAgOGdL9KZ);background-repeat: no-repeat; background-size: cover">
+        <div class="container">
+            <div id='logo'>
+                <h:form>
+                    <div>
+                        <a>
+                            <img style="max-width:150px" src="resources/images/atoslogo.jpg">
+
+                            </img>
+                        </a>
+                    </div>
+                </h:form>
+                <h:form>  
+                    <p:growl id="messages"/>
+                    <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
+                        <p:menuitem value="accueil" url="http://localhost:8080/pfcwebGdc/" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Employeurs" url="http://localhost:8080/pfcwebGdc/faces/employeur.xhtml" icon="ui-icon-blog" style="color:white"/>
+                        <p:menuitem value="Offres d'emploi" url="" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Contact" url="" icon="ui-icon-contact" style="color:white"/>
+                        <f:facet name="options">
+                            <p:commandButton  value="Créer un compte" action="inscription" icon="ui-icon-log" style="margin-right:10px; background: #ffffff; font-size: 15px;"/>
+                            <p:commandButton value="Se connecter" action="connexion" icon="ui-icon-extlink" style="background: #ffffff; font-size: 15px"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </div>
+            <div style="background-color: #ffffff" >
+                <div class="row content panel-heading"><br/>
+                    <div class="col-sm-3">
+
+                    </div>
+                    <div class="col-sm-6"> 
+                        <h:form  class="well">
+                            <p:growl id="msgs" showDetail="true" /> 
+                            <p:panel id="basic1" header="Formulaire de saisie fiche de poste" style="margin-bottom:20px; text-align: center">
+                                <h:panelGrid columns="2" cellpadding="10">
+                                    <h:form> <br/> 
+                                        <div style="text-align: justify">
+                                            <h:outputText value="Intitulé du poste:" style="margin-right: 83px"/>
+                                            <p:inputText style="width: 250px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Description:" style="margin-right: 120px"/>
+                                            <p:inputText style="width: 250px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Qualité requises:" style="margin-right: 85px"/>
+                                            <p:inputText style="width: 250px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Connaissances techniques:" style="margin-right: 10px" />
+                                            <p:inputText style="width: 250px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                            <p:commandButton value="Valider" style="min-width: 60px"/>
+                                        </div> 
+                                        <div class="col-sm-6">
+                                            <p:commandButton value="Annuler" style="min-width: 60px"/>
+                                        </div> <br/>
+                                        </div>
+                                    </h:form>
+                                </h:panelGrid>
+                            </p:panel>
+                        </h:form>
+                    </div>
+                    <div class="col-sm-3">
+
+                    </div>
+
+                </div>
+                <hr style="height: 1px; color: #357ebd; background-color: #357ebd; width: 100%; border: none;"></hr>
+                <footer >
+
+                    <div class="copyright floatleft">
+                        <p>&#169; Atos Sénégal 2016 |&nbsp;</p>
+                    </div>
+                    <div class="footer_bottom_text floatright">
+                        <p>
+                            <a href="http://www.atos.net" target="_blank"> www.atos.net</a>
+                        </p>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+    </h:body>
+</html>

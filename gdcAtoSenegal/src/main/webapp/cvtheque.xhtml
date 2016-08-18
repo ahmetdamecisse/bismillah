@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+            <title>cvthèque</title>
+        </f:facet>
+
+        <f:facet name="middle">
+            <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+            <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+            <h:outputStylesheet name="bootstrap/css/responsive.css" />
+
+            <h:outputStylesheet name="css/dashboard.css" />
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+
+            <h:outputScript name="bootstrap/js/bootstrap.js" />
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+            <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <h:outputScript library="js" name="common.js" />
+        </f:facet>
+
+        <f:facet name="last">
+            <h:outputStylesheet name="css/font-awesome.css" />
+
+        </f:facet>
+
+    </h:head>
+
+    <h:body style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQowKYcQsdGJ0scyENcCKh_KJRDGyJEVpHcq4OeYcpAgOGdL9KZ);background-repeat: no-repeat; background-size: cover">
+
+        <div class="container">
+            <div id='logo'>
+                <a>
+                    <img style="max-width:150px" src="resources/images/atoslogo.jpg">
+
+                    </img>
+                </a>  
+                <h:form>  
+                    <p:growl id="messages"/>
+                    <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
+                        <p:menuitem value="accueil" url="http://localhost:8080/pfcwebGdc/" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Employeurs" url="http://localhost:8080/pfcwebGdc/faces/employeur.xhtml" icon="ui-icon-blog" style="color:white"/>
+                        <p:menuitem value="Offres d'emploi" url="" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Contact" url="" icon="ui-icon-contact" style="color:white"/>
+                        <f:facet name="options">
+                            <p:commandButton  value="Se déconnecter" action="index" icon="ui-icon-log" style="margin-right:10px; background: #ffffff; font-size: 15px;"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </div>
+            <div style="background-color: #ffffff" >
+                <div class="row content panel-heading">
+                    <h:form>
+                    <div class="col-sm-3">
+                        
+                            <p:growl id="msgs" showDetail="true" />
+                            
+                            <p:panel id="basic" header="Critères de recherche" style="margin-bottom:20px;background: #ffffff"><br/>
+                                <h:panelGrid columns="2" cellpadding="10" style="background: #ffffff">
+                                    <h:form>
+                                        <p:outputLabel value="FILIATION" style="font-size: 12px"/>
+                                        <p:inputText value="#{userWizard.user.filiation}" required="true" label="filiation"/><br/><br/>
+                                        <p:outputLabel value="COMPETENCES FONCTIONNELLES" style="font-size: 12px" />
+                                        <p:inputText value="#{userWizard.user.competenceT}" required="true" label="competenceT"/><br/> <br/> 
+                                        <p:outputLabel value="COMPETENCES TECHNIQUES" style="font-size:12px"/>
+                                        <p:inputText value="#{userWizard.user.competenceF}" required="true" label="competenceF"/><br/> <br/> 
+                                        <p:outputLabel value="NOMBRE D'EXPERIENCES" style="font-size:12px"/>
+                                        <p:inputText value="#{userWizard.user.experience}" required="true" label="experience"/><br/> <br/> 
+                                        <p:outputLabel value="LOCALITE" style="font-size:12px"/>
+                                        <p:inputText value="#{userWizard.user.localite}" required="true" label="localite"/><br/> <br/> 
+                                        <p:commandButton value="Rechercher"/>
+                                    </h:form>
+                                </h:panelGrid>
+                            </p:panel>
+                        
+                    </div>
+                    <div class="col-sm-9">
+                         
+                            <p:dataScroller value="#{controlUtilisateur.allUsers()}" var="car" chunkSize="10" style="background: #ffffff">
+                                <f:facet name="header">
+                                    Liste des CV
+                                </f:facet>
+
+                                <h:panelGrid columns="2" style="width:100%; background: #ffffff" columnClasses="logo,detail">
+                                    <p:outputPanel>
+                                        <h:panelGrid columns="30">
+                                            <p:graphicImage value="resources/images/cv.jpg"/> 
+
+                                            <h:outputText value="#{car.nom}" style="font-weight: bold"/>
+
+                                            <p>&nbsp;</p>
+                                            <h:outputText value="#{car.prenom}" style="font-weight: bold"/>
+
+                                            <p>&nbsp;</p>
+                                            <h:outputText value="#{car.localisation}" style="font-weight: bold"/>
+
+                                            <p>&nbsp;</p>
+                                            <h:outputText value="#{car.specialite}" style="font-weight: bold"/><br/>
+                                            <h:commandLink>
+                                                <p:graphicImage value="/resources/images/pdf.jpg" />
+                                                <p:dataExporter type="pdf" target="table" fileName="cars" pageOnly="true" />
+                                            </h:commandLink>
+                                        </h:panelGrid>
+
+                                        <hr></hr>
+                                    </p:outputPanel>
+                                </h:panelGrid>
+                            </p:dataScroller>
+                        
+                    </div>
+                        </h:form>
+
+                </div>
+
+                <hr style="height: 1px; color: #357ebd; background-color: #357ebd; width: 100%; border: none;"></hr>
+
+
+                <footer >
+
+                    <div class="copyright floatleft">
+                        <p>&#169; Atos Sénégal 2016 |&nbsp;</p>
+                    </div>
+                    <div class="footer_bottom_text floatright">
+                        <p>
+                            <a href="http://www.atos.net" target="_blank"> www.atos.net</a>
+                        </p>
+                    </div>
+
+                </footer>
+
+
+            </div>
+
+        </div>
+
+    </h:body>
+</html>

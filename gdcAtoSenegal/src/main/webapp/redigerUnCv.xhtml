@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>candidat</title>
+        </f:facet>
+        <f:facet name="middle">
+            <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+            <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+            <h:outputStylesheet name="bootstrap/css/responsive.css" />
+            <h:outputStylesheet name="css/dashboard.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <h:outputScript library="js" name="common.js" />
+        </f:facet>
+        <f:facet name="last">
+            <h:outputStylesheet name="css/font-awesome.css" />
+        </f:facet>
+    </h:head>
+    <h:body style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQowKYcQsdGJ0scyENcCKh_KJRDGyJEVpHcq4OeYcpAgOGdL9KZ);background-repeat: no-repeat; background-size: cover">
+        <div class="container">
+            <div id='logo'>
+                <a>
+                    <img style="max-width:150px" src="resources/images/atoslogo.jpg"></img>
+                </a>
+                <h:form>  
+                    <p:growl id="messages"/>
+                    <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
+                        <p:menuitem value="accueil" url="http://localhost:8080/pfcwebGdc//" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Tableau de bord" url="http://localhost:8080/pfcwebGdc/faces/offresEmploi.xhtml" icon="ui-icon-blog" style="color:white"/>
+                        <p:menuitem value="Mon CV" url="http://localhost:8080/pfcwebGdc/faces/cvtheque.xhtml" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Offres d'emploi" url="http://localhost:8080/pfcwebGdc/faces/ficheTest.xhtml" icon="ui-icon-home" style="color:white"/>
+
+                        <f:facet name="options">
+                            <p:inputText style="margin-right:10px" placeholder="Search"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </div>
+
+            <div style="background-color: #ffffff" >
+                <div class="row content panel-heading">
+                    <!--rédaction CV début -->
+                    <h:form>
+
+                        <p:growl id="growl" sticky="true" showDetail="true"/>
+
+                        <p:wizard flowListener="#{redigerCV.onFlowProcess}">
+
+                            <p:tab id="personal" title="Informations personnelles">
+                                <p:panel header="Identité">
+                                    <p:messages />
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Nom: *"   style="color: #282828;font-size: 15px" />
+                                        <p:inputText id="nom" value="#{redigerCV.users.nom}" required="true" label="Nom" style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="Prénom: *" style="color: #282828;font-size: 15px" />
+                                        <p:inputText value="#{redigerCV.users.prenom}" required="true" label="Prénom" style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="Adresse: *" style="color: #282828;font-size: 15px" />
+                                        <p:inputText value="#{redigerCV.users.localisation}" required="true" label="Adresse" style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="E-mail: *" style="color: #282828;font-size: 15px"/>
+                                        <p:inputText value="#{redigerCV.users.mail}" required="true" label="E-mail" style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="Téléphone: *"  style="color: #282828;font-size: 15px"/>
+                                        <p:inputMask id="Telephone" value="#{redigerCV.users.telephone}" mask="(99999) 99-999-99-99" required="true" style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="Login: *" style="color: #282828;font-size: 15px" />
+                                        <p:inputText value="#{redigerCV.users.usersname}" required="true" label="Login" style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="Mot de passe: *" style="color: #282828;font-size: 15px" />
+                                        <p:password id="Motdepasse" value="#{redigerCV.users.password}" feedback="true" required="true" style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="Spécialité: *" style="color: #282828;font-size: 15px" />
+                                        <p:inputTextarea rows="3" cols="18" counter="display2" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.users.specialite}" placeholder="Ingénieur en génie logiciel" style="width: 300px; height: 70px"/>
+                                        <h:outputText id="display2" style="color: #282828;font-size: 15px" />
+                                        <h:outputText value=""  style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="Date de naissance: *" style="color: #282828;font-size: 15px" />
+                                        <p:calendar id="datenaiss1" value="#{redigerCV.users.dateDeNaissance}" pattern="dd-MM-yyyy" mask="true" required="true"  style="width: 300px; height: 35px"/>
+
+                                        <h:outputText value="Passer à la dernière: "  style="color: #282828;font-size: 15px"/>
+                                        <h:selectBooleanCheckbox value="#{redigerCV.skip}" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="parcoursacademique" title="Parcours académique">
+                                <p:panel header="Diplôme 1">
+                                    <p:messages />
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Nom du diplôme: *" style="color: #282828; font-size: 15px"/>
+                                        <p:inputText value="#{redigerCV.formation.nomDiplome}" required="true"/>
+
+                                        <h:outputText value="Université/Ecole: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation.universite}" required="true"/>
+
+                                        <h:outputText value="Année d'obtention: *" style="color: #282828" />
+                                        <p:calendar id="anneeobtention" value="#{redigerCV.formation.anneeObtention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+
+                                        <h:outputText value="Mention: *" style="color: #282828" />
+                                        <p:selectOneMenu id="console" value="#{redigerCV.formation.mention}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Passable" itemValue="Passable" />
+                                            <f:selectItem itemLabel="Assez-Bien" itemValue="Assez-Bien" />
+                                            <f:selectItem itemLabel="Bien" itemValue="Bien" />
+                                            <f:selectItem itemLabel="Très Bien" itemValue="Très Bien" />
+                                        </p:selectOneMenu>
+
+                                    </h:panelGrid>
+                                </p:panel>
+                                <p:panel header="Diplôme 2">
+                                    <p:messages />
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Nom du diplôme: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation.nomDiplome}" required="true"/>
+
+                                        <h:outputText value="Université/Ecole: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation.universite}" required="true"/>
+
+                                        <h:outputText value="Année d'obtention: *" style="color: #282828" />
+                                        <p:calendar id="anneeobtention3" value="#{redigerCV.formation.anneeObtention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+
+                                        <h:outputText value="Mention: *" style="color: #282828" />
+                                        <p:selectOneMenu id="console33" value="#{redigerCV.formation.mention}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Passable" itemValue="Passable" />
+                                            <f:selectItem itemLabel="Assez-Bien" itemValue="Assez-Bien" />
+                                            <f:selectItem itemLabel="Bien" itemValue="Bien" />
+                                            <f:selectItem itemLabel="Très Bien" itemValue="Très Bien" />
+                                        </p:selectOneMenu>
+
+                                    </h:panelGrid>
+                                </p:panel>
+                                <p:panel header="Diplôme 3">
+                                    <p:messages />
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Nom du diplôme: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation.nomDiplome}" required="true"/>
+
+                                        <h:outputText value="Université/Ecole: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.formation.universite}" required="true"/>
+
+                                        <h:outputText value="Année d'obtention: *" style="color: #282828" />
+                                        <p:calendar id="anneeobtention2" value="#{redigerCV.formation.anneeObtention}" pattern="dd-MM-yyyy" mask="true" required="true" />
+
+                                        <h:outputText value="Mention: *" style="color: #282828" />
+                                        <p:selectOneMenu id="console22" value="#{redigerCV.formation.mention}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Passable" itemValue="Passable" />
+                                            <f:selectItem itemLabel="Assez-Bien" itemValue="Assez-Bien" />
+                                            <f:selectItem itemLabel="Bien" itemValue="Bien" />
+                                            <f:selectItem itemLabel="Très Bien" itemValue="Très Bien" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Passer à la dernière: *" style="color: #282828" />
+                                        <h:selectBooleanCheckbox value="#{redigerCV.skip}" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="profil" title="Profil">
+                                <p:panel header="Votre profil">
+                                    <p:messages />
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Nombre d'années d'expériences: *" style="color: #282828"/>
+                                        <p:spinner id="nbreanneesexperience" value="#{redigerCV.profil.nombreAnneesExperience}" min="0" max="20" required="true" />
+
+                                        <h:outputText value="Principales compétences: *" style="color: #282828"/>
+                                        <p:inputTextarea rows="6" cols="20" counter="display4" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.profil.principalesCompetences}" placeholder="Exemple : 1 Conception, Analyse, Coordination de projet,  Recettes, Bases de données. 2 Sciences de l’information et du système"/>
+                                        <h:outputText id="display4" style="color: #282828" />
+                                        <h:outputText value="" />
+
+                                        <h:outputText value="Compétences fonctionnelles: *" style="color: #282828"/>
+                                        <p:inputTextarea rows="4" cols="20" counter="display3" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.profil.competencesFonctionnelles}" placeholder="Exemple: Ferroviaire, Protection sociale, Analyse de données (BI) et CMMI"/>
+                                        <h:outputText id="display3" style="color: #282828" />
+                                        <h:outputText value="" />
+                                    </h:panelGrid>
+                                </p:panel>
+                                <p:panel header="Langues parlées">
+                                    <p:messages />
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+
+                                        <h:outputText value="Anglais: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.langue.nom}" required="true" label="Email"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="console1" value="#{redigerCV.langue.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Lu" itemValue="Lu" />
+                                            <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
+                                            <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Français: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.langue.nom}" required="true" label="Français"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="console2" value="#{redigerCV.langue.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Lu" itemValue="Lu" />
+                                            <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
+                                            <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Autre: " style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.langue.nom}"  label="Email"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="console3" value="#{redigerCV.langue.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Lu" itemValue="Lu" />
+                                            <f:selectItem itemLabel="Lu et parlé" itemValue="Lu et parlé" />
+                                            <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Passer à la dernière: *" style="color: #282828" />
+                                        <h:selectBooleanCheckbox value="#{redigerCV.skip}" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="competencestechniques" title="Compétences techniques">
+                                <p:panel header="Langages">
+                                    <p:messages />
+                                    <p:panelGrid columns="4" layout="grid">
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.langage.domaine}" required="true" label="nom" placeholder="PHP"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolel1" value="#{redigerCV.langage.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.langage.domaine}" required="true" label="nom" placeholder="JEE"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolel2" value="#{redigerCV.langage.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.langage.domaine}" required="true" label="nom" placeholder="XML"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolel3" value="#{redigerCV.langage.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </p:panel>
+                                <p:panel header="Outils">
+                                    <p:messages />
+                                    <p:panelGrid columns="4" layout="grid">
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.outils.domaine}" required="true" label="nom" placeholder="maven"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell1" value="#{redigerCV.outils.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.outils.domaine}" required="true" label="nom" placeholder="svn"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell2" value="#{redigerCV.outils.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.outils.niveau}" required="true" label="nom" placeholder="Tomcat"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell33" value="#{redigerCV.langage.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                    </p:panelGrid>
+                                </p:panel>
+                                <p:panel header="Méthodoogies">
+                                    <p:messages />
+                                    <p:panelGrid columns="4" layout="grid">
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolelll1" value="#{redigerCV.methodologie.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolelll2" value="#{redigerCV.methodologie.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell3" value="#{redigerCV.methodologie.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </p:panel>
+                                <p:panel header="Modélisations">
+                                    <p:messages />
+                                    <p:panelGrid columns="4" layout="grid">
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.modelisation.domaine}" required="true" label="nom" placeholder="UML"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolelllll2" value="#{redigerCV.modelisation.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.modelisation.domaine}" required="true" label="nom" placeholder="MERISE"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolellll2" value="#{redigerCV.modelisation.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.modelisation.domaine}" required="true" label="nom" placeholder="Talbot et Rivard"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolellll3" value="#{redigerCV.modelisation.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </p:panel>
+                                <p:panel header="Bases de données">
+                                    <p:messages />
+                                    <p:panelGrid columns="4" layout="grid">
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.bdd.domaine}" required="true" label="nom" placeholder="SQL"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell5" value="#{redigerCV.bdd.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.bdd.domaine}" required="true" label="nom" placeholder="PLSQL"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell55" value="#{redigerCV.bdd.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.bdd.domaine}" required="true" label="nom" placeholder="SQL Server"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell555" value="#{redigerCV.bdd.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </p:panel>
+                                <p:panel header="Matériels et Systemes d'exploitation">
+                                    <p:messages />
+                                    <p:panelGrid columns="4" layout="grid">
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="Lunux"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell6" value="#{redigerCV.materielssystemesexploitation.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="Windows"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell686" value="#{redigerCV.materielssystemesexploitation.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Nom: *" style="color: #282828"/>
+                                        <p:inputText value="#{redigerCV.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="MAC OS"/>
+
+                                        <h:outputText value="Niveau: *" style="color: #282828"/>
+                                        <p:selectOneMenu id="consolell66" value="#{redigerCV.materielssystemesexploitation.niveau}" style="width:170px" required="true">
+                                            <f:selectItem itemLabel="Connaissance" itemValue="1" />
+                                            <f:selectItem itemLabel="Maîtrise" itemValue="2" />
+                                            <f:selectItem itemLabel="Expert" itemValue="3" />
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="experiencesprofessionnelles" title="Expériences Professionnelles">
+                                <p:panel header="Expérience Professionnelle 1">
+                                    <p:messages />
+                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                        <h:outputText value="Description: *" style="color: #282828"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display5" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.experiencesprofessionnelles.description}" placeholder="Par exemple: Optimisation de logiciels  de traitement du son"/>
+                                        <h:outputText id="display5" style="color: #282828" />
+                                        <h:outputText value="" />
+
+                                        <h:outputText value="Début: *" style="color: #282828"/>
+                                        <p:calendar id="debut" value="#{redigerCV.experiencesprofessionnelles.datededebut}" pattern="dd-MM-yyyy" mask="true" required="true" />
+
+                                        <h:outputText value="Fin: *" style="color: #282828"/>
+                                        <p:calendar id="fin" value="#{redigerCV.experiencesprofessionnelles.datefin}" pattern="dd-MM-yyyy" mask="true" required="true" />
+
+                                        <h:outputText value="Fonctions: *" style="color: #282828"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display6" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.experiencesprofessionnelles.fonction}" placeholder="Par exemple Implémentation d’algorithmes  d’optimisation numériques"/>
+                                        <h:outputText id="display6" style="color: #282828" />
+                                        <h:outputText value="" />
+
+                                        <h:outputText value="Environnement: *" style="color: #282828"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display7" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.experiencesprofessionnelles.environnement}" placeholder="Par exemple C, Assembleur, Algorithmes classiques d’optimisation, Mathématiques avancées"/>
+                                        <h:outputText id="display7" style="color: #282828" />
+                                        <h:outputText value="" />
+
+                                        <h:outputText value="Projet: *" style="color: #282828"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display8" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.experiencesprofessionnelles.projet}" placeholder="par exemple Optimisation en temps de calcul et en mémoire d’un outil de traitement du son "/>
+                                        <h:outputText id="display8" style="color: #282828" />
+                                        <h:outputText value="" />
+
+                                        <h:outputText value="Missions: *" style="color: #282828"/>
+                                        <p:inputTextarea rows="5" cols="20" counter="display1" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.experiencesprofessionnelles.missionsRealisees}" placeholder="Par exemple: 1 Recherche d’algorithmes standards 2 Conception de nouveaux algorithmes (optimisation numérique) 3 Optimiser des algorithmes standards (Mathématiques)"/>
+                                        <h:outputText id="display1" style="color: #282828" />
+                                        <h:outputText value="" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+
+                            <p:tab id="cv" title="CV">
+                                <p:panel header="Curriculum Vitae">
+                                    <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                                        <h:panelGrid columns="2">
+                                            <f:facet name="header1">
+                                                <p:graphicImage name="resources/images/atoslogo.jpg" />
+                                            </f:facet>
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" columnClasses="label, value">
+                                            <h:outputText value="Street: " />
+                                            <h:outputText value="#{redigerCV.users.localisation}" styleClass="outputLabel"/>
+
+                                            <h:outputText value="Postal: " />
+                                            <h:outputText value="#{redigerCV.users.telephone}" styleClass="outputLabel"/>
+
+                                            <h:outputText value="City: " />
+                                            <h:outputText value="#{redigerCV.users.localisation}" styleClass="outputLabel"/>
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2" >
+                                            <f:facet name="header2">
+                                                <p:graphicImage name="resources/images/etudiant.jpg" />
+                                            </f:facet>
+                                        </h:panelGrid>
+                                    </h:panelGrid>
+
+                                    <p:commandButton value="Submit" actionListener="#{redigerCV.save}" update="growl" process="@this"/>
+                                </p:panel>
+                            </p:tab>
+                        </p:wizard>
+                    </h:form>
+                    <!--rédaction CV fin-->
+                </div>
+                <hr style="height: 1px; color: #357ebd; background-color: #357ebd; width: 100%; border: none;"></hr>
+                <footer >
+
+                    <div class="copyright floatleft">
+                        <p>&#169; Atos Sénégal 2016 |&nbsp;</p>
+                    </div>
+                    <div class="footer_bottom_text floatright">
+                        <p>
+                            <a href="http://www.atos.net" target="_blank"> www.atos.net</a>
+                        </p>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+    </h:body>
+</html>

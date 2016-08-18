@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>employeur</title>
+        </f:facet>
+        <f:facet name="middle">
+            <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+            <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+            <h:outputStylesheet name="bootstrap/css/responsive.css" />
+            <h:outputStylesheet name="css/dashboard.css" />
+            <h:outputStylesheet library="css" name="style.css"/>
+        </f:facet>
+        <f:facet name="last">
+            <h:outputStylesheet name="css/font-awesome.css" />
+        </f:facet>
+    </h:head>
+    <h:body style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQowKYcQsdGJ0scyENcCKh_KJRDGyJEVpHcq4OeYcpAgOGdL9KZ);background-repeat: no-repeat; background-size: cover">
+        <div class="container">
+            <div id='logo'>
+                <a>
+                    <img style="max-width:150px" src="resources/images/atoslogo.jpg"></img>
+                </a>
+                <a>
+                    <img style="max-width:150px; float: right" src="resources/images/EspaceRecrutement.jpg"></img>
+                </a>
+                <h:form>  
+                    <p:growl id="messages"/>
+                    <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
+                        <p:menuitem value="accueil" url="http://localhost:8080/pfcwebGdc/" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Employeurs" url="http://localhost:8080/pfcwebGdc/faces/employeur.xhtml" icon="ui-icon-blog" style="color:white"/>
+                        <p:menuitem value="Offres d'emploi" url="" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Contact" url="" icon="ui-icon-contact" style="color:white"/>
+                        <f:facet name="options">
+                            <p:commandButton value="Se déconnecter" action="index" icon="ui-icon-extlink" style="background: #ffffff; font-size: 15px"/>
+                        </f:facet>
+                        <f:facet name="options">
+                            <p:inputText style="margin-right:10px" placeholder="Search"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </div>
+
+            <div style="background-color: #ffffff" >
+                <div class="row content panel-heading"><br/>
+                    <div class="col-sm-3">
+                        <h:form class="well" style="background: #ffffff">
+
+                            <p:growl id="messages" showDetail="false"/>
+
+                            <h3 style="margin-top:0">Plain Menu</h3>
+                            <p:menu>
+                                <p:submenu label="Ajax">
+                                    <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
+                                    <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                                </p:submenu>
+                                <p:submenu label="Non-Ajax">
+                                    <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+                                </p:submenu>
+                                <p:submenu label="Navigations">
+                                    <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+                                    <p:menuitem value="Internal" icon="ui-icon-star"/>
+                                </p:submenu>
+                            </p:menu>   
+                        </h:form>
+                        <h:form class="well" style="background: #ffffff">
+
+                            <p:growl id="messages" showDetail="false"/>
+
+                            <h3 style="margin-top:0">Plain Menu</h3>
+                            <p:menu>
+                                <p:submenu label="Ajax">
+                                    <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk" />
+                                    <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                                </p:submenu>
+                                <p:submenu label="Non-Ajax">
+                                    <p:menuitem value="Delete" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-close"/>
+                                </p:submenu>
+                                <p:submenu label="Navigations">
+                                    <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+                                    <p:menuitem value="Internal" icon="ui-icon-star"/>
+                                </p:submenu>
+                            </p:menu>   
+                        </h:form>
+                    </div>
+                    <div class="col-sm-9">
+                        <h:form>
+                            <p:growl id="msgs" showDetail="true" />  
+                            <p:panel  id="basic1" header="Formulaire Offres D'emploi"  styleClass="redColoredPanel" style="margin-bottom:20px; text-align: center">
+                                <div>
+                                    <h:form> <br/> 
+                                        <div style="text-align: justify">
+                                            <h:outputText value="Intitulé du poste:" style="margin-right: 83px"/>
+                                            <p:inputText style="width: 500px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Description:" style="margin-right: 120px"/>
+                                            <p:inputText style="width: 500px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Type de contrat:" style="margin-right: 90px"/>
+                                            <p:inputText style="width: 500px; height: 35px"/> <br/>
+                                        </div><br/>
+
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Catégorie:" style="margin-right: 135px" />
+                                            <p:inputText style="width: 500px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Profil recherché :" style="margin-right: 87px" />
+                                            <p:inputTextarea style="width: 500px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Diplome demandés:" style="margin-right: 65px" />
+                                            <p:inputTextarea style="width: 500px; height: 35px"/> <br/>
+                                        </div><br/> 
+                                        <div class="row">
+                                            <div class="col-sm-7" style="text-align: justify">
+                                                <h:outputText value="Langues parlées:" style="margin-right: 90px" />
+                                                <p:inputTextarea style="width: 200px; height: 35px"/>
+                                            </div>
+                                            <div class="col-sm-5" style="text-align: justify">
+                                                <div class="row">
+
+                                                    <h:outputText value="Années d'expériences:" style="margin-right: 2px"/>
+
+
+                                                    <p:inputText style="width: 80px; height: 35px"/> <br/>
+
+                                                </div>
+                                            </div><br/>
+                                        </div><br/>
+                                        <div class="row">
+                                            <div class="col-sm-7" style="text-align: justify">
+                                                <h:outputText value="Début du contrat:" style="margin-right: 85px" />
+                                                <p:inputText style="width: 200px; height: 35px"/>
+                                            </div>
+                                            <div class="col-sm-5" style="text-align: justify">
+                                                <div class="row">
+
+                                                    <h:outputText value="Durée du contrat:" style="margin-right: 40px"/>
+
+
+                                                    <p:inputText style="width: 80px; height: 35px"/> <br/>
+
+                                                </div>
+                                            </div><br/>
+                                        </div><br/>
+                                        <div style="text-align: justify">
+                                            <h:outputText value="Prérequis du poste:" style="margin-right: 70px"/>
+                                            <p:inputTextarea style="width: 500px; height: 35px"/> <br/>
+                                        </div><br/>
+                                        <div  style="text-align: justify">
+                                            <h:outputText value="Descriptif de la société:" style="margin-right: 40px"/>
+                                            <p:inputTextarea style="width: 500px; height: 70px"/> <br/>
+                                        </div><br/>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p:commandButton value="Valider" style="min-width: 200px"/>
+                                            </div> 
+                                            <div class="col-sm-6">
+                                                <p:commandButton value="Annuler" style="min-width: 200px"/>
+                                            </div> <br/>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </p:panel>
+                        </h:form>
+                    </div>
+                    <!--                    <div class="col-sm-2">
+                    
+                                        </div>-->
+
+                </div>
+                <hr style="height: 1px; color: #357ebd; background-color: #357ebd; width: 100%; border: none;"></hr>
+                <footer >
+
+                    <div class="copyright floatleft">
+                        <p>&#169; Atos Sénégal 2016 |&nbsp;</p>
+                    </div>
+                    <div class="footer_bottom_text floatright">
+                        <p>
+                            <a href="http://www.atos.net" target="_blank"> www.atos.net</a>
+                        </p>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+    </h:body>
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>candidat</title>
+        </f:facet>
+        <f:facet name="middle">
+            <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+            <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+            <h:outputStylesheet name="bootstrap/css/responsive.css" />
+            <h:outputStylesheet name="css/dashboard.css" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <h:outputScript library="js" name="common.js" />
+        </f:facet>
+        <f:facet name="last">
+            <h:outputStylesheet name="css/font-awesome.css" />
+        </f:facet>
+    </h:head>
+    <h:body style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQowKYcQsdGJ0scyENcCKh_KJRDGyJEVpHcq4OeYcpAgOGdL9KZ);background-repeat: no-repeat; background-size: cover">
+        <div class="container">
+            <div id='logo'>
+                <a>
+                    <img style="max-width:150px" src="resources/images/atoslogo.jpg"></img>
+                </a>
+                <h:form>  
+                    <p:growl id="messages"/>
+                    <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
+                        <p:menuitem value="accueil" url="http://localhost:8080/pfcwebGdc//" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Tableau de bord" url="http://localhost:8080/pfcwebGdc/faces/offresEmploi.xhtml" icon="ui-icon-blog" style="color:white"/>
+                        <p:menuitem value="Mon CV" url="http://localhost:8080/pfcwebGdc/faces/cvtheque.xhtml" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Offres d'emploi" url="http://localhost:8080/pfcwebGdc/faces/ficheTest.xhtml" icon="ui-icon-home" style="color:white"/>
+        
+                        <f:facet name="options">
+                            <p:inputText style="margin-right:10px" placeholder="Search"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </div>
+
+            <div style="background-color: #ffffff" >
+                <div class="row content panel-heading">
+                    <!--lister les offres d'emploi-->
+                     <p style="font-style: italic; color:#0073a0; text-align: center; font-size: 30px">Lister les offres d'emploi proposées.</p>
+                </div>
+                <hr style="height: 1px; color: #357ebd; background-color: #357ebd; width: 100%; border: none;"></hr>
+                <footer >
+
+                    <div class="copyright floatleft">
+                        <p>&#169; Atos Sénégal 2016 |&nbsp;</p>
+                    </div>
+                    <div class="footer_bottom_text floatright">
+                        <p>
+                            <a href="http://www.atos.net" target="_blank"> www.atos.net</a>
+                        </p>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+
+    </h:body>
+</html>
