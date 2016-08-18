@@ -12,21 +12,22 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-         <spring.version>3.1.1.RELEASE</spring.version>
+        <spring.version>3.1.1.RELEASE</spring.version>
     </properties>
     
-        <dependencies>
+    <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.10</version>
             <scope>test</scope>
+            <type>jar</type>
         </dependency>
         <!-- Spring 3 dependencies -->
         <dependency>
@@ -122,6 +123,11 @@
             <artifactId>validation-api</artifactId>
             <version>1.1.0.Final</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2.2</version>
         </dependency>
     </dependencies>
 

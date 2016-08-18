@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.gdc.model;
 
 import java.io.Serializable;
@@ -42,11 +41,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
     @NamedQuery(name = "Users.findByEnabled", query = "SELECT u FROM Users u WHERE u.enabled = :enabled"),
     @NamedQuery(name = "Users.findBySpecialite", query = "SELECT u FROM Users u WHERE u.specialite = :specialite"),
-    @NamedQuery(name = "Users.findByDateDeNaissance", query = "SELECT u FROM Users u WHERE u.dateDeNaissance = :dateDeNaissance")})
-
-//,@NamedQuery(name = "Users.findByVersion", query = "SELECT u FROM Users u WHERE u.version = :version")
+    @NamedQuery(name = "Users.findByDateDeNaissance", query = "SELECT u FROM Users u WHERE u.dateDeNaissance = :dateDeNaissance"),
+    @NamedQuery(name = "Users.findByVersion", query = "SELECT u FROM Users u WHERE u.version = :version")})
 
 public class Users implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -114,6 +113,7 @@ public class Users implements Serializable {
         this.username = username;
     }
 //pour créer un administrateur
+
     public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, Administrateur administrateur) {
         this.username = username;
         this.nom = nom;
@@ -127,7 +127,8 @@ public class Users implements Serializable {
         this.administrateur = administrateur;
     }
 //pour créer un candidat
-    public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, short enabled,Integer version) {
+
+    public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, short enabled, Integer version) {
         this.username = username;
         this.nom = nom;
         this.prenom = prenom;
@@ -138,9 +139,10 @@ public class Users implements Serializable {
         this.specialite = specialite;
         this.dateDeNaissance = dateDeNaissance;
         this.version = version;
-        this.enabled=enabled;
+        this.enabled = enabled;
     }
 //pour créer un recruteur
+
     public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, Recruteur recruteur) {
         this.username = username;
         this.nom = nom;
@@ -242,7 +244,6 @@ public class Users implements Serializable {
         this.administrateur = administrateur;
     }
 
-   
     public Candidat getCandidat() {
         return candidat;
     }
@@ -283,5 +284,5 @@ public class Users implements Serializable {
     public String toString() {
         return "entites.Users[ username=" + username + " ]";
     }
-    
+
 }
