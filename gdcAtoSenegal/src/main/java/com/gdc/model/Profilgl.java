@@ -12,12 +12,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -27,10 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "profilgl")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Profilgl.findAll", query = "SELECT p FROM Profilgl p"),
-    @NamedQuery(name = "Profilgl.findByIdTypeDeProfil", query = "SELECT p FROM Profilgl p WHERE p.idTypeDeProfil = :idTypeDeProfil"),
-    @NamedQuery(name = "Profilgl.findByVersion", query = "SELECT p FROM Profilgl p WHERE p.version = :version")})
 public class Profilgl implements Serializable {
 
     private static final long serialVersionUID = 1L;

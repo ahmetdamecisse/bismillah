@@ -17,13 +17,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -34,14 +31,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "entretien")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Entretien.findAll", query = "SELECT e FROM Entretien e"),
-    @NamedQuery(name = "Entretien.findByIdEntretien", query = "SELECT e FROM Entretien e WHERE e.idEntretien = :idEntretien"),
-    @NamedQuery(name = "Entretien.findByTypeEntretien", query = "SELECT e FROM Entretien e WHERE e.typeEntretien = :typeEntretien"),
-    @NamedQuery(name = "Entretien.findByDateDebEntreti", query = "SELECT e FROM Entretien e WHERE e.dateDebEntreti = :dateDebEntreti"),
-    @NamedQuery(name = "Entretien.findByAteFinEntreti", query = "SELECT e FROM Entretien e WHERE e.ateFinEntreti = :ateFinEntreti"),
-    @NamedQuery(name = "Entretien.findByResultat", query = "SELECT e FROM Entretien e WHERE e.resultat = :resultat"),
-    @NamedQuery(name = "Entretien.findByVersion", query = "SELECT e FROM Entretien e WHERE e.version = :version")})
 public class Entretien implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

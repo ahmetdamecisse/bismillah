@@ -12,8 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -26,11 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "outils")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Outils.findAll", query = "SELECT o FROM Outils o"),
-    @NamedQuery(name = "Outils.findByIdTypeDeProfil", query = "SELECT o FROM Outils o WHERE o.idTypeDeProfil = :idTypeDeProfil"),
-    @NamedQuery(name = "Outils.findByDomaine", query = "SELECT o FROM Outils o WHERE o.domaine = :domaine"),
-    @NamedQuery(name = "Outils.findByNiveau", query = "SELECT o FROM Outils o WHERE o.niveau = :niveau")})
 public class Outils implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

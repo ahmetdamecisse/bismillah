@@ -5,30 +5,34 @@
  */
 package com.gdc.dao;
 
-
 import com.gdc.exceptions.pfcgdcexception;
 import com.gdc.model.*;
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author a618092
  */
-public class Daojpa implements Idao{
-    
-private SessionFactory sessionFactory;
+@Component
+public class Daojpa implements Idao {
 
-  @Override
+    private SessionFactory sessionFactory;
+
+    @Override
     public List getALLutilisateur() {
         try {
-             List list =getSessionFactory().getCurrentSession().createQuery("from Users").list();
-             return list;
-        } catch (Throwable th) {
-             System.err.println("Erreurs lors de la recupération de tous les utilisateurs:" + th);
-            throw new pfcgdcexception(th, 1);
+            List list = getSessionFactory().getCurrentSession().createQuery("from Users").list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getALLutilisateur(): " + th);
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }
+        return null;
     }
 
     public SessionFactory getSessionFactory() {
@@ -180,7 +184,7 @@ private SessionFactory sessionFactory;
 
     public void addBdd(Bdd bdd) {
         try {
-             getSessionFactory().getCurrentSession().save(bdd);
+            getSessionFactory().getCurrentSession().save(bdd);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout de la bdd" + bdd.getIdTypeDeProfil());
             throw new pfcgdcexception(th, 3);
@@ -233,7 +237,7 @@ private SessionFactory sessionFactory;
 
     public void addExperiencesprofessionnelles(Experiencesprofessionnelles e) {
         try {
-             getSessionFactory().getCurrentSession().save(e);
+            getSessionFactory().getCurrentSession().save(e);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet experience pro" + e.getDescription());
             throw new pfcgdcexception(th, 10);
@@ -339,7 +343,7 @@ private SessionFactory sessionFactory;
 
     public void addLangages(Langages l) {
         try {
-             getSessionFactory().getCurrentSession().save(l);
+            getSessionFactory().getCurrentSession().save(l);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet langage" + l.getDomaine());
             throw new pfcgdcexception(th, 11);
@@ -442,7 +446,7 @@ private SessionFactory sessionFactory;
 
     public void addMethodologie(Methodologie m) {
         try {
-             getSessionFactory().getCurrentSession().save(m);
+            getSessionFactory().getCurrentSession().save(m);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet méthodologie" + m.getDomaine());
             throw new pfcgdcexception(th, 11);
@@ -471,7 +475,7 @@ private SessionFactory sessionFactory;
 
     public void addModelisation(Modelisation m) {
         try {
-             getSessionFactory().getCurrentSession().save(m);
+            getSessionFactory().getCurrentSession().save(m);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet modélisation" + m.getDomaine());
             throw new pfcgdcexception(th, 11);
@@ -524,7 +528,7 @@ private SessionFactory sessionFactory;
 
     public void addOutils(Outils o) {
         try {
-           getSessionFactory().getCurrentSession().save(o);
+            getSessionFactory().getCurrentSession().save(o);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet outil" + o.getDomaine());
             throw new pfcgdcexception(th, 9);
@@ -554,7 +558,7 @@ private SessionFactory sessionFactory;
     public void addProfil(Profil p) {
 
         try {
-             getSessionFactory().getCurrentSession().save(p);
+            getSessionFactory().getCurrentSession().save(p);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout du profil");
             throw new pfcgdcexception(th, 5);
@@ -628,60 +632,59 @@ private SessionFactory sessionFactory;
     public boolean ajoutUtilisateurCandidatProfilGl(Users u, Profil profil, Profilgl profilgl, Candidat candidat, Formation f1, Formation f2, Formation f3, Bdd bdd1, Bdd bdd2, Bdd bd3, Materielssystemesexploitation mat1, Materielssystemesexploitation mat2, Materielssystemesexploitation mat3, Methodologie meth1, Methodologie meth2, Methodologie meth3, Modelisation modl1, Modelisation model2, Modelisation model3, Outils outil1, Outils outils2, Outils outil3, Langages langage1, Langages langage2, Langages laangage3, Langues langue1, Langues langue2, Langues langue3, Experiencesprofessionnelles exp1, Experiencesprofessionnelles exp2, Experiencesprofessionnelles exp3) {
 
         if (ceUsernameEstIlUtiliseDeja(u.getUsername()) == false && u.getUsername() != null) {
-           
-                //il est un utilisateur
-                addUtilisateur(u);
-                //il a un profil
-                addProfil(profil);
-                //Son profil est de type GL
-                profilgl.setIdTypeDeProfil(profil.getIdTypeDeProfil());
-                profilgl.setProfil(profil);//pour régler les conflits de relation pouvant subvenir entre profil et profil gl oneTOone
-                addProfilgl(profilgl);
-                //l'utilisateur est un candidat
-                candidat.setUsername(u.getUsername());
-                candidat.setIdTypeDeProfil(profil);//pour régler les conflits de relation pouvant subvenir
-                candidat.setUsers(u);//pour régler les conflits de relation pouvant subvenir
-                addCandidat(candidat);
-                //Formations du candidat
-                f1.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-                if (f1.getNomDiplome() == null) {
-                    f1.setNomDiplome("default1");
-                }
-                addFormation(f1);
-                f2.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-                if (f2.getNomDiplome() == null) {
-                    f2.setNomDiplome("default2");
-                }
-                addFormation(f2);
-                f3.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-                if (f3.getNomDiplome() == null) {
-                    f3.setNomDiplome("default3");
-                }
-                addFormation(f3);
-                //les bases de données
-                bdd1.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-                if (bdd1.getDomaine()== null) {
-                    bdd1.setDomaine("default1");
-                }
-                addBdd(bdd1);
-                 bdd2.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-                if (bdd2.getDomaine()== null) {
-                    bdd2.setDomaine("default2");
-                }
-                addBdd(bdd2);
-                 bd3.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-                if (bd3.getDomaine()== null) {
-                    bd3.setDomaine("default3");
-                }
-                addBdd(bd3);
 
-                return true;
-                
+            //il est un utilisateur
+            addUtilisateur(u);
+            //il a un profil
+            addProfil(profil);
+            //Son profil est de type GL
+            profilgl.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+            profilgl.setProfil(profil);//pour régler les conflits de relation pouvant subvenir entre profil et profil gl oneTOone
+            addProfilgl(profilgl);
+            //l'utilisateur est un candidat
+            candidat.setUsername(u.getUsername());
+            candidat.setIdTypeDeProfil(profil);//pour régler les conflits de relation pouvant subvenir
+            candidat.setUsers(u);//pour régler les conflits de relation pouvant subvenir
+            addCandidat(candidat);
+            //Formations du candidat
+            f1.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+            if (f1.getNomDiplome() == null) {
+                f1.setNomDiplome("default1");
+            }
+            addFormation(f1);
+            f2.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+            if (f2.getNomDiplome() == null) {
+                f2.setNomDiplome("default2");
+            }
+            addFormation(f2);
+            f3.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+            if (f3.getNomDiplome() == null) {
+                f3.setNomDiplome("default3");
+            }
+            addFormation(f3);
+            //les bases de données
+            bdd1.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+            if (bdd1.getDomaine() == null) {
+                bdd1.setDomaine("default1");
+            }
+            addBdd(bdd1);
+            bdd2.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+            if (bdd2.getDomaine() == null) {
+                bdd2.setDomaine("default2");
+            }
+            addBdd(bdd2);
+            bd3.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
+            if (bd3.getDomaine() == null) {
+                bd3.setDomaine("default3");
+            }
+            addBdd(bd3);
+
+            return true;
+
         } else {
             System.out.println("=============>>>" + u.getUsername() + " est dèja utilisé. Merci de choisir un autre username!");
         }
         return false;
     }
 
- 
 }

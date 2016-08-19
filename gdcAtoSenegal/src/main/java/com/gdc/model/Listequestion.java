@@ -17,8 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,10 +29,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "listequestion")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Listequestion.findAll", query = "SELECT l FROM Listequestion l"),
-    @NamedQuery(name = "Listequestion.findByIdQuestion", query = "SELECT l FROM Listequestion l WHERE l.idQuestion = :idQuestion"),
-    @NamedQuery(name = "Listequestion.findByQuestion", query = "SELECT l FROM Listequestion l WHERE l.question = :question")})
 public class Listequestion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

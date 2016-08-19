@@ -13,8 +13,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,16 +28,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "experiencesprofessionnelles")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Experiencesprofessionnelles.findAll", query = "SELECT e FROM Experiencesprofessionnelles e"),
-    @NamedQuery(name = "Experiencesprofessionnelles.findByIdTypeDeProfil", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.idTypeDeProfil = :idTypeDeProfil"),
-    @NamedQuery(name = "Experiencesprofessionnelles.findByDescription", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.description = :description"),
-    @NamedQuery(name = "Experiencesprofessionnelles.findByDatededebut", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.datededebut = :datededebut"),
-    @NamedQuery(name = "Experiencesprofessionnelles.findByDatefin", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.datefin = :datefin"),
-    @NamedQuery(name = "Experiencesprofessionnelles.findByFonction", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.fonction = :fonction"),
-    @NamedQuery(name = "Experiencesprofessionnelles.findByEnvironnement", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.environnement = :environnement"),
-    @NamedQuery(name = "Experiencesprofessionnelles.findByProjet", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.projet = :projet"),
-    @NamedQuery(name = "Experiencesprofessionnelles.findByMissionsRealisees", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.missionsRealisees = :missionsRealisees")})
 public class Experiencesprofessionnelles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

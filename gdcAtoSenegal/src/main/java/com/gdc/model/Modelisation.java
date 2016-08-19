@@ -12,8 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -26,11 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "modelisation")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Modelisation.findAll", query = "SELECT m FROM Modelisation m"),
-    @NamedQuery(name = "Modelisation.findByIdTypeDeProfil", query = "SELECT m FROM Modelisation m WHERE m.idTypeDeProfil = :idTypeDeProfil"),
-    @NamedQuery(name = "Modelisation.findByDomaine", query = "SELECT m FROM Modelisation m WHERE m.domaine = :domaine"),
-    @NamedQuery(name = "Modelisation.findByNiveau", query = "SELECT m FROM Modelisation m WHERE m.niveau = :niveau")})
 public class Modelisation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

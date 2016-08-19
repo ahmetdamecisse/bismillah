@@ -12,8 +12,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -26,11 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "methodologie")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Methodologie.findAll", query = "SELECT m FROM Methodologie m"),
-    @NamedQuery(name = "Methodologie.findByIdTypeDeProfil", query = "SELECT m FROM Methodologie m WHERE m.idTypeDeProfil = :idTypeDeProfil"),
-    @NamedQuery(name = "Methodologie.findByDomaine", query = "SELECT m FROM Methodologie m WHERE m.domaine = :domaine"),
-    @NamedQuery(name = "Methodologie.findByNiveau", query = "SELECT m FROM Methodologie m WHERE m.niveau = :niveau")})
 public class Methodologie implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -59,14 +59,14 @@
     <bean id="Users" class="com.gdc.model.Users"/>
     <bean id="UserRoles" class="com.gdc.model.UserRoles"/>
     
-    <!-- User DAO Declaration -->
-    <bean id="Daojpa" class="com.gdc.dao.Daojpa">
-        <property name="sessionFactory" ref="SessionFactory" />
-    </bean>
-    
     <!-- User Service Declaration -->
     <bean id="Metier" class="com.gdc.services.Metier">
         <property name="daojpa" ref="Daojpa" />
+    </bean>
+    
+     <!-- User DAO Declaration -->
+    <bean id="Daojpa" class="com.gdc.dao.Daojpa">
+        <property name="sessionFactory" ref="SessionFactory" />
     </bean>
     
     <!-- Data Source Declaration -->

@@ -12,11 +12,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -27,11 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "bdd")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Bdd.findAll", query = "SELECT b FROM Bdd b"),
-    @NamedQuery(name = "Bdd.findByIdTypeDeProfil", query = "SELECT b FROM Bdd b WHERE b.idTypeDeProfil = :idTypeDeProfil"),
-    @NamedQuery(name = "Bdd.findByDomaine", query = "SELECT b FROM Bdd b WHERE b.domaine = :domaine"),
-    @NamedQuery(name = "Bdd.findByNiveau", query = "SELECT b FROM Bdd b WHERE b.niveau = :niveau")})
 public class Bdd implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

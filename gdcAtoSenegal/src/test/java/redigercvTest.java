@@ -7,19 +7,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 /**
  *
  * @author a618092
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AppConfig.class, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/applicationContext.xml"})
 public class redigercvTest {
-    
+
     @Autowired
     private Imetier metier;
-       
+    
     //à completer ça ne marche pas pour l'instant
 //    @Test
 //    public void ajoutUtilisateurCandidatProfilGl3() {
@@ -34,7 +33,6 @@ public class redigercvTest {
 //        Bdd bdd2 = new Bdd();
 //        Bdd bdd3 = new Bdd();
 //    }
-
 //    @Test
 //    public void ajoutUtilisateurCandidatProfilGl2() {
 //
@@ -137,18 +135,18 @@ public class redigercvTest {
 //        langue2.setNom("En");
 //        dao.addLangues(langue2);
 //    }
-       @Test
-     public void tousLesUtilisateurs() {
-         
-     // affichage les utilisateurs
-     List<Users> users = metier.getALLutilisateur();
-        
-     System.out.println("******************************************************************************");
-     System.out.println("******************************************************************************");
-     System.out.println("******************************************************************************");
-        
-     System.out.println("*********************Lies des utilisateurs******************************");
-         
-     System.out.println(users);
-     }                    
+    @Test
+    public void tousLesUtilisateurs() {
+
+        // affichage les utilisateurs
+        List<Users> users = metier.getALLutilisateur();
+        System.out.println("*********************Lies des utilisateurs******************************");
+        System.out.println(users);
+    }
+
+//    @Test
+//    public void bon() {
+//
+//        System.out.println("*********************Bonjour******************************");
+//    }
 }

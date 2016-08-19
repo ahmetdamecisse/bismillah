@@ -14,8 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -28,13 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "profil")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Profil.findAll", query = "SELECT p FROM Profil p"),
-    @NamedQuery(name = "Profil.findByIdTypeDeProfil", query = "SELECT p FROM Profil p WHERE p.idTypeDeProfil = :idTypeDeProfil"),
-    @NamedQuery(name = "Profil.findByNombreAnneesExperience", query = "SELECT p FROM Profil p WHERE p.nombreAnneesExperience = :nombreAnneesExperience"),
-    @NamedQuery(name = "Profil.findByPrincipalesCompetences", query = "SELECT p FROM Profil p WHERE p.principalesCompetences = :principalesCompetences"),
-    @NamedQuery(name = "Profil.findByCompetencesFonctionnelles", query = "SELECT p FROM Profil p WHERE p.competencesFonctionnelles = :competencesFonctionnelles"),
-    @NamedQuery(name = "Profil.findByEtatProfil", query = "SELECT p FROM Profil p WHERE p.etatProfil = :etatProfil")})
 public class Profil implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -8,12 +8,14 @@ package com.gdc.services;
 import com.gdc.dao.Idao;
 import com.gdc.model.*;
 import java.util.List;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author a618092
  */
+@Service
 @Transactional(readOnly = true)
 public class Metier implements Imetier {
 

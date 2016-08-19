@@ -15,8 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.Size;
@@ -29,14 +27,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "fichedeposte")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Fichedeposte.findAll", query = "SELECT f FROM Fichedeposte f"),
-    @NamedQuery(name = "Fichedeposte.findByIdFichePoste", query = "SELECT f FROM Fichedeposte f WHERE f.idFichePoste = :idFichePoste"),
-    @NamedQuery(name = "Fichedeposte.findByIntitulePoste", query = "SELECT f FROM Fichedeposte f WHERE f.intitulePoste = :intitulePoste"),
-    @NamedQuery(name = "Fichedeposte.findByDescription", query = "SELECT f FROM Fichedeposte f WHERE f.description = :description"),
-    @NamedQuery(name = "Fichedeposte.findByQualiteRequise", query = "SELECT f FROM Fichedeposte f WHERE f.qualiteRequise = :qualiteRequise"),
-    @NamedQuery(name = "Fichedeposte.findByConnaissanceTechni", query = "SELECT f FROM Fichedeposte f WHERE f.connaissanceTechni = :connaissanceTechni"),
-    @NamedQuery(name = "Fichedeposte.findByVersion", query = "SELECT f FROM Fichedeposte f WHERE f.version = :version")})
 public class Fichedeposte implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
