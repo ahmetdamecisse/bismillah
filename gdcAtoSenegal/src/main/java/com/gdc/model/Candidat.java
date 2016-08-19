@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -20,11 +22,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "candidat")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Candidat.findAll", query = "SELECT c FROM Candidat c"),
+    @NamedQuery(name = "Candidat.findByUsername", query = "SELECT c FROM Candidat c WHERE c.username = :username")})
 public class Candidat implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,18 +44,11 @@ public class Candidat implements Serializable {
     @OneToOne(optional = false)
     private Users users;
    
-
     public Candidat() {
     }
 
     public Candidat(String username) {
         this.username = username;
-    }
-
-    public Candidat(String username, Profil idTypeDeProfil, Users users) {
-        this.username = username;
-        this.idTypeDeProfil = idTypeDeProfil;
-        this.users = users;
     }
 
     public String getUsername() {
@@ -76,8 +74,6 @@ public class Candidat implements Serializable {
     public void setUsers(Users users) {
         this.users = users;
     }
-
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -100,7 +96,7 @@ public class Candidat implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Candidat[ username=" + username + " ]";
+        return "com.testeur.Candidat[ username=" + username + " ]";
     }
     
 }

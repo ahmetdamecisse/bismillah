@@ -9,16 +9,22 @@ package com.gdc.model;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "faireuntest")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Faireuntest.findAll", query = "SELECT f FROM Faireuntest f"),
+    @NamedQuery(name = "Faireuntest.findByUsername", query = "SELECT f FROM Faireuntest f WHERE f.faireuntestPK.username = :username"),
+    @NamedQuery(name = "Faireuntest.findByIdFicheTest", query = "SELECT f FROM Faireuntest f WHERE f.faireuntestPK.idFicheTest = :idFicheTest")})
 public class Faireuntest implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
@@ -65,7 +71,7 @@ public class Faireuntest implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Faireuntest[ faireuntestPK=" + faireuntestPK + " ]";
+        return "com.testeur.Faireuntest[ faireuntestPK=" + faireuntestPK + " ]";
     }
     
 }

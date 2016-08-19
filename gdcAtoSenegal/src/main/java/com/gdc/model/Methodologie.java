@@ -7,60 +7,57 @@
 package com.gdc.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "methodologie")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Methodologie.findAll", query = "SELECT m FROM Methodologie m"),
+    @NamedQuery(name = "Methodologie.findByIdTypeDeProfil", query = "SELECT m FROM Methodologie m WHERE m.methodologiePK.idTypeDeProfil = :idTypeDeProfil"),
+    @NamedQuery(name = "Methodologie.findByDomaine", query = "SELECT m FROM Methodologie m WHERE m.methodologiePK.domaine = :domaine"),
+    @NamedQuery(name = "Methodologie.findByNiveau", query = "SELECT m FROM Methodologie m WHERE m.niveau = :niveau")})
 public class Methodologie implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "idTypeDeProfil")
-    private Integer idTypeDeProfil;
-    @Size(max = 254)
-    @Column(name = "domaine")
-    private String domaine;
+    @EmbeddedId
+    protected MethodologiePK methodologiePK;
     @Size(max = 254)
     @Column(name = "niveau")
     private String niveau;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Profilgl profilgl;
 
     public Methodologie() {
     }
 
-    public Methodologie(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public Methodologie(MethodologiePK methodologiePK) {
+        this.methodologiePK = methodologiePK;
     }
 
-    public Integer getIdTypeDeProfil() {
-        return idTypeDeProfil;
+    public Methodologie(int idTypeDeProfil, String domaine) {
+        this.methodologiePK = new MethodologiePK(idTypeDeProfil, domaine);
     }
 
-    public void setIdTypeDeProfil(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public MethodologiePK getMethodologiePK() {
+        return methodologiePK;
     }
 
-    public String getDomaine() {
-        return domaine;
-    }
-
-    public void setDomaine(String domaine) {
-        this.domaine = domaine;
+    public void setMethodologiePK(MethodologiePK methodologiePK) {
+        this.methodologiePK = methodologiePK;
     }
 
     public String getNiveau() {
@@ -82,7 +79,7 @@ public class Methodologie implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTypeDeProfil != null ? idTypeDeProfil.hashCode() : 0);
+        hash += (methodologiePK != null ? methodologiePK.hashCode() : 0);
         return hash;
     }
 
@@ -93,7 +90,7 @@ public class Methodologie implements Serializable {
             return false;
         }
         Methodologie other = (Methodologie) object;
-        if ((this.idTypeDeProfil == null && other.idTypeDeProfil != null) || (this.idTypeDeProfil != null && !this.idTypeDeProfil.equals(other.idTypeDeProfil))) {
+        if ((this.methodologiePK == null && other.methodologiePK != null) || (this.methodologiePK != null && !this.methodologiePK.equals(other.methodologiePK))) {
             return false;
         }
         return true;
@@ -101,7 +98,7 @@ public class Methodologie implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Methodologie[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "com.testeur.Methodologie[ methodologiePK=" + methodologiePK + " ]";
     }
     
 }

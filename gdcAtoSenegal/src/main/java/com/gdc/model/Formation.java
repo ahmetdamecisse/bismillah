@@ -8,12 +8,13 @@ package com.gdc.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,20 +23,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "formation")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Formation.findAll", query = "SELECT f FROM Formation f"),
+    @NamedQuery(name = "Formation.findByIdTypeDeProfil", query = "SELECT f FROM Formation f WHERE f.formationPK.idTypeDeProfil = :idTypeDeProfil"),
+    @NamedQuery(name = "Formation.findByNomDiplome", query = "SELECT f FROM Formation f WHERE f.formationPK.nomDiplome = :nomDiplome"),
+    @NamedQuery(name = "Formation.findByUniversite", query = "SELECT f FROM Formation f WHERE f.universite = :universite"),
+    @NamedQuery(name = "Formation.findByAnneeObtention", query = "SELECT f FROM Formation f WHERE f.anneeObtention = :anneeObtention"),
+    @NamedQuery(name = "Formation.findByMention", query = "SELECT f FROM Formation f WHERE f.mention = :mention")})
 public class Formation implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "idTypeDeProfil")
-    private Integer idTypeDeProfil;
-    @Size(max = 254)
-    @Column(name = "nomDiplome")
-    private String nomDiplome;
+    @EmbeddedId
+    protected FormationPK formationPK;
     @Size(max = 254)
     @Column(name = "universite")
     private String universite;
@@ -46,30 +49,26 @@ public class Formation implements Serializable {
     @Column(name = "mention")
     private String mention;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Profilgl profilgl;
 
     public Formation() {
     }
 
-    public Formation(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public Formation(FormationPK formationPK) {
+        this.formationPK = formationPK;
     }
 
-    public Integer getIdTypeDeProfil() {
-        return idTypeDeProfil;
+    public Formation(int idTypeDeProfil, String nomDiplome) {
+        this.formationPK = new FormationPK(idTypeDeProfil, nomDiplome);
     }
 
-    public void setIdTypeDeProfil(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public FormationPK getFormationPK() {
+        return formationPK;
     }
 
-    public String getNomDiplome() {
-        return nomDiplome;
-    }
-
-    public void setNomDiplome(String nomDiplome) {
-        this.nomDiplome = nomDiplome;
+    public void setFormationPK(FormationPK formationPK) {
+        this.formationPK = formationPK;
     }
 
     public String getUniversite() {
@@ -107,7 +106,7 @@ public class Formation implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTypeDeProfil != null ? idTypeDeProfil.hashCode() : 0);
+        hash += (formationPK != null ? formationPK.hashCode() : 0);
         return hash;
     }
 
@@ -118,7 +117,7 @@ public class Formation implements Serializable {
             return false;
         }
         Formation other = (Formation) object;
-        if ((this.idTypeDeProfil == null && other.idTypeDeProfil != null) || (this.idTypeDeProfil != null && !this.idTypeDeProfil.equals(other.idTypeDeProfil))) {
+        if ((this.formationPK == null && other.formationPK != null) || (this.formationPK != null && !this.formationPK.equals(other.formationPK))) {
             return false;
         }
         return true;
@@ -126,7 +125,7 @@ public class Formation implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Formation[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "com.testeur.Formation[ formationPK=" + formationPK + " ]";
     }
     
 }

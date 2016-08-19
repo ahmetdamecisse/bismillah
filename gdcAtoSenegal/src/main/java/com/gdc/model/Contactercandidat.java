@@ -16,12 +16,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "contactercandidat")
 @XmlRootElement
- public class Contactercandidat implements Serializable {
+@NamedQueries({
+    @NamedQuery(name = "Contactercandidat.findAll", query = "SELECT c FROM Contactercandidat c"),
+    @NamedQuery(name = "Contactercandidat.findByRecusername", query = "SELECT c FROM Contactercandidat c WHERE c.contactercandidatPK.recusername = :recusername"),
+    @NamedQuery(name = "Contactercandidat.findByUsername", query = "SELECT c FROM Contactercandidat c WHERE c.contactercandidatPK.username = :username")})
+public class Contactercandidat implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ContactercandidatPK contactercandidatPK;
@@ -67,7 +71,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
     @Override
     public String toString() {
-        return "entites.Contactercandidat[ contactercandidatPK=" + contactercandidatPK + " ]";
+        return "com.testeur.Contactercandidat[ contactercandidatPK=" + contactercandidatPK + " ]";
     }
     
 }

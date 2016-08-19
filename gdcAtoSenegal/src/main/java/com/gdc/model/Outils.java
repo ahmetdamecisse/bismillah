@@ -7,60 +7,57 @@
 package com.gdc.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "outils")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Outils.findAll", query = "SELECT o FROM Outils o"),
+    @NamedQuery(name = "Outils.findByIdTypeDeProfil", query = "SELECT o FROM Outils o WHERE o.outilsPK.idTypeDeProfil = :idTypeDeProfil"),
+    @NamedQuery(name = "Outils.findByDomaine", query = "SELECT o FROM Outils o WHERE o.outilsPK.domaine = :domaine"),
+    @NamedQuery(name = "Outils.findByNiveau", query = "SELECT o FROM Outils o WHERE o.niveau = :niveau")})
 public class Outils implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "idTypeDeProfil")
-    private Integer idTypeDeProfil;
-    @Size(max = 254)
-    @Column(name = "domaine")
-    private String domaine;
+    @EmbeddedId
+    protected OutilsPK outilsPK;
     @Size(max = 254)
     @Column(name = "niveau")
     private String niveau;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Profilgl profilgl;
 
     public Outils() {
     }
 
-    public Outils(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public Outils(OutilsPK outilsPK) {
+        this.outilsPK = outilsPK;
     }
 
-    public Integer getIdTypeDeProfil() {
-        return idTypeDeProfil;
+    public Outils(int idTypeDeProfil, String domaine) {
+        this.outilsPK = new OutilsPK(idTypeDeProfil, domaine);
     }
 
-    public void setIdTypeDeProfil(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public OutilsPK getOutilsPK() {
+        return outilsPK;
     }
 
-    public String getDomaine() {
-        return domaine;
-    }
-
-    public void setDomaine(String domaine) {
-        this.domaine = domaine;
+    public void setOutilsPK(OutilsPK outilsPK) {
+        this.outilsPK = outilsPK;
     }
 
     public String getNiveau() {
@@ -82,7 +79,7 @@ public class Outils implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTypeDeProfil != null ? idTypeDeProfil.hashCode() : 0);
+        hash += (outilsPK != null ? outilsPK.hashCode() : 0);
         return hash;
     }
 
@@ -93,7 +90,7 @@ public class Outils implements Serializable {
             return false;
         }
         Outils other = (Outils) object;
-        if ((this.idTypeDeProfil == null && other.idTypeDeProfil != null) || (this.idTypeDeProfil != null && !this.idTypeDeProfil.equals(other.idTypeDeProfil))) {
+        if ((this.outilsPK == null && other.outilsPK != null) || (this.outilsPK != null && !this.outilsPK.equals(other.outilsPK))) {
             return false;
         }
         return true;
@@ -101,7 +98,7 @@ public class Outils implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Outils[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "com.testeur.Outils[ outilsPK=" + outilsPK + " ]";
     }
     
 }

@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -22,11 +24,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "listereponse")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Listereponse.findAll", query = "SELECT l FROM Listereponse l"),
+    @NamedQuery(name = "Listereponse.findByIdReponse", query = "SELECT l FROM Listereponse l WHERE l.idReponse = :idReponse"),
+    @NamedQuery(name = "Listereponse.findByReponse", query = "SELECT l FROM Listereponse l WHERE l.reponse = :reponse")})
 public class Listereponse implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -94,7 +100,7 @@ public class Listereponse implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Listereponse[ idReponse=" + idReponse + " ]";
+        return "com.testeur.Listereponse[ idReponse=" + idReponse + " ]";
     }
     
 }

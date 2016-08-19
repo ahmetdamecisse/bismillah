@@ -10,12 +10,11 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Embeddable
 public class ContactercandidatPK implements Serializable {
@@ -24,7 +23,6 @@ public class ContactercandidatPK implements Serializable {
     @Column(name = "Rec_username")
     private String recusername;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
@@ -79,7 +77,7 @@ public class ContactercandidatPK implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.ContactercandidatPK[ recusername=" + recusername + ", username=" + username + " ]";
+        return "com.testeur.ContactercandidatPK[ recusername=" + recusername + ", username=" + username + " ]";
     }
     
 }

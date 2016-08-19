@@ -10,12 +10,11 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Embeddable
 public class FaireuntestPK implements Serializable {
@@ -24,7 +23,6 @@ public class FaireuntestPK implements Serializable {
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idFicheTest")
     private int idFicheTest;
 
@@ -78,7 +76,7 @@ public class FaireuntestPK implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.FaireuntestPK[ username=" + username + ", idFicheTest=" + idFicheTest + " ]";
+        return "com.testeur.FaireuntestPK[ username=" + username + ", idFicheTest=" + idFicheTest + " ]";
     }
     
 }

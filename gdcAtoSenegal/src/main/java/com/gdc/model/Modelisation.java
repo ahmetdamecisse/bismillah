@@ -7,60 +7,57 @@
 package com.gdc.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "modelisation")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Modelisation.findAll", query = "SELECT m FROM Modelisation m"),
+    @NamedQuery(name = "Modelisation.findByIdTypeDeProfil", query = "SELECT m FROM Modelisation m WHERE m.modelisationPK.idTypeDeProfil = :idTypeDeProfil"),
+    @NamedQuery(name = "Modelisation.findByDomaine", query = "SELECT m FROM Modelisation m WHERE m.modelisationPK.domaine = :domaine"),
+    @NamedQuery(name = "Modelisation.findByNiveau", query = "SELECT m FROM Modelisation m WHERE m.niveau = :niveau")})
 public class Modelisation implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "idTypeDeProfil")
-    private Integer idTypeDeProfil;
-    @Size(max = 254)
-    @Column(name = "domaine")
-    private String domaine;
+    @EmbeddedId
+    protected ModelisationPK modelisationPK;
     @Size(max = 254)
     @Column(name = "niveau")
     private String niveau;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Profilgl profilgl;
 
     public Modelisation() {
     }
 
-    public Modelisation(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public Modelisation(ModelisationPK modelisationPK) {
+        this.modelisationPK = modelisationPK;
     }
 
-    public Integer getIdTypeDeProfil() {
-        return idTypeDeProfil;
+    public Modelisation(int idTypeDeProfil, String domaine) {
+        this.modelisationPK = new ModelisationPK(idTypeDeProfil, domaine);
     }
 
-    public void setIdTypeDeProfil(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public ModelisationPK getModelisationPK() {
+        return modelisationPK;
     }
 
-    public String getDomaine() {
-        return domaine;
-    }
-
-    public void setDomaine(String domaine) {
-        this.domaine = domaine;
+    public void setModelisationPK(ModelisationPK modelisationPK) {
+        this.modelisationPK = modelisationPK;
     }
 
     public String getNiveau() {
@@ -82,7 +79,7 @@ public class Modelisation implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTypeDeProfil != null ? idTypeDeProfil.hashCode() : 0);
+        hash += (modelisationPK != null ? modelisationPK.hashCode() : 0);
         return hash;
     }
 
@@ -93,7 +90,7 @@ public class Modelisation implements Serializable {
             return false;
         }
         Modelisation other = (Modelisation) object;
-        if ((this.idTypeDeProfil == null && other.idTypeDeProfil != null) || (this.idTypeDeProfil != null && !this.idTypeDeProfil.equals(other.idTypeDeProfil))) {
+        if ((this.modelisationPK == null && other.modelisationPK != null) || (this.modelisationPK != null && !this.modelisationPK.equals(other.modelisationPK))) {
             return false;
         }
         return true;
@@ -101,7 +98,7 @@ public class Modelisation implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Modelisation[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "com.testeur.Modelisation[ modelisationPK=" + modelisationPK + " ]";
     }
     
 }

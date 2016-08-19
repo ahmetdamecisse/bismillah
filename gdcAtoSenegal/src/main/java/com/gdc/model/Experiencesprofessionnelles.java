@@ -8,43 +8,41 @@ package com.gdc.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "experiencesprofessionnelles")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Experiencesprofessionnelles.findAll", query = "SELECT e FROM Experiencesprofessionnelles e"),
+    @NamedQuery(name = "Experiencesprofessionnelles.findByIdTypeDeProfil", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.experiencesprofessionnellesPK.idTypeDeProfil = :idTypeDeProfil"),
+    @NamedQuery(name = "Experiencesprofessionnelles.findByDescription", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.description = :description"),
+    @NamedQuery(name = "Experiencesprofessionnelles.findByDatededebut", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.experiencesprofessionnellesPK.datededebut = :datededebut"),
+    @NamedQuery(name = "Experiencesprofessionnelles.findByDatefin", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.experiencesprofessionnellesPK.datefin = :datefin"),
+    @NamedQuery(name = "Experiencesprofessionnelles.findByFonction", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.fonction = :fonction"),
+    @NamedQuery(name = "Experiencesprofessionnelles.findByEnvironnement", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.environnement = :environnement"),
+    @NamedQuery(name = "Experiencesprofessionnelles.findByProjet", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.projet = :projet"),
+    @NamedQuery(name = "Experiencesprofessionnelles.findByMissionsRealisees", query = "SELECT e FROM Experiencesprofessionnelles e WHERE e.missionsRealisees = :missionsRealisees")})
 public class Experiencesprofessionnelles implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "idTypeDeProfil")
-    private Integer idTypeDeProfil;
+    @EmbeddedId
+    protected ExperiencesprofessionnellesPK experiencesprofessionnellesPK;
     @Size(max = 50000)
     @Column(name = "description")
     private String description;
-    @Column(name = "datededebut")
-    @Temporal(TemporalType.DATE)
-    private Date datededebut;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "datefin")
-    @Temporal(TemporalType.DATE)
-    private Date datefin;
     @Size(max = 650)
     @Column(name = "fonction")
     private String fonction;
@@ -58,27 +56,26 @@ public class Experiencesprofessionnelles implements Serializable {
     @Column(name = "missionsRealisees")
     private String missionsRealisees;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Profilgl profilgl;
 
     public Experiencesprofessionnelles() {
     }
 
-    public Experiencesprofessionnelles(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public Experiencesprofessionnelles(ExperiencesprofessionnellesPK experiencesprofessionnellesPK) {
+        this.experiencesprofessionnellesPK = experiencesprofessionnellesPK;
     }
 
-    public Experiencesprofessionnelles(Integer idTypeDeProfil, Date datefin) {
-        this.idTypeDeProfil = idTypeDeProfil;
-        this.datefin = datefin;
+    public Experiencesprofessionnelles(int idTypeDeProfil, Date datededebut, Date datefin) {
+        this.experiencesprofessionnellesPK = new ExperiencesprofessionnellesPK(idTypeDeProfil, datededebut, datefin);
     }
 
-    public Integer getIdTypeDeProfil() {
-        return idTypeDeProfil;
+    public ExperiencesprofessionnellesPK getExperiencesprofessionnellesPK() {
+        return experiencesprofessionnellesPK;
     }
 
-    public void setIdTypeDeProfil(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public void setExperiencesprofessionnellesPK(ExperiencesprofessionnellesPK experiencesprofessionnellesPK) {
+        this.experiencesprofessionnellesPK = experiencesprofessionnellesPK;
     }
 
     public String getDescription() {
@@ -87,22 +84,6 @@ public class Experiencesprofessionnelles implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Date getDatededebut() {
-        return datededebut;
-    }
-
-    public void setDatededebut(Date datededebut) {
-        this.datededebut = datededebut;
-    }
-
-    public Date getDatefin() {
-        return datefin;
-    }
-
-    public void setDatefin(Date datefin) {
-        this.datefin = datefin;
     }
 
     public String getFonction() {
@@ -148,7 +129,7 @@ public class Experiencesprofessionnelles implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTypeDeProfil != null ? idTypeDeProfil.hashCode() : 0);
+        hash += (experiencesprofessionnellesPK != null ? experiencesprofessionnellesPK.hashCode() : 0);
         return hash;
     }
 
@@ -159,7 +140,7 @@ public class Experiencesprofessionnelles implements Serializable {
             return false;
         }
         Experiencesprofessionnelles other = (Experiencesprofessionnelles) object;
-        if ((this.idTypeDeProfil == null && other.idTypeDeProfil != null) || (this.idTypeDeProfil != null && !this.idTypeDeProfil.equals(other.idTypeDeProfil))) {
+        if ((this.experiencesprofessionnellesPK == null && other.experiencesprofessionnellesPK != null) || (this.experiencesprofessionnellesPK != null && !this.experiencesprofessionnellesPK.equals(other.experiencesprofessionnellesPK))) {
             return false;
         }
         return true;
@@ -167,7 +148,7 @@ public class Experiencesprofessionnelles implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Experiencesprofessionnelles[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "com.testeur.Experiencesprofessionnelles[ experiencesprofessionnellesPK=" + experiencesprofessionnellesPK + " ]";
     }
     
 }

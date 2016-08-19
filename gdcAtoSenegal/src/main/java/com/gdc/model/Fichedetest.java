@@ -18,28 +18,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "fichedetest")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Fichedetest.findAll", query = "SELECT f FROM Fichedetest f"),
+    @NamedQuery(name = "Fichedetest.findByIdFicheTest", query = "SELECT f FROM Fichedetest f WHERE f.idFicheTest = :idFicheTest"),
+    @NamedQuery(name = "Fichedetest.findByVersion", query = "SELECT f FROM Fichedetest f WHERE f.version = :version")})
 public class Fichedetest implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "idFicheTest")
     private Integer idFicheTest;
     @Column(name = "version")
-    @Version
     private Integer version;
     @JoinTable(name = "avoirquestion", joinColumns = {
         @JoinColumn(name = "idFicheTest", referencedColumnName = "idFicheTest")}, inverseJoinColumns = {
@@ -112,7 +115,7 @@ public class Fichedetest implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Fichedetest[ idFicheTest=" + idFicheTest + " ]";
+        return "com.testeur.Fichedetest[ idFicheTest=" + idFicheTest + " ]";
     }
     
 }

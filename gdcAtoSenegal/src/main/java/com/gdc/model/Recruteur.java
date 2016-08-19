@@ -7,23 +7,32 @@
 package com.gdc.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "recruteur")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Recruteur.findAll", query = "SELECT r FROM Recruteur r"),
+    @NamedQuery(name = "Recruteur.findByUsername", query = "SELECT r FROM Recruteur r WHERE r.username = :username")})
 public class Recruteur implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,11 +40,11 @@ public class Recruteur implements Serializable {
     @Size(min = 1, max = 150)
     @Column(name = "username")
     private String username;
-   
     @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Users users;
-   
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private List<Fichedetest> fichedetestList;
 
     public Recruteur() {
     }
@@ -52,7 +61,6 @@ public class Recruteur implements Serializable {
         this.username = username;
     }
 
-
     public Users getUsers() {
         return users;
     }
@@ -61,7 +69,14 @@ public class Recruteur implements Serializable {
         this.users = users;
     }
 
-   
+    @XmlTransient
+    public List<Fichedetest> getFichedetestList() {
+        return fichedetestList;
+    }
+
+    public void setFichedetestList(List<Fichedetest> fichedetestList) {
+        this.fichedetestList = fichedetestList;
+    }
 
     @Override
     public int hashCode() {
@@ -85,7 +100,7 @@ public class Recruteur implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Recruteur[ username=" + username + " ]";
+        return "com.testeur.Recruteur[ username=" + username + " ]";
     }
     
 }

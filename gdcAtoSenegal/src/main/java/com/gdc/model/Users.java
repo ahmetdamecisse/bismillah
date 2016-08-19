@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.gdc.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,21 +20,32 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "users")
 @XmlRootElement
-
+@NamedQueries({
+    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
+    @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
+    @NamedQuery(name = "Users.findByNom", query = "SELECT u FROM Users u WHERE u.nom = :nom"),
+    @NamedQuery(name = "Users.findByPrenom", query = "SELECT u FROM Users u WHERE u.prenom = :prenom"),
+    @NamedQuery(name = "Users.findByLocalisation", query = "SELECT u FROM Users u WHERE u.localisation = :localisation"),
+    @NamedQuery(name = "Users.findByMail", query = "SELECT u FROM Users u WHERE u.mail = :mail"),
+    @NamedQuery(name = "Users.findByTelephone", query = "SELECT u FROM Users u WHERE u.telephone = :telephone"),
+    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
+    @NamedQuery(name = "Users.findByEnabled", query = "SELECT u FROM Users u WHERE u.enabled = :enabled"),
+    @NamedQuery(name = "Users.findBySpecialite", query = "SELECT u FROM Users u WHERE u.specialite = :specialite"),
+    @NamedQuery(name = "Users.findByDateDeNaissance", query = "SELECT u FROM Users u WHERE u.dateDeNaissance = :dateDeNaissance"),
+    @NamedQuery(name = "Users.findByVersion", query = "SELECT u FROM Users u WHERE u.version = :version")})
 public class Users implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -55,8 +68,8 @@ public class Users implements Serializable {
     @Column(name = "telephone")
     private String telephone;
     @Basic(optional = false)
-    @Size(min = 1, max = 254)
     @NotNull
+    @Size(min = 1, max = 254)
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
@@ -70,7 +83,6 @@ public class Users implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateDeNaissance;
     @Column(name = "version")
-    @Version
     private Integer version;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "users")
     private Administrateur administrateur;
@@ -98,49 +110,6 @@ public class Users implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-//pour créer un administrateur
-
-    public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, Administrateur administrateur) {
-        this.username = username;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.localisation = localisation;
-        this.mail = mail;
-        this.telephone = telephone;
-        this.password = password;
-        this.specialite = specialite;
-        this.dateDeNaissance = dateDeNaissance;
-        this.administrateur = administrateur;
-    }
-//pour créer un candidat
-
-    public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, short enabled, Integer version) {
-        this.username = username;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.localisation = localisation;
-        this.mail = mail;
-        this.telephone = telephone;
-        this.password = password;
-        this.specialite = specialite;
-        this.dateDeNaissance = dateDeNaissance;
-        this.version = version;
-        this.enabled = enabled;
-    }
-//pour créer un recruteur
-
-    public Users(String username, String nom, String prenom, String localisation, String mail, String telephone, String password, String specialite, Date dateDeNaissance, Recruteur recruteur) {
-        this.username = username;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.localisation = localisation;
-        this.mail = mail;
-        this.telephone = telephone;
-        this.password = password;
-        this.specialite = specialite;
-        this.dateDeNaissance = dateDeNaissance;
-        this.recruteur = recruteur;
     }
 
     public String getNom() {
@@ -269,7 +238,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Users[ username=" + username + " ]";
+        return "com.testeur.Users[ username=" + username + " ]";
     }
-
+    
 }

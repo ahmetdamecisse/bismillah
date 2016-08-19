@@ -7,65 +7,57 @@
 package com.gdc.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "bdd")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Bdd.findAll", query = "SELECT b FROM Bdd b"),
+    @NamedQuery(name = "Bdd.findByIdTypeDeProfil", query = "SELECT b FROM Bdd b WHERE b.bddPK.idTypeDeProfil = :idTypeDeProfil"),
+    @NamedQuery(name = "Bdd.findByDomaine", query = "SELECT b FROM Bdd b WHERE b.bddPK.domaine = :domaine"),
+    @NamedQuery(name = "Bdd.findByNiveau", query = "SELECT b FROM Bdd b WHERE b.niveau = :niveau")})
 public class Bdd implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "idTypeDeProfil")
-    private Integer idTypeDeProfil;
-    @Size(max = 254)
-    @Column(name = "domaine")
-    private String domaine;
+    @EmbeddedId
+    protected BddPK bddPK;
     @Size(max = 254)
     @Column(name = "niveau")
     private String niveau;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Profilgl profilgl;
-
-    public Bdd(Integer idTypeDeProfil, Profilgl profilgl) {
-        this.idTypeDeProfil = idTypeDeProfil;
-        this.profilgl = profilgl;
-    }
 
     public Bdd() {
     }
 
-    public Bdd(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public Bdd(BddPK bddPK) {
+        this.bddPK = bddPK;
     }
 
-    public Integer getIdTypeDeProfil() {
-        return idTypeDeProfil;
+    public Bdd(int idTypeDeProfil, String domaine) {
+        this.bddPK = new BddPK(idTypeDeProfil, domaine);
     }
 
-    public void setIdTypeDeProfil(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public BddPK getBddPK() {
+        return bddPK;
     }
 
-    public String getDomaine() {
-        return domaine;
-    }
-
-    public void setDomaine(String domaine) {
-        this.domaine = domaine;
+    public void setBddPK(BddPK bddPK) {
+        this.bddPK = bddPK;
     }
 
     public String getNiveau() {
@@ -87,7 +79,7 @@ public class Bdd implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTypeDeProfil != null ? idTypeDeProfil.hashCode() : 0);
+        hash += (bddPK != null ? bddPK.hashCode() : 0);
         return hash;
     }
 
@@ -98,7 +90,7 @@ public class Bdd implements Serializable {
             return false;
         }
         Bdd other = (Bdd) object;
-        if ((this.idTypeDeProfil == null && other.idTypeDeProfil != null) || (this.idTypeDeProfil != null && !this.idTypeDeProfil.equals(other.idTypeDeProfil))) {
+        if ((this.bddPK == null && other.bddPK != null) || (this.bddPK != null && !this.bddPK.equals(other.bddPK))) {
             return false;
         }
         return true;
@@ -106,7 +98,7 @@ public class Bdd implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Bdd[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "com.testeur.Bdd[ bddPK=" + bddPK + " ]";
     }
     
 }

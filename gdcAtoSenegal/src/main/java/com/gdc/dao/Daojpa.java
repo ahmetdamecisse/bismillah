@@ -29,7 +29,8 @@ public class Daojpa implements Idao {
             return list;
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-            System.err.println("Erreurs lors de l'execution de la méthode getALLutilisateur(): " + th);
+            System.err.println("Erreurs lors de l'execution de la méthode getALLutilisateur(): \n");
+            th.printStackTrace();
             System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }
         return null;
@@ -186,7 +187,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(bdd);
         } catch (Throwable th) {
-            System.out.println("erreur lors de l'ajout de la bdd" + bdd.getIdTypeDeProfil());
+            System.out.println("erreur lors de l'ajout de la bdd" + bdd.getProfilgl());
             throw new pfcgdcexception(th, 3);
         }
     }
@@ -316,7 +317,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(f);
         } catch (Throwable th) {
-            System.out.println("erreur lors de l'ajout de la formation" + f.getIdTypeDeProfil());
+            System.out.println("erreur lors de l'ajout de la formation" + f.getProfilgl());
             throw new pfcgdcexception(th, 6);
         }
     }
@@ -345,7 +346,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(l);
         } catch (Throwable th) {
-            System.out.println("erreur lors de la persistence de l'objet langage" + l.getDomaine());
+            System.out.println("erreur lors de la persistence de l'objet langage" + l.getProfilgl());
             throw new pfcgdcexception(th, 11);
         }
     }
@@ -374,7 +375,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(l);
         } catch (Throwable th) {
-            System.out.println("erreur lors de la persistence de l'objet Langues" + l.getNom());
+            System.out.println("erreur lors de la persistence de l'objet Langues" + l.getProfilgl());
             throw new pfcgdcexception(th, 9);
         }
     }
@@ -419,7 +420,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(m);
         } catch (Throwable th) {
-            System.out.println("erreur lors de la persistence de l'objet materiel et système d'exploitation" + m.getDomaine());
+            System.out.println("erreur lors de la persistence de l'objet materiel et système d'exploitation" + m.getProfilgl());
             throw new pfcgdcexception(th, 8);
         }
     }
@@ -448,7 +449,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(m);
         } catch (Throwable th) {
-            System.out.println("erreur lors de la persistence de l'objet méthodologie" + m.getDomaine());
+            System.out.println("erreur lors de la persistence de l'objet méthodologie" + m.getProfilgl());
             throw new pfcgdcexception(th, 11);
         }
     }
@@ -477,7 +478,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(m);
         } catch (Throwable th) {
-            System.out.println("erreur lors de la persistence de l'objet modélisation" + m.getDomaine());
+            System.out.println("erreur lors de la persistence de l'objet modélisation" + m.getProfilgl());
             throw new pfcgdcexception(th, 11);
         }
     }
@@ -530,7 +531,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(o);
         } catch (Throwable th) {
-            System.out.println("erreur lors de la persistence de l'objet outil" + o.getDomaine());
+            System.out.println("erreur lors de la persistence de l'objet outil" + o.getProfilgl());
             throw new pfcgdcexception(th, 9);
         }
     }
@@ -632,53 +633,7 @@ public class Daojpa implements Idao {
     public boolean ajoutUtilisateurCandidatProfilGl(Users u, Profil profil, Profilgl profilgl, Candidat candidat, Formation f1, Formation f2, Formation f3, Bdd bdd1, Bdd bdd2, Bdd bd3, Materielssystemesexploitation mat1, Materielssystemesexploitation mat2, Materielssystemesexploitation mat3, Methodologie meth1, Methodologie meth2, Methodologie meth3, Modelisation modl1, Modelisation model2, Modelisation model3, Outils outil1, Outils outils2, Outils outil3, Langages langage1, Langages langage2, Langages laangage3, Langues langue1, Langues langue2, Langues langue3, Experiencesprofessionnelles exp1, Experiencesprofessionnelles exp2, Experiencesprofessionnelles exp3) {
 
         if (ceUsernameEstIlUtiliseDeja(u.getUsername()) == false && u.getUsername() != null) {
-
-            //il est un utilisateur
-            addUtilisateur(u);
-            //il a un profil
-            addProfil(profil);
-            //Son profil est de type GL
-            profilgl.setIdTypeDeProfil(profil.getIdTypeDeProfil());
-            profilgl.setProfil(profil);//pour régler les conflits de relation pouvant subvenir entre profil et profil gl oneTOone
-            addProfilgl(profilgl);
-            //l'utilisateur est un candidat
-            candidat.setUsername(u.getUsername());
-            candidat.setIdTypeDeProfil(profil);//pour régler les conflits de relation pouvant subvenir
-            candidat.setUsers(u);//pour régler les conflits de relation pouvant subvenir
-            addCandidat(candidat);
-            //Formations du candidat
-            f1.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-            if (f1.getNomDiplome() == null) {
-                f1.setNomDiplome("default1");
-            }
-            addFormation(f1);
-            f2.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-            if (f2.getNomDiplome() == null) {
-                f2.setNomDiplome("default2");
-            }
-            addFormation(f2);
-            f3.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-            if (f3.getNomDiplome() == null) {
-                f3.setNomDiplome("default3");
-            }
-            addFormation(f3);
-            //les bases de données
-            bdd1.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-            if (bdd1.getDomaine() == null) {
-                bdd1.setDomaine("default1");
-            }
-            addBdd(bdd1);
-            bdd2.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-            if (bdd2.getDomaine() == null) {
-                bdd2.setDomaine("default2");
-            }
-            addBdd(bdd2);
-            bd3.setIdTypeDeProfil(profilgl.getIdTypeDeProfil());
-            if (bd3.getDomaine() == null) {
-                bd3.setDomaine("default3");
-            }
-            addBdd(bd3);
-
+       
             return true;
 
         } else {

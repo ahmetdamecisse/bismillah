@@ -15,23 +15,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "fichedeposte")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Fichedeposte.findAll", query = "SELECT f FROM Fichedeposte f"),
+    @NamedQuery(name = "Fichedeposte.findByIdFichePoste", query = "SELECT f FROM Fichedeposte f WHERE f.idFichePoste = :idFichePoste"),
+    @NamedQuery(name = "Fichedeposte.findByIntitulePoste", query = "SELECT f FROM Fichedeposte f WHERE f.intitulePoste = :intitulePoste"),
+    @NamedQuery(name = "Fichedeposte.findByDescription", query = "SELECT f FROM Fichedeposte f WHERE f.description = :description"),
+    @NamedQuery(name = "Fichedeposte.findByQualiteRequise", query = "SELECT f FROM Fichedeposte f WHERE f.qualiteRequise = :qualiteRequise"),
+    @NamedQuery(name = "Fichedeposte.findByConnaissanceTechni", query = "SELECT f FROM Fichedeposte f WHERE f.connaissanceTechni = :connaissanceTechni"),
+    @NamedQuery(name = "Fichedeposte.findByVersion", query = "SELECT f FROM Fichedeposte f WHERE f.version = :version")})
 public class Fichedeposte implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "idFichePoste")
     private Integer idFichePoste;
     @Size(max = 254)
@@ -47,7 +56,6 @@ public class Fichedeposte implements Serializable {
     @Column(name = "connaissanceTechni")
     private String connaissanceTechni;
     @Column(name = "version")
-    @Version
     private Integer version;
     @JoinColumn(name = "username", referencedColumnName = "username")
     @ManyToOne(optional = false)
@@ -138,7 +146,7 @@ public class Fichedeposte implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Fichedeposte[ idFichePoste=" + idFichePoste + " ]";
+        return "com.testeur.Fichedeposte[ idFichePoste=" + idFichePoste + " ]";
     }
     
 }

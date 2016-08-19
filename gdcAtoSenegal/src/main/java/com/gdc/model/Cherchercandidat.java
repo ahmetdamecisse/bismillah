@@ -11,16 +11,22 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "cherchercandidat")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Cherchercandidat.findAll", query = "SELECT c FROM Cherchercandidat c"),
+    @NamedQuery(name = "Cherchercandidat.findByRecusername", query = "SELECT c FROM Cherchercandidat c WHERE c.cherchercandidatPK.recusername = :recusername"),
+    @NamedQuery(name = "Cherchercandidat.findByUsername", query = "SELECT c FROM Cherchercandidat c WHERE c.cherchercandidatPK.username = :username")})
 public class Cherchercandidat implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
@@ -78,7 +84,7 @@ public class Cherchercandidat implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Cherchercandidat[ cherchercandidatPK=" + cherchercandidatPK + " ]";
+        return "com.testeur.Cherchercandidat[ cherchercandidatPK=" + cherchercandidatPK + " ]";
     }
     
 }

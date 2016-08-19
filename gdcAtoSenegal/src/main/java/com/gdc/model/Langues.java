@@ -7,60 +7,57 @@
 package com.gdc.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "langues")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Langues.findAll", query = "SELECT l FROM Langues l"),
+    @NamedQuery(name = "Langues.findByIdTypeDeProfil", query = "SELECT l FROM Langues l WHERE l.languesPK.idTypeDeProfil = :idTypeDeProfil"),
+    @NamedQuery(name = "Langues.findByNom", query = "SELECT l FROM Langues l WHERE l.languesPK.nom = :nom"),
+    @NamedQuery(name = "Langues.findByNiveau", query = "SELECT l FROM Langues l WHERE l.niveau = :niveau")})
 public class Langues implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "idTypeDeProfil")
-    private Integer idTypeDeProfil;
-    @Size(max = 254)
-    @Column(name = "nom")
-    private String nom;
+    @EmbeddedId
+    protected LanguesPK languesPK;
     @Size(max = 254)
     @Column(name = "niveau")
     private String niveau;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Profilgl profilgl;
 
     public Langues() {
     }
 
-    public Langues(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public Langues(LanguesPK languesPK) {
+        this.languesPK = languesPK;
     }
 
-    public Integer getIdTypeDeProfil() {
-        return idTypeDeProfil;
+    public Langues(int idTypeDeProfil, String nom) {
+        this.languesPK = new LanguesPK(idTypeDeProfil, nom);
     }
 
-    public void setIdTypeDeProfil(Integer idTypeDeProfil) {
-        this.idTypeDeProfil = idTypeDeProfil;
+    public LanguesPK getLanguesPK() {
+        return languesPK;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setLanguesPK(LanguesPK languesPK) {
+        this.languesPK = languesPK;
     }
 
     public String getNiveau() {
@@ -82,7 +79,7 @@ public class Langues implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTypeDeProfil != null ? idTypeDeProfil.hashCode() : 0);
+        hash += (languesPK != null ? languesPK.hashCode() : 0);
         return hash;
     }
 
@@ -93,7 +90,7 @@ public class Langues implements Serializable {
             return false;
         }
         Langues other = (Langues) object;
-        if ((this.idTypeDeProfil == null && other.idTypeDeProfil != null) || (this.idTypeDeProfil != null && !this.idTypeDeProfil.equals(other.idTypeDeProfil))) {
+        if ((this.languesPK == null && other.languesPK != null) || (this.languesPK != null && !this.languesPK.equals(other.languesPK))) {
             return false;
         }
         return true;
@@ -101,7 +98,7 @@ public class Langues implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Langues[ idTypeDeProfil=" + idTypeDeProfil + " ]";
+        return "com.testeur.Langues[ languesPK=" + languesPK + " ]";
     }
     
 }

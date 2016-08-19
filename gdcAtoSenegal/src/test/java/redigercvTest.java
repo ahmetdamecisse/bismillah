@@ -143,10 +143,4 @@ public class redigercvTest {
         System.out.println("*********************Lies des utilisateurs******************************");
         System.out.println(users);
     }
-
-//    @Test
-//    public void bon() {
-//
-//        System.out.println("*********************Bonjour******************************");
-//    }
 }

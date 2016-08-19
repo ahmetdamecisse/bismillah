@@ -9,16 +9,22 @@ package com.gdc.model;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "consulternotification")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Consulternotification.findAll", query = "SELECT c FROM Consulternotification c"),
+    @NamedQuery(name = "Consulternotification.findByUsername", query = "SELECT c FROM Consulternotification c WHERE c.consulternotificationPK.username = :username"),
+    @NamedQuery(name = "Consulternotification.findByIdNotification", query = "SELECT c FROM Consulternotification c WHERE c.consulternotificationPK.idNotification = :idNotification")})
 public class Consulternotification implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
@@ -65,7 +71,7 @@ public class Consulternotification implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Consulternotification[ consulternotificationPK=" + consulternotificationPK + " ]";
+        return "com.testeur.Consulternotification[ consulternotificationPK=" + consulternotificationPK + " ]";
     }
     
 }

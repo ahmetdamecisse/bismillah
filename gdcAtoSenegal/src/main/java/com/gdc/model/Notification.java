@@ -17,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,21 +28,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Abdoulahi
+ * @author a618092
  */
 @Entity
 @Table(name = "notification")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Notification.findAll", query = "SELECT n FROM Notification n"),
+    @NamedQuery(name = "Notification.findByIdNotification", query = "SELECT n FROM Notification n WHERE n.idNotification = :idNotification"),
+    @NamedQuery(name = "Notification.findByDestinateur", query = "SELECT n FROM Notification n WHERE n.destinateur = :destinateur"),
+    @NamedQuery(name = "Notification.findByDestinataire", query = "SELECT n FROM Notification n WHERE n.destinataire = :destinataire"),
+    @NamedQuery(name = "Notification.findByCorpsMessage", query = "SELECT n FROM Notification n WHERE n.corpsMessage = :corpsMessage"),
+    @NamedQuery(name = "Notification.findByDateNotification", query = "SELECT n FROM Notification n WHERE n.dateNotification = :dateNotification")})
 public class Notification implements Serializable {
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "pj")
-    private byte[] pj;
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "idNotification")
     private Integer idNotification;
     @Size(max = 254)
@@ -52,6 +56,10 @@ public class Notification implements Serializable {
     @Size(max = 50000)
     @Column(name = "corpsMessage")
     private String corpsMessage;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "pj")
+    private byte[] pj;
     @Column(name = "dateNotification")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNotification;
@@ -103,6 +111,14 @@ public class Notification implements Serializable {
         this.corpsMessage = corpsMessage;
     }
 
+    public byte[] getPj() {
+        return pj;
+    }
+
+    public void setPj(byte[] pj) {
+        this.pj = pj;
+    }
+
     public Date getDateNotification() {
         return dateNotification;
     }
@@ -141,15 +157,7 @@ public class Notification implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.Notification[ idNotification=" + idNotification + " ]";
-    }
-
-    public byte[] getPj() {
-        return pj;
-    }
-
-    public void setPj(byte[] pj) {
-        this.pj = pj;
+        return "com.testeur.Notification[ idNotification=" + idNotification + " ]";
     }
     
 }
