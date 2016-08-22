@@ -105,7 +105,7 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nom du diplôme: *" style="color: #282828; font-size: 15px"/>
-                                        <p:inputText value="#{redigerCV.formation.nomDiplome}" required="true"/>
+                                        <p:inputText value="#{redigerCV.formation.formationPK.nomDiplome}" required="true"/>
 
                                         <h:outputText value="Université/Ecole: *" style="color: #282828"/>
                                         <p:inputText value="#{redigerCV.formation.universite}" required="true"/>
@@ -127,7 +127,7 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nom du diplôme: " style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.formation2.nomDiplome}"/>
+                                        <p:inputText value="#{redigerCV.formation2.formationPK.nomDiplome}"/>
 
                                         <h:outputText value="Université/Ecole: " style="color: #282828"/>
                                         <p:inputText value="#{redigerCV.formation2.universite}" />
@@ -149,7 +149,7 @@
                                     <p:messages />
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nom du diplôme: " style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.formation3.nomDiplome}"/>
+                                        <p:inputText value="#{redigerCV.formation3.formationPK.nomDiplome}"/>
 
                                         <h:outputText value="Université/Ecole: " style="color: #282828"/>
                                         <p:inputText value="#{redigerCV.formation3.universite}" />
@@ -194,7 +194,7 @@
                                     <h:panelGrid columns="2" columnClasses="label, value">
 
                                         <h:outputText value="Anglais: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langues.nom}" required="true" label="Email"/>
+                                        <p:inputText value="#{redigerCV.langues.languesPK.nom}" required="true" label="Email"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="console1" value="#{redigerCV.langues.niveau}" style="width:170px" required="true">
@@ -204,7 +204,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Français: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langues2.nom}" required="true" label="Français"/>
+                                        <p:inputText value="#{redigerCV.langues2.languesPK.nom}" required="true" label="Français"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="console2" value="#{redigerCV.langues2.niveau}" style="width:170px" required="true">
@@ -214,7 +214,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Autre: " style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langues3.nom}"  label="Email"/>
+                                        <p:inputText value="#{redigerCV.langues3.languesPK.nom}"  label="Email"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="console3" value="#{redigerCV.langues3.niveau}" style="width:170px" required="true">
@@ -235,7 +235,7 @@
                                     <p:panelGrid columns="4" layout="grid">
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langage.domaine}" required="true" label="nom" placeholder="PHP"/>
+                                        <p:inputText value="#{redigerCV.langage.langagesPK.domaine}" required="true" label="nom" placeholder="PHP"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolel1" value="#{redigerCV.langage.niveau}" style="width:170px" required="true">
@@ -245,7 +245,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langage2.domaine}" required="true" label="nom" placeholder="JEE"/>
+                                        <p:inputText value="#{redigerCV.langage2.langagesPK.domaine}" required="true" label="nom" placeholder="JEE"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolel2" value="#{redigerCV.langage2.niveau}" style="width:170px" required="true">
@@ -255,7 +255,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.langage3.domaine}" required="true" label="nom" placeholder="XML"/>
+                                        <p:inputText value="#{redigerCV.langage3.langagesPK.domaine}" required="true" label="nom" placeholder="XML"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolel3" value="#{redigerCV.langage3.niveau}" style="width:170px" required="true">
@@ -270,7 +270,7 @@
                                     <p:panelGrid columns="4" layout="grid">
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.outils.domaine}" required="true" label="nom" placeholder="maven"/>
+                                        <p:inputText value="#{redigerCV.outils.outilsPK.domaine}" required="true" label="nom" placeholder="maven"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell1" value="#{redigerCV.outils.niveau}" style="width:170px" required="true">
@@ -280,7 +280,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.outils2.domaine}" required="true" label="nom" placeholder="svn"/>
+                                        <p:inputText value="#{redigerCV.outils2.outilsPK.domaine}" required="true" label="nom" placeholder="svn"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell2" value="#{redigerCV.outils2.niveau}" style="width:170px" required="true">
@@ -305,7 +305,7 @@
                                     <p:messages />
                                     <p:panelGrid columns="4" layout="grid">
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.methodologie.domaine}" required="true" label="nom" placeholder="CMMI"/>
+                                        <p:inputText value="#{redigerCV.methodologie.methodologiePK.domaine}" required="true" label="nom" placeholder="CMMI"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolelll1" value="#{redigerCV.methodologie.niveau}" style="width:170px" required="true">
@@ -315,7 +315,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.methodologie2.domaine}" required="true" label="nom" placeholder="CMMI"/>
+                                        <p:inputText value="#{redigerCV.methodologie2.methodologiePK.domaine}" required="true" label="nom" placeholder="CMMI"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolelll2" value="#{redigerCV.methodologie2.niveau}" style="width:170px" required="true">
@@ -325,7 +325,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.methodologie3.domaine}" required="true" label="nom" placeholder="CMMI"/>
+                                        <p:inputText value="#{redigerCV.methodologie3.methodologiePK.domaine}" required="true" label="nom" placeholder="CMMI"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell3" value="#{redigerCV.methodologie3.niveau}" style="width:170px" required="true">
@@ -339,7 +339,7 @@
                                     <p:messages />
                                     <p:panelGrid columns="4" layout="grid">
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.modelisation.domaine}" required="true" label="nom" placeholder="UML"/>
+                                        <p:inputText value="#{redigerCV.modelisation.modelisationPK.domaine}" required="true" label="nom" placeholder="UML"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolelllll2" value="#{redigerCV.modelisation.niveau}" style="width:170px" required="true">
@@ -349,7 +349,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.modelisation2.domaine}" required="true" label="nom" placeholder="MERISE"/>
+                                        <p:inputText value="#{redigerCV.modelisation2.modelisationPK.domaine}" required="true" label="nom" placeholder="MERISE"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolellll2" value="#{redigerCV.modelisation2.niveau}" style="width:170px" required="true">
@@ -359,7 +359,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.modelisation3.domaine}" required="true" label="nom" placeholder="Talbot et Rivard"/>
+                                        <p:inputText value="#{redigerCV.modelisation3.modelisationPK.domaine}" required="true" label="nom" placeholder="Talbot et Rivard"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolellll3" value="#{redigerCV.modelisation3.niveau}" style="width:170px" required="true">
@@ -373,7 +373,7 @@
                                     <p:messages />
                                     <p:panelGrid columns="4" layout="grid">
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.bdd.domaine}" required="true" label="nom" placeholder="SQL"/>
+                                        <p:inputText value="#{redigerCV.bdd.bddPK.domaine}" required="true" label="nom" placeholder="SQL"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell5" value="#{redigerCV.bdd.niveau}" style="width:170px" required="true">
@@ -383,7 +383,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.bdd2.domaine}" required="true" label="nom" placeholder="PLSQL"/>
+                                        <p:inputText value="#{redigerCV.bdd2.bddPK.domaine}" required="true" label="nom" placeholder="PLSQL"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell55" value="#{redigerCV.bdd2.niveau}" style="width:170px" required="true">
@@ -393,7 +393,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.bdd3.domaine}" required="true" label="nom" placeholder="SQL Server"/>
+                                        <p:inputText value="#{redigerCV.bdd3.bddPK.domaine}" required="true" label="nom" placeholder="SQL Server"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell555" value="#{redigerCV.bdd3.niveau}" style="width:170px" required="true">
@@ -407,7 +407,7 @@
                                     <p:messages />
                                     <p:panelGrid columns="4" layout="grid">
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.materielssystemesexploitation.domaine}" required="true" label="nom" placeholder="Lunux"/>
+                                        <p:inputText value="#{redigerCV.materielssystemesexploitation.materielssystemesexploitationPK.domaine}" required="true" label="nom" placeholder="Lunux"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell6" value="#{redigerCV.materielssystemesexploitation.niveau}" style="width:170px" required="true">
@@ -417,7 +417,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.materielssystemesexploitation2.domaine}" required="true" label="nom" placeholder="Windows"/>
+                                        <p:inputText value="#{redigerCV.materielssystemesexploitation2.materielssystemesexploitationPK.domaine}" required="true" label="nom" placeholder="Windows"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell686" value="#{redigerCV.materielssystemesexploitation2.niveau}" style="width:170px" required="true">
@@ -427,7 +427,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Nom: *" style="color: #282828"/>
-                                        <p:inputText value="#{redigerCV.materielssystemesexploitation3.domaine}" required="true" label="nom" placeholder="MAC OS"/>
+                                        <p:inputText value="#{redigerCV.materielssystemesexploitation3.materielssystemesexploitationPK.domaine}" required="true" label="nom" placeholder="MAC OS"/>
 
                                         <h:outputText value="Niveau: *" style="color: #282828"/>
                                         <p:selectOneMenu id="consolell66" value="#{redigerCV.materielssystemesexploitation3.niveau}" style="width:170px" required="true">
@@ -449,10 +449,10 @@
                                         <h:outputText value="" />
 
                                         <h:outputText value="Début: *" style="color: #282828"/>
-                                        <p:calendar id="debut" value="#{redigerCV.experiencesprofessionnelles.datededebut}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="debut" value="#{redigerCV.experiencesprofessionnelles.experiencesprofessionnellesPK.datededebut}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Fin: *" style="color: #282828"/>
-                                        <p:calendar id="fin" value="#{redigerCV.experiencesprofessionnelles.datefin}" pattern="dd-MM-yyyy" mask="true" required="true" />
+                                        <p:calendar id="fin" value="#{redigerCV.experiencesprofessionnelles.experiencesprofessionnellesPK.datefin}" pattern="dd-MM-yyyy" mask="true" required="true" />
 
                                         <h:outputText value="Fonctions: *" style="color: #282828"/>
                                         <p:inputTextarea rows="5" cols="20" counter="display6" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false" required="true" value="#{redigerCV.experiencesprofessionnelles.fonction}" placeholder="Par exemple Implémentation d’algorithmes  d’optimisation numériques"/>

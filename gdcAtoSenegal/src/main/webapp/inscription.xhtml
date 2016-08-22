@@ -65,112 +65,110 @@
                     </div>
                     <div class="col-sm-8">
                         <h:form  class="well">
-                            <p:growl id="msgs" showDetail="true" />  
+                            <p:growl id="growl1" showDetail="true"/>  
                             <p:panel id="basic1" header="Créer votre compte" style="margin-bottom:20px; text-align: center">
                                 <div>
 
                                     <h:form id="form">           
-                                        <p:growl id="msgs" showDetail="true" />
+                                        <p:growl id="growl2" showDetail="true" />
 
                                         <h3 style="margin-top:0"></h3>
-                                               <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <h:outputText value="Prénom:" />
-                                                            <p:inputText/> <br/>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <h:outputText value="Prénom:*" />
+                                                    <p:inputText id="prenom" value="#{inscriptionBean.user.prenom}" required="true" requiredMessage="Le champ prénom est obligatoire"/> <br/>
+                                                </h:panelGrid>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <h:outputText value="Nom:*" />
+                                                    <p:inputText id="nom" value="#{inscriptionBean.user.nom}" required="true" requiredMessage="Le champ nom est obligatoire"/><br/>  
+                                                </h:panelGrid>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <p:outputLabel for="datenaiss1" value="Date de naissance:" />
+                                                    <p:calendar id="datenaiss1" value="#{inscriptionBean.user.dateDeNaissance}" pattern="dd-MM-yyyy" mask="true" required="true"  requiredMessage="Le champ date de naissance est obligatoire"/>
+                                                </h:panelGrid>
+                                            </div>
 
-                                                        </h:panelGrid>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <h:outputText value="Nom:" />
-                                                            <p:inputText /><br/>  
-                                                        </h:panelGrid>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <p:outputLabel for="DateNaiss" value="Date de naissance:" />
-                                                            <p:calendar id="DateNaiss" value="#{calendarView.date2}" />
-                                                        </h:panelGrid>
-                                                    </div>
+                                        </div>
+                                        <div class="row">
 
-                                                </div>
-                                                <div class="row">
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <h:outputText value="Adresse:*" />
+                                                    <p:inputText id="localisation" value="#{inscriptionBean.user.localisation}" required="true" requiredMessage="Le champ adresse est obligatoire"/><br/>  
+                                                </h:panelGrid>
 
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <h:outputText value="Localisation" />
-                                                            <p:inputText /><br/>  
-                                                        </h:panelGrid>
+                                            </div>
 
-                                                    </div>
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <h:outputText value="Adresse Email:*" />
+                                                    <p:inputText id="mail" value="#{inscriptionBean.user.mail}" required="true" requiredMessage="Le champ adresse mail est obligatoire"/><br/>
 
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <h:outputText value="Adresse Email:" />
-                                                            <p:inputText /> <br/>
-
-                                                        </h:panelGrid>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <h:outputText value="Téléphone:" />
-                                                            <p:inputText /><br/>  
-                                                        </h:panelGrid>
-
-                                                    </div>
-                                                </div>
+                                                </h:panelGrid>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <p:outputLabel for="specialite" value="Spécialisation:" />
+                                                    <p:selectOneMenu id="specialite" value="#{inscriptionBean.user.specialite}" style="width:90px" required="true" requiredMessage="Votre spécialité est obligatoire">
+                                                        <f:selectItem itemLabel="Génie logiciel" itemValue="Génie logiciel" />
+                                                        <f:selectItem itemLabel="Réseaux et Télécoms" itemValue="Réseaux et Télécoms" />
+                                                    </p:selectOneMenu><br/>
+                                                </h:panelGrid>
+                                            </div>
+                                        </div>
 
 
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <h:outputText value="Spécialisation:" />
-                                                            <p:inputText /> <br/>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <h:outputLabel for="pwd1" value="Mot de passe:*" />
+                                                    <p:password id="pwd1" value="#{inscriptionBean.user.password}" match="pwd2" label="Password 1" required="true" requiredMessage="Le mot de passe est obligatoire"/><br/>  
+                                                </h:panelGrid>
 
-                                                        </h:panelGrid>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <h:outputText value="Mot de passe:" />
-                                                            <p:password id="pwd1" value="#{passwordView.password1}" label="Password 1" required="true" /><br/>  
-                                                        </h:panelGrid>
+                                            </div>
 
-                                                    </div>
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <h:outputLabel for="pwd2" value="Confirmation:*" />
+                                                    <p:password id="pwd2" value="#{inscriptionBean.user.password}" label="Password 2" required="true" requiredMessage="La confirmation du mot de passe est obligatoire" /> <br/>
 
-                                                    <div class="col-sm-4">
-                                                        <h:panelGrid>
-                                                            <h:outputText value="Confirmation:" />
-                                                            <p:password id="pwd2" value="#{passwordView.password2}" label="Password 2" required="true" /> <br/>
+                                                </h:panelGrid>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h:panelGrid>
+                                                    <h:outputText value="Téléphone:*" />
+                                                    <p:inputMask id="Telephone" value="#{inscriptionBean.user.telephone}" mask="(99) 999-99-99" required="true" requiredMessage="Le champ téléphone est obligatoire"/><br/> 
+                                                </h:panelGrid>
 
-                                                        </h:panelGrid>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                        </div>
 
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <p:commandButton value="Valider"/>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <p:commandButton value="Annuler"/>
-                                                    </div>
-                                                </div>
-<!--                                            </p:tab>
-
-                                        </p:accordionPanel>-->
-
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <p:commandButton value="Valider" update="growl2" actionListener="#{inscriptionBean.validerInscription()}" />
+                                            </div>
+                                            <div class="col-sm-4"></div>
+                                            <div class="col-sm-4">
+                                                <p:commandButton value="Annuler" update="growl2" actionListener="#{inscriptionBean.annulerInscription()}"/>
+                                            </div>
+                                        </div>
                                     </h:form>
                                 </div>
                             </p:panel>
                             <p>Déjà inscrit?</p>
-                        
+
                         </h:form>
                         <h:form>
                             <div>
-                            <p:commandButton value="Connectez-vous" action="connexion" style="min-width: 60px"/>
-                        </div>
+                                <p:commandButton value="Connectez-vous" action="connexion" style="min-width: 60px"/>
+                            </div>
                         </h:form>
-                        
+
                     </div>
                     <div class="col-sm-2">
 

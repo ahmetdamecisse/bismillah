@@ -64,7 +64,7 @@
         <property name="daojpa" ref="Daojpa" />
     </bean>
     
-     <!-- User DAO Declaration -->
+    <!-- User DAO Declaration -->
     <bean id="Daojpa" class="com.gdc.dao.Daojpa">
         <property name="sessionFactory" ref="SessionFactory" />
     </bean>
@@ -87,6 +87,7 @@
             <list>
                 <value>com.gdc.model.Administrateur</value>
                 <value>com.gdc.model.Bdd</value>
+                <value>com.gdc.model.BddPK</value>
                 <value>com.gdc.model.Candidat</value>
                 <value>com.gdc.model.Cherchercandidat</value>
                 <value>com.gdc.model.CherchercandidatPK</value>
@@ -96,20 +97,28 @@
                 <value>com.gdc.model.ContactercandidatPK</value>
                 <value>com.gdc.model.Entretien</value>
                 <value>com.gdc.model.Experiencesprofessionnelles</value>
+                <value>com.gdc.model.ExperiencesprofessionnellesPK</value>
                 <value>com.gdc.model.Faireuntest</value>
                 <value>com.gdc.model.FaireuntestPK</value>
                 <value>com.gdc.model.Fichedeposte</value>
                 <value>com.gdc.model.Fichedetest</value>
                 <value>com.gdc.model.Formation</value>
+                <value>com.gdc.model.FormationPK</value>
                 <value>com.gdc.model.Langues</value>
+                <value>com.gdc.model.LanguesPK</value>
                 <value>com.gdc.model.Langages</value>
+                <value>com.gdc.model.LangagesPK</value>
                 <value>com.gdc.model.Listequestion</value>
                 <value>com.gdc.model.Listereponse</value>
                 <value>com.gdc.model.Materielssystemesexploitation</value>
+                <value>com.gdc.model.MaterielssystemesexploitationPK</value>
                 <value>com.gdc.model.Methodologie</value>
+                <value>com.gdc.model.MethodologiePK</value>
                 <value>com.gdc.model.Modelisation</value>
+                <value>com.gdc.model.ModelisationPK</value>
                 <value>com.gdc.model.Notification</value>
                 <value>com.gdc.model.Outils</value>
+                <value>com.gdc.model.OutilsPK</value>
                 <value>com.gdc.model.Profil</value>
                 <value>com.gdc.model.Profilgl</value>
                 <value>com.gdc.model.Recruteur</value>
