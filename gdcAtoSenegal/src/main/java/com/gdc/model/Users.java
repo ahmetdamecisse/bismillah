@@ -238,7 +238,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "com.testeur.Users[ username=" + username + " ]";
+        return "com.testeur.Users[ username=" + username + "nom: "+nom+" prenom: "+prenom+" localisation: "+localisation+" mail: "+mail+" telephone: "+telephone+" password: "+password+" specialité: "+specialite+" date de naissance: "+dateDeNaissance+" ]";
     }
     
 }

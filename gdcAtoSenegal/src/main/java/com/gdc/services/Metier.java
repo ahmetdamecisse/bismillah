@@ -682,7 +682,7 @@ public class Metier implements Imetier {
 
     @Override
     public boolean ceUsernameEstIlUtiliseDeja(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                return daojpa.ceUsernameEstIlUtiliseDeja(username);
     }
 
     @Override

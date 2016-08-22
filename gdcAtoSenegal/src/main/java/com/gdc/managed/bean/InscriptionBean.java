@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -39,7 +40,7 @@ public class InscriptionBean {
     public InscriptionBean() {
     }
 
-     private Users user = new Users();
+    private Users user = new Users();
 
     public Users getUser() {
         return user;
@@ -48,12 +49,24 @@ public class InscriptionBean {
     public void setUser(Users user) {
         this.user = user;
     }
-    
-     public void validerInscription() {
-       FacesMessage msg = new FacesMessage("Validation", "Bonjour!" + " " + "");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-     }
-     public String annulerInscription() {
-         return "annulerInscription";
-     }
+
+    public String validerInscription() {
+        user.setVersion(1);
+        user.setEnabled((short) 1);
+
+        if (metier.ceUsernameEstIlUtiliseDeja(user.getUsername())) {
+            FacesMessage msg2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, user.getUsername(), " est dèja utilisé. Merci de choisir un autre username!");
+            RequestContext.getCurrentInstance().showMessageInDialog(msg2);
+        } else {
+            metier.addUtilisateur(user);
+            FacesMessage msg3 = new FacesMessage(FacesMessage.SEVERITY_INFO, user.getNom(), " votre compte est créé avec succès. Merci!");
+            RequestContext.getCurrentInstance().showMessageInDialog(msg3);
+            return "candidats.AtoS?faces-redirect=true";
+        }
+        return null;
+    }
+
+    public String annulerInscription() {
+     return "index.AtoS?faces-redirect=true";
+    }
 }

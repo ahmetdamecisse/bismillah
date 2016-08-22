@@ -51,9 +51,11 @@ public class Daojpa implements Idao {
     public void addUtilisateur(Users u) {
         try {
             getSessionFactory().getCurrentSession().save(u);
-        } catch (Throwable th) {
-            System.out.println("erreur lors de l'ajout de l'utilisateur" + u.getNom());
-            throw new pfcgdcexception(th, 2);
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode addUtilisateur(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }
     }
 
@@ -633,7 +635,7 @@ public class Daojpa implements Idao {
     public boolean ajoutUtilisateurCandidatProfilGl(Users u, Profil profil, Profilgl profilgl, Candidat candidat, Formation f1, Formation f2, Formation f3, Bdd bdd1, Bdd bdd2, Bdd bd3, Materielssystemesexploitation mat1, Materielssystemesexploitation mat2, Materielssystemesexploitation mat3, Methodologie meth1, Methodologie meth2, Methodologie meth3, Modelisation modl1, Modelisation model2, Modelisation model3, Outils outil1, Outils outils2, Outils outil3, Langages langage1, Langages langage2, Langages laangage3, Langues langue1, Langues langue2, Langues langue3, Experiencesprofessionnelles exp1, Experiencesprofessionnelles exp2, Experiencesprofessionnelles exp3) {
 
         if (ceUsernameEstIlUtiliseDeja(u.getUsername()) == false && u.getUsername() != null) {
-       
+
             return true;
 
         } else {

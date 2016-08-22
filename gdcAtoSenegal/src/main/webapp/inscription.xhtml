@@ -47,10 +47,10 @@
                 <h:form>  
                     <p:growl id="messages"/>
                     <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
-                        <p:menuitem value="accueil" url="http://localhost:8080/pfcwebGdc/" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Employeurs" url="http://localhost:8080/pfcwebGdc/faces/employeur.xhtml" icon="ui-icon-blog" style="color:white"/>
-                        <p:menuitem value="Offres d'emploi" url="" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Contact" url="" icon="ui-icon-contact" style="color:white"/>
+                        <p:menuitem value="accueil" url="http://localhost:8080/gdcAtoSenegal/index.AtoS" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Employeurs" url="http://localhost:8080/gdcAtoSenegal/employeur.AtoS" icon="ui-icon-blog" style="color:white"/>
+                        <p:menuitem value="Offres d'emploi" url="http://localhost:8080/gdcAtoSenegal/listeOffreEmploiProposesCandidat.AtoS" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Contact" url="http://localhost:8080/gdcAtoSenegal/" icon="ui-icon-contact" style="color:white"/>
                         <f:facet name="options">
                             <p:commandButton  value="Créer un compte" action="inscription" icon="ui-icon-log" style="margin-right:10px; background: #ffffff; font-size: 15px;"/>
                             <p:commandButton value="Se connecter" action="connexion" icon="ui-icon-extlink" style="background: #ffffff; font-size: 15px"/>
@@ -73,6 +73,12 @@
                                         <p:growl id="growl2" showDetail="true" />
 
                                         <h3 style="margin-top:0"></h3>
+                                        <div class="row">
+                                            <h:panelGrid>
+                                                <h:outputText value="Nom d'utilisateur:*" />
+                                                <p:inputText id="username" value="#{inscriptionBean.user.username}" required="true" requiredMessage="Le nom d'utilisateur est obligatoire"/> <br/>
+                                            </h:panelGrid>
+                                        </div>
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <h:panelGrid>
@@ -150,11 +156,11 @@
 
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <p:commandButton value="Valider" update="growl2" actionListener="#{inscriptionBean.validerInscription()}" />
+                                                <p:commandButton value="Valider" update="growl2" action="#{inscriptionBean.validerInscription()}" />
                                             </div>
                                             <div class="col-sm-4"></div>
                                             <div class="col-sm-4">
-                                                <p:commandButton value="Annuler" update="growl2" actionListener="#{inscriptionBean.annulerInscription()}"/>
+                                                <p:commandButton value="Annuler" update="growl2" action="#{inscriptionBean.annulerInscription()}"/>
                                             </div>
                                         </div>
                                     </h:form>
