@@ -10,8 +10,7 @@ import com.gdc.services.Imetier;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.SessionScoped;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -19,12 +18,24 @@ import org.primefaces.context.RequestContext;
  * @author a618092
  */
 @ManagedBean(name = "inscriptionBean")
-@ViewScoped
+@SessionScoped
 public class InscriptionBean {
 
     //Spring User Service is injected...
     @ManagedProperty(value = "#{Metier}")
     Imetier metier;
+
+    //Injecting Managed beans
+    @ManagedProperty(value = "#{redigerCV}")
+    private RedigerCV redigerCV;
+
+    public void setRedigerCV(RedigerCV redigerCV) {
+        this.redigerCV = redigerCV;
+    }
+
+    public RedigerCV getRedigerCV() {
+        return redigerCV;
+    }
 
     public Imetier getMetier() {
         return metier;
@@ -57,17 +68,20 @@ public class InscriptionBean {
         if (metier.ceUsernameEstIlUtiliseDeja(user.getUsername())) {
             FacesMessage msg2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, user.getUsername(), " est dèja utilisé. Merci de choisir un autre username!");
             RequestContext.getCurrentInstance().showMessageInDialog(msg2);
+        } else if (!user.getMail().contains("@") || !user.getMail().contains(".")) {
+            FacesMessage msg4 = new FacesMessage(FacesMessage.SEVERITY_INFO, user.getMail(), " Adresse Email invalide");
+            RequestContext.getCurrentInstance().showMessageInDialog(msg4);
         } else {
             metier.addUtilisateur(user);
-            FacesMessage msg3 = new FacesMessage(FacesMessage.SEVERITY_INFO, user.getNom(), " votre compte est créé avec succès. Merci!");
-            RequestContext.getCurrentInstance().showMessageInDialog(msg3);
             //je dois fournir à rédigerCvBean le username pour continuer le reste
+            redigerCV.setUser(user);
             return "candidats.AtoS?faces-redirect=true";
         }
+
         return null;
     }
 
     public String annulerInscription() {
-     return "index.AtoS?faces-redirect=true";
+        return "index.AtoS?faces-redirect=true";
     }
 }

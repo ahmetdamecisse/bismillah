@@ -11,7 +11,7 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
@@ -21,7 +21,7 @@ import org.primefaces.event.FlowEvent;
  * @author a618092
  */
 @ManagedBean(name = "redigerCV")
-@ViewScoped
+@SessionScoped
 public class RedigerCV implements Serializable {
 
     //Spring User Service is injected...
@@ -357,7 +357,7 @@ public class RedigerCV implements Serializable {
     public String controlConnexion() {
         Users userRecup = metier.getUtilisateurByLoginAndPassporw(loginConnexion, passwordConnexion);
         if (userRecup != null) {
-            user = userRecup;
+            setUser(userRecup);
             return "candidats.AtoS?faces-redirect=true";
         } else {
             FacesMessage msg2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Authentification ratée.", "username ou mot de passe incorrect!");
