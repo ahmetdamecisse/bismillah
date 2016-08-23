@@ -62,7 +62,7 @@ public class Metier implements Imetier {
 
     @Override
     public Users getUtilisateurByLoginAndPassporw(String login, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return  getDaojpa().getUtilisateurByLoginAndPassporw(login, password);
     }
 
     @Override

@@ -61,6 +61,7 @@ public class InscriptionBean {
             metier.addUtilisateur(user);
             FacesMessage msg3 = new FacesMessage(FacesMessage.SEVERITY_INFO, user.getNom(), " votre compte est créé avec succès. Merci!");
             RequestContext.getCurrentInstance().showMessageInDialog(msg3);
+            //je dois fournir à rédigerCvBean le username pour continuer le reste
             return "candidats.AtoS?faces-redirect=true";
         }
         return null;

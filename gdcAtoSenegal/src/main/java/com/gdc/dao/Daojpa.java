@@ -85,7 +85,21 @@ public class Daojpa implements Idao {
     }
 
     public Users getUtilisateurByLoginAndPassporw(String login, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Users where username= :leUsername and password= :lePassword")
+                    .setParameter("leUsername", login)
+                    .setParameter("lePassword", password).list();
+            if (list.size()!=0) {
+             return (Users) list.get(0);   
+            }
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getUtilisateurByLoginAndPassporw(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getAllAdministrateur() {

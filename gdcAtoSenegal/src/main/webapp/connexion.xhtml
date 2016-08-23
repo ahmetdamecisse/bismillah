@@ -72,10 +72,10 @@
                             <p:panel id="basic1" header="Se connecter" style="margin-bottom:20px; text-align: center">
                                 <h:panelGrid columns="2" cellpadding="10">
                                     <h:form> <br/> 
-                                        <p:inputText value="#{controlUtilisateur.username}" required="true" placeholder="Adresse mail" style="width: 400px; min-height: 40px"/><br/><br/>
-                                        <p:password id="pwd2" value="#{controlUtilisateur.password}" required="true" placeholder="Mot de passe" style="width: 400px; min-height: 40px"/><br/> <br/>
+                                        <p:inputText value="#{redigerCV.loginConnexion}" required="true" placeholder="Adresse mail" style="width: 400px; min-height: 40px" requiredMessage="Veuillez indiquer un username ou un adresse mail valide!"/><br/><br/>
+                                        <p:password id="pwd2" value="#{redigerCV.passwordConnexion}" required="true" placeholder="Mot de passe" style="width: 400px; min-height: 40px" requiredMessage="Veuillez indiquer le mot de passe!"/><br/> <br/>
                                         <div class="" style="background: #ffffff">
-                                            <p:commandButton value="Connectez-vous maintenant" action="#{controlUtilisateur.loginControl}" style="min-width: 400px; min-height: 50px"/>
+                                            <p:commandButton value="Connectez-vous maintenant" update="growl" action="#{redigerCV.controlConnexion()}" style="min-width: 400px; min-height: 50px"/>
                                         </div> <br/>
                                         <div class="row">
                                             <div class="col-sm-6">

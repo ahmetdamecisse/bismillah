@@ -13,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 
 /**
@@ -40,7 +41,7 @@ public class RedigerCV implements Serializable {
      */
     public RedigerCV() {
     }
-    
+
     private Users user = new Users();
     private Candidat candidat = new Candidat();
     private Profilgl profilgl = new Profilgl();
@@ -70,6 +71,24 @@ public class RedigerCV implements Serializable {
     private Bdd bdd2 = new Bdd();
     private Bdd bdd3 = new Bdd();
     private Langues langues = new Langues();
+    private String loginConnexion;
+    private String passwordConnexion;
+
+    public String getLoginConnexion() {
+        return loginConnexion;
+    }
+
+    public void setLoginConnexion(String loginConnexion) {
+        this.loginConnexion = loginConnexion;
+    }
+
+    public String getPasswordConnexion() {
+        return passwordConnexion;
+    }
+
+    public void setPasswordConnexion(String passwordConnexion) {
+        this.passwordConnexion = passwordConnexion;
+    }
 
     public Materielssystemesexploitation getMaterielssystemesexploitation2() {
         return materielssystemesexploitation2;
@@ -333,6 +352,19 @@ public class RedigerCV implements Serializable {
         //----------------Les insertions se feront dans cette partie-----------------------------------------------------------------
         FacesMessage msg = new FacesMessage("Successful", "Bonjour :" + user.getPrenom() + " " + "votre cv a été crée avec succès");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public String controlConnexion() {
+        Users userRecup = metier.getUtilisateurByLoginAndPassporw(loginConnexion, passwordConnexion);
+        if (userRecup != null) {
+            user = userRecup;
+            return "candidats.AtoS?faces-redirect=true";
+        } else {
+            FacesMessage msg2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Authentification ratée.", "username ou mot de passe incorrect!");
+            RequestContext.getCurrentInstance().showMessageInDialog(msg2);
+        }
+        return null;
+
     }
 
     public boolean isSkip() {
