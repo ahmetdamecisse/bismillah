@@ -28,7 +28,7 @@
     <!-- Beans Declaration -->
     <bean id="Administrateur" class="com.gdc.model.Administrateur"/>
     <bean id="Bdd" class="com.gdc.model.Bdd"/>
-    <bean id="Bdd" class="com.gdc.model.BddPK"/>
+    <bean id="BddPK" class="com.gdc.model.BddPK"/>
     <bean id="Candidat" class="com.gdc.model.Candidat"/>
     <bean id="Cherchercandidat" class="com.gdc.model.Cherchercandidat"/>
     <bean id="CherchercandidatPK" class="com.gdc.model.CherchercandidatPK"/>
@@ -38,28 +38,28 @@
     <bean id="ContactercandidatPK" class="com.gdc.model.ContactercandidatPK"/>
     <bean id="Entretien" class="com.gdc.model.Entretien"/>
     <bean id="Experiencesprofessionnelles" class="com.gdc.model.Experiencesprofessionnelles"/>
-     <bean id="Experiencesprofessionnelles" class="com.gdc.model.ExperiencesprofessionnellesPK"/>
+     <bean id="ExperiencesprofessionnellesPK" class="com.gdc.model.ExperiencesprofessionnellesPK"/>
     <bean id="Faireuntest" class="com.gdc.model.Faireuntest"/>
     <bean id="FaireuntestPK" class="com.gdc.model.FaireuntestPK"/>
     <bean id="Fichedeposte" class="com.gdc.model.Fichedeposte"/>
     <bean id="Fichedetest" class="com.gdc.model.Fichedetest"/>
     <bean id="Formation" class="com.gdc.model.Formation"/>
-    <bean id="Formation" class="com.gdc.model.FormationPK"/>
+    <bean id="FormationPK" class="com.gdc.model.FormationPK"/>
     <bean id="Langues" class="com.gdc.model.Langues"/>
-    <bean id="Langues" class="com.gdc.model.LanguesPK"/>
+    <bean id="LanguesPK" class="com.gdc.model.LanguesPK"/>
     <bean id="Langages" class="com.gdc.model.Langages"/>
-    <bean id="Langages" class="com.gdc.model.LangagesPK"/>
+    <bean id="LangagesPK" class="com.gdc.model.LangagesPK"/>
     <bean id="Listequestion" class="com.gdc.model.Listequestion"/>
     <bean id="Listereponse" class="com.gdc.model.Listereponse"/>
     <bean id="Materielssystemesexploitation" class="com.gdc.model.Materielssystemesexploitation"/>
-    <bean id="Materielssystemesexploitation" class="com.gdc.model.MaterielssystemesexploitationPK"/>
+    <bean id="MaterielssystemesexploitationPK" class="com.gdc.model.MaterielssystemesexploitationPK"/>
     <bean id="Methodologie" class="com.gdc.model.Methodologie"/>
-    <bean id="Methodologie" class="com.gdc.model.MethodologiePK"/>
+    <bean id="MethodologiePK" class="com.gdc.model.MethodologiePK"/>
     <bean id="Modelisation" class="com.gdc.model.Modelisation"/>
-    <bean id="Modelisation" class="com.gdc.model.ModelisationPK"/>
+    <bean id="ModelisationPK" class="com.gdc.model.ModelisationPK"/>
     <bean id="Notification" class="com.gdc.model.Notification"/>
     <bean id="Outils" class="com.gdc.model.Outils"/>
-     <bean id="Outils" class="com.gdc.model.OutilsPK"/>
+     <bean id="OutilsPK" class="com.gdc.model.OutilsPK"/>
     <bean id="Profil" class="com.gdc.model.Profil"/>
     <bean id="Profilgl" class="com.gdc.model.Profilgl"/>
     <bean id="Recruteur" class="com.gdc.model.Recruteur"/>
