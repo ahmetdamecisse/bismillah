@@ -658,4 +658,16 @@ public class Daojpa implements Idao {
         return false;
     }
 
+    @Override
+    public void addUserRole(UserRoles userRole) {
+    try {
+            getSessionFactory().getCurrentSession().save(userRole);
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode addUserRole: \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+    }
+
 }

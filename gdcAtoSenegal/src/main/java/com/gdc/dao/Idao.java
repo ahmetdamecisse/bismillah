@@ -7,29 +7,30 @@ package com.gdc.dao;
 
 import com.gdc.model.*;
 import java.util.List;
- /*
+/*
  * @author a618092
  */
-public interface Idao {
-    
-     //Utilisateur
 
+public interface Idao {
+
+     //Utilisateur
     public List getALLutilisateur();
 
     public Users getUtilisateurById(Integer id);
 
     public void addUtilisateur(Users u);
 
+    public void addUserRole(UserRoles userRole);
+
     public void removeUtilisateur(Integer idUtili);
 
     public void updateUtilisateur(Users u);
 
     public List getUtilisateurByName(String nom);
-    
+
     public Users getUtilisateurByLoginAndPassporw(String login, String password);
 
     //Administrateur
-
     public List getAllAdministrateur();
 
     public void addAdministrateur(Administrateur a);
@@ -43,7 +44,6 @@ public interface Idao {
     public List getAdministrateurByName(String nom);
 
     //Candidat
-
     public List getAllCandidat();
 
     public void addCandidat(Candidat c);
@@ -63,14 +63,13 @@ public interface Idao {
     public List getCandidatByCompetencesFontionnelles(String cf);
 
     public List getCandidatByNombreAnneesExperience(int nbreAnneeExp);
-    
-    //Recruteur
 
+    //Recruteur
     public List getAllRecruteur();
 
     public void addRecruteur(Recruteur r);
 
-    public void removeRecruteur(Integer  idRecruteurAsupp);
+    public void removeRecruteur(Integer idRecruteurAsupp);
 
     public void updateRecruteur(Users recruteurRemplaçant, Integer idRecruteurRemplace);
 
@@ -79,7 +78,6 @@ public interface Idao {
     public List getRecruteurByName(String nom);
 
     //BDD
-
     public List getAllBdd();
 
     public void addBdd(Bdd bdd);
@@ -93,7 +91,6 @@ public interface Idao {
     public List getBddByName(String nom);
 
     //Entretien
-
     public List getAllEntretien();
 
     public void addEntretien(Entretien e);
@@ -107,7 +104,6 @@ public interface Idao {
     public List getEntretienByName(String nom);
 
     //Experiencesprofessionnelles
-
     public List getAllExperiencesprofessionnelles();
 
     public void addExperiencesprofessionnelles(Experiencesprofessionnelles e);
@@ -121,7 +117,6 @@ public interface Idao {
     public List getExperiencesprofessionnellesByName(String nom);
 
     //Fichedeposte
-
     public List getAllFichedeposte();
 
     public void addFichedeposte(Fichedeposte f);
@@ -135,7 +130,6 @@ public interface Idao {
     public List getFichedeposteByName(String nom);
 
     //Fichedetest
-
     public List getAllFichedetest();
 
     public void addFichedetest(Fichedetest f);
@@ -149,7 +143,6 @@ public interface Idao {
     public List getFichedetestByName(String nom);
 
     //Formation
-
     public List getAllFormation();
 
     public void addFormation(Formation f);
@@ -163,7 +156,6 @@ public interface Idao {
     public List getFormationByName(String nom);
 
     //Langages
-
     public List getAllLangages();
 
     public void addLangages(Langages l);
@@ -177,7 +169,6 @@ public interface Idao {
     public List getLangagesByName(String nom);
 
     //Langues
-
     public List getAllLangue();
 
     public void addLangues(Langues l);
@@ -191,19 +182,16 @@ public interface Idao {
     public List getLanguesByName(String nom);
 
     //Listedequestion
-
     public List getAllListequestion();
 
     public List getListequestionByName(String nom);
 
     //Liste de réponses
-
     public List getAllListereponse();
 
     public List getListereponseByName(String nom);
 
     //Materiels et OS
-
     public List getAllMaterielssystemesexploitation();
 
     public void addMaterielssystemesexploitation(Materielssystemesexploitation m);
@@ -217,7 +205,6 @@ public interface Idao {
     public List getMaterielssystemesexploitationByName(String nom);
 
     //Methodologie
-
     public List getAllMethodologie();
 
     public void addMethodologie(Methodologie m);
@@ -231,7 +218,6 @@ public interface Idao {
     public List getMethodologieByName(String nom);
 
     //Modelisation
-
     public List getAllModelisation();
 
     public void addModelisation(Modelisation m);
@@ -245,7 +231,6 @@ public interface Idao {
     public List getModelisationByName(String nom);
 
     //Notification
-
     public List getAllNotification();
 
     public void addNotification(Notification n);
@@ -259,7 +244,6 @@ public interface Idao {
     public List getNotificationByName(String nom);
 
     //Outils
-
     public List getAllOutils();
 
     public void addOutils(Outils o);
@@ -273,7 +257,6 @@ public interface Idao {
     public List getOutilsByName(String nom);
 
     //Profils
-
     public List getAllProil();
 
     public void addProfil(Profil p);
@@ -285,10 +268,10 @@ public interface Idao {
     public Profil getProfilById(Integer id);
 
     public List getProfilByCompetence(String x, String y, String z);
+
     public List getProfilByCompetenceFonctionnelle(String x, String y, String z);
 
     //Profilgl
-
     public List getAllProfilgl();
 
     public void addProfilgl(Profilgl p);
@@ -304,24 +287,24 @@ public interface Idao {
     //Les classes faisant référence à des tables associatives ne sont pas manipulées directement. 
     //La manipulation se fait à partir des classes correspondantes aux tables formant la table associative.
     //les différentes réponses possibles pour une question
-
     //Les questions d'une fiche de test donnée
-
     public List getAllQuestionsFi(Fichedetest f);
 
     //Correction d'une fiche de test donnée
-
     public List getAllAnswersFi(Fichedetest f);
-    
+
     //login et le mot de passe pour connaitre si un candidat s'est connecté ou un employeur.
-    public String loginControl(String login,String password);
+    public String loginControl(String login, String password);
+
     //test d'existence de username
+
     public boolean ceUsernameEstIlUtiliseDeja(String username);
+
     //Créer un utilisateur de type candidat ayant un profil gl
+
     public boolean ajoutUtilisateurCandidatProfilGl(Users u, Profil profil, Profilgl profilgl, Candidat candidat, Formation f1,
-            Formation f2, Formation f3, Bdd bdd1, Bdd bdd2, Bdd bd3, Materielssystemesexploitation mat1, 
-            Materielssystemesexploitation mat2, Materielssystemesexploitation mat3,Methodologie meth1, Methodologie meth2, 
-            Methodologie meth3, Modelisation modl1,Modelisation model2, Modelisation model3, Outils outil1, Outils outils2,
-            Outils outil3, Langages langage1, Langages langage2,Langages laangage3,Langues langue1, Langues langue2, Langues
-            langue3, Experiencesprofessionnelles exp1,Experiencesprofessionnelles exp2, Experiencesprofessionnelles exp3);
+            Formation f2, Formation f3, Bdd bdd1, Bdd bdd2, Bdd bd3, Materielssystemesexploitation mat1,
+            Materielssystemesexploitation mat2, Materielssystemesexploitation mat3, Methodologie meth1, Methodologie meth2,
+            Methodologie meth3, Modelisation modl1, Modelisation model2, Modelisation model3, Outils outil1, Outils outils2,
+            Outils outil3, Langages langage1, Langages langage2, Langages laangage3, Langues langue1, Langues langue2, Langues langue3, Experiencesprofessionnelles exp1, Experiencesprofessionnelles exp2, Experiencesprofessionnelles exp3);
 }

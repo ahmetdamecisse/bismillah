@@ -46,6 +46,7 @@
                         <p:menuitem value="Offres d'emploi" url="http://localhost:8080/gdcAtoSenegal/listeOffreEmploiProposesCandidat.AtoS" icon="ui-icon-home" style="color:white"/>
 
                         <f:facet name="options">
+                            <p:commandButton id="logout" value="Déconnexion" action="#{redigerCV.controlDeConnexion()}" style="margin-right: 10px"/>
                             <p:inputText style="margin-right:10px" placeholder="Search"/>
                         </f:facet>
                     </p:menubar>

@@ -5,6 +5,7 @@
  */
 package com.gdc.managed.bean;
 
+import com.gdc.model.UserRoles;
 import com.gdc.model.Users;
 import com.gdc.services.Imetier;
 import javax.faces.application.FacesMessage;
@@ -73,7 +74,9 @@ public class InscriptionBean {
             RequestContext.getCurrentInstance().showMessageInDialog(msg4);
         } else {
             metier.addUtilisateur(user);
-            //je dois fournir à rédigerCvBean le username pour continuer le reste
+            //je dois fournir à rédigerCvBean le username pour continuer le reste 
+            //c'est ce qui justifie l'instruction suivante
+            metier.addUserRole(new UserRoles("ROLE_CANDIDAT", user));
             redigerCV.setUser(user);
             return "candidats.AtoS?faces-redirect=true";
         }
