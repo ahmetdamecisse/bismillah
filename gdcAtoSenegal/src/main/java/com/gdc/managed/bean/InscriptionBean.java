@@ -76,8 +76,10 @@ public class InscriptionBean {
             metier.addUtilisateur(user);
             //je dois fournir à rédigerCvBean le username pour continuer le reste 
             //c'est ce qui justifie l'instruction suivante
-            metier.addUserRole(new UserRoles("ROLE_CANDIDAT", user));
             redigerCV.setUser(user);
+            //je donne un droit à l'utilisateur nouvellement créé.
+            UserRoles usrRoles=new UserRoles("ROLE_CANDIDAT", user);
+            metier.addUserRole(usrRoles);
             return "candidats.AtoS?faces-redirect=true";
         }
 

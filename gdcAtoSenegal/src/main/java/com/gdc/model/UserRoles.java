@@ -57,6 +57,7 @@ public class UserRoles implements Serializable {
         this.username = username;
     }
 
+
     public UserRoles(Integer userRoleId) {
         this.userRoleId = userRoleId;
     }

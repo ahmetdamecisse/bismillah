@@ -31,7 +31,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getALLutilisateur() {
-      return getDaojpa().getALLutilisateur();
+        return getDaojpa().getALLutilisateur();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Metier implements Imetier {
 
     @Override
     public Users getUtilisateurByLoginAndPassporw(String login, String password) {
-        return  getDaojpa().getUtilisateurByLoginAndPassporw(login, password);
+        return getDaojpa().getUtilisateurByLoginAndPassporw(login, password);
     }
 
     @Override
@@ -682,7 +682,7 @@ public class Metier implements Imetier {
 
     @Override
     public boolean ceUsernameEstIlUtiliseDeja(String username) {
-                return daojpa.ceUsernameEstIlUtiliseDeja(username);
+        return daojpa.ceUsernameEstIlUtiliseDeja(username);
     }
 
     @Override
@@ -690,6 +690,7 @@ public class Metier implements Imetier {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Transactional(readOnly = false)
     @Override
     public void addUserRole(UserRoles userRole) {
         getDaojpa().addUserRole(userRole);
