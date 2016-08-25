@@ -78,6 +78,11 @@
         <property name="sessionFactory" ref="SessionFactory" />
     </bean>
     
+<!--   authenticationManager utilisé dans redugerCV -->
+    <bean id="RedigerCV" class="com.gdc.managed.bean.RedigerCV" scope="prototype"> 
+    <property name="authenticationManager" ref="authenticationManager"/>
+    </bean>
+    
     <!-- Data Source Declaration -->
     <bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver" />

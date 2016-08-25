@@ -15,6 +15,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  *
@@ -34,6 +39,16 @@ public class RedigerCV implements Serializable {
 
     public void setMetier(Imetier metier) {
         this.metier = metier;
+    }
+    @ManagedProperty(value = "#{authenticationManager}")
+    private AuthenticationManager authenticationManager = null;
+
+    public AuthenticationManager getAuthenticationManager() {
+        return authenticationManager;
+    }
+
+    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
     }
 
     /**
@@ -354,18 +369,32 @@ public class RedigerCV implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-    public String controlConnexion() {
-        Users userRecup = metier.getUtilisateurByLoginAndPassporw(loginConnexion, passwordConnexion);
-        if (userRecup != null) {
-            setUser(userRecup);
-            return "candidats.AtoS?faces-redirect=true";
-        } else {
-            FacesMessage msg2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Authentification ratée.", "username ou mot de passe incorrect!");
-            RequestContext.getCurrentInstance().showMessageInDialog(msg2);
-        }
-        return null;
+     public String controlConnexion() {
 
+        try {
+            Authentication request = new UsernamePasswordAuthenticationToken(loginConnexion, passwordConnexion);
+            Authentication result = authenticationManager.authenticate(request);
+            SecurityContextHolder.getContext().setAuthentication(result);
+
+            Users userRecup = metier.getUtilisateurByLoginAndPassporw(loginConnexion, passwordConnexion);
+
+            if (userRecup != null) {
+                setUser(userRecup);
+            }
+
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+            FacesMessage msgerreur = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Authentification ratée.", "nom d'utilisateur ou mot de passe incorrect!");
+            RequestContext.getCurrentInstance().showMessageInDialog(msgerreur);
+        }
+        return "candidats.AtoS?faces-redirect=true";
     }
+
+    public String controlDeConnexion() {
+        SecurityContextHolder.clearContext();
+        return "index.AtoS?faces-redirect=true";
+    }
+
 
     public boolean isSkip() {
         return skip;
