@@ -13,27 +13,25 @@ import java.util.List;
  * @author a618092
  */
 public interface Imetier {
-     
-     //Utilisateur
 
+     //Utilisateur
     public List getALLutilisateur();
 
     public Users getUtilisateurById(Integer id);
 
     public void addUtilisateur(Users u);
-    
-     public void addUserRole(UserRoles userRole);
+
+    public void addUserRole(UserRoles userRole);
 
     public void removeUtilisateur(Integer idUtili);
 
     public void updateUtilisateur(Users u);
 
     public List getUtilisateurByName(String nom);
-    
+
     public Users getUtilisateurByLoginAndPassporw(String login, String password);
 
     //Administrateur
-
     public List getAllAdministrateur();
 
     public void addAdministrateur(Administrateur a);
@@ -47,7 +45,6 @@ public interface Imetier {
     public List getAdministrateurByName(String nom);
 
     //Candidat
-
     public List getAllCandidat();
 
     public void addCandidat(Candidat c);
@@ -67,14 +64,13 @@ public interface Imetier {
     public List getCandidatByCompetencesFontionnelles(String cf);
 
     public List getCandidatByNombreAnneesExperience(int nbreAnneeExp);
-    
-    //Recruteur
 
+    //Recruteur
     public List getAllRecruteur();
 
     public void addRecruteur(Recruteur r);
 
-    public void removeRecruteur(Integer  idRecruteurAsupp);
+    public void removeRecruteur(Integer idRecruteurAsupp);
 
     public void updateRecruteur(Users recruteurRemplaçant, Integer idRecruteurRemplace);
 
@@ -83,7 +79,6 @@ public interface Imetier {
     public List getRecruteurByName(String nom);
 
     //BDD
-
     public List getAllBdd();
 
     public void addBdd(Bdd bdd);
@@ -97,7 +92,6 @@ public interface Imetier {
     public List getBddByName(String nom);
 
     //Entretien
-
     public List getAllEntretien();
 
     public void addEntretien(Entretien e);
@@ -111,7 +105,6 @@ public interface Imetier {
     public List getEntretienByName(String nom);
 
     //Experiencesprofessionnelles
-
     public List getAllExperiencesprofessionnelles();
 
     public void addExperiencesprofessionnelles(Experiencesprofessionnelles e);
@@ -125,7 +118,6 @@ public interface Imetier {
     public List getExperiencesprofessionnellesByName(String nom);
 
     //Fichedeposte
-
     public List getAllFichedeposte();
 
     public void addFichedeposte(Fichedeposte f);
@@ -139,7 +131,6 @@ public interface Imetier {
     public List getFichedeposteByName(String nom);
 
     //Fichedetest
-
     public List getAllFichedetest();
 
     public void addFichedetest(Fichedetest f);
@@ -153,7 +144,6 @@ public interface Imetier {
     public List getFichedetestByName(String nom);
 
     //Formation
-
     public List getAllFormation();
 
     public void addFormation(Formation f);
@@ -162,12 +152,11 @@ public interface Imetier {
 
     public void updateFormation(Formation f, Integer idUtilsateurFormModif);
 
-    public Formation getFormationById(Integer id);
+    public List getFormationById(Integer id);
 
     public List getFormationByName(String nom);
 
     //Langages
-
     public List getAllLangages();
 
     public void addLangages(Langages l);
@@ -181,7 +170,6 @@ public interface Imetier {
     public List getLangagesByName(String nom);
 
     //Langues
-
     public List getAllLangue();
 
     public void addLangues(Langues l);
@@ -195,19 +183,16 @@ public interface Imetier {
     public List getLanguesByName(String nom);
 
     //Listedequestion
-
     public List getAllListequestion();
 
     public List getListequestionByName(String nom);
 
     //Liste de réponses
-
     public List getAllListereponse();
 
     public List getListereponseByName(String nom);
 
     //Materiels et OS
-
     public List getAllMaterielssystemesexploitation();
 
     public void addMaterielssystemesexploitation(Materielssystemesexploitation m);
@@ -221,7 +206,6 @@ public interface Imetier {
     public List getMaterielssystemesexploitationByName(String nom);
 
     //Methodologie
-
     public List getAllMethodologie();
 
     public void addMethodologie(Methodologie m);
@@ -235,7 +219,6 @@ public interface Imetier {
     public List getMethodologieByName(String nom);
 
     //Modelisation
-
     public List getAllModelisation();
 
     public void addModelisation(Modelisation m);
@@ -249,7 +232,6 @@ public interface Imetier {
     public List getModelisationByName(String nom);
 
     //Notification
-
     public List getAllNotification();
 
     public void addNotification(Notification n);
@@ -263,7 +245,6 @@ public interface Imetier {
     public List getNotificationByName(String nom);
 
     //Outils
-
     public List getAllOutils();
 
     public void addOutils(Outils o);
@@ -277,7 +258,6 @@ public interface Imetier {
     public List getOutilsByName(String nom);
 
     //Profils
-
     public List getAllProil();
 
     public void addProfil(Profil p);
@@ -288,11 +268,13 @@ public interface Imetier {
 
     public Profil getProfilById(Integer id);
 
+    public Profil getProfilByUsername(String username);
+
     public List getProfilByCompetence(String x, String y, String z);
+
     public List getProfilByCompetenceFonctionnelle(String x, String y, String z);
 
     //Profilgl
-
     public List getAllProfilgl();
 
     public void addProfilgl(Profilgl p);
@@ -308,18 +290,16 @@ public interface Imetier {
     //Les classes faisant référence à des tables associatives ne sont pas manipulées directement. 
     //La manipulation se fait à partir des classes correspondantes aux tables formant la table associative.
     //les différentes réponses possibles pour une question
-
     //Les questions d'une fiche de test donnée
-
     public List getAllQuestionsFi(Fichedetest f);
 
     //Correction d'une fiche de test donnée
-
     public List getAllAnswersFi(Fichedetest f);
-    
+
     //login et le mot de passe pour connaitre si un candidat s'est connecté ou un employeur.
-    public String loginControl(String login,String password);
+    public String loginControl(String login, String password);
+
     //test d'existence de username
     public boolean ceUsernameEstIlUtiliseDeja(String username);
     //Créer un utilisateur de type candidat ayant un profil gl
- }
+}

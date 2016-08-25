@@ -602,16 +602,42 @@ public class RedigerCV implements Serializable {
 
     public void enregistrer() {
         //----------------MAJ du user--------------
-        profil = new Profil(null);
         metier.addProfil(profil); // à ne pas upprimer car ça permet d'avoir l'id du profil du candidat à crée
-        profilgl = new Profilgl(profil.getIdTypeDeProfil());
+
+        profilgl.setIdTypeDeProfil(profil.getIdTypeDeProfil());
         profilgl.setProfil(profil);//pour régler les conflits de relation pouvant subvenir entre profil et profil gl oneTOone
         metier.addProfilgl(profilgl);
-        candidat = new Candidat(user.getUsername());
+
+        candidat.setUsername(user.getUsername());
         candidat.setIdTypeDeProfil(profil);
         candidat.setUsers(user);
         metier.addCandidat(candidat);
+
+        formationpk.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (formationpk.getNomDiplome() == null) {
+            formationpk.setNomDiplome(user.getUsername() + " diplôme 1 à préciser");
+        }
+        formation.setFormationPK(formationpk);
+        formation.setProfilgl(profilgl);
+        metier.addFormation(formation);
+
+        formationpk2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (formationpk2.getNomDiplome() == null) {
+            formationpk2.setNomDiplome(user.getUsername() + " diplôme 2 à préciser");
+        }
+        formation2.setFormationPK(formationpk2);
+        formation2.setProfilgl(profilgl);
+        metier.addFormation(formation2);
+
+        formationpk3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (formationpk3.getNomDiplome() == null) {
+            formationpk3.setNomDiplome(user.getUsername() + " diplôme 3 à préciser");
+        }
+        formation3.setFormationPK(formationpk3);
+        formation3.setProfilgl(profilgl);
+        metier.addFormation(formation3);
         //******************Persistence du parcours académique
+        //****************************************************
     }
 
     public void anuuler() {
@@ -627,11 +653,35 @@ public class RedigerCV implements Serializable {
             Authentication request = new UsernamePasswordAuthenticationToken(loginConnexion, passwordConnexion);
             Authentication result = authenticationManager.authenticate(request);
             SecurityContextHolder.getContext().setAuthentication(result);
-
+            //***********************Après la connexion, on reinitialise le formulaire
             Users userRecup = metier.getUtilisateurByLoginAndPassporw(loginConnexion, passwordConnexion);
-
             if (userRecup != null) {
+                //*************reintialisation du user
                 setUser(userRecup);
+                Profil profilRecup = metier.getProfilByUsername(userRecup.getUsername());
+                if (profilRecup != null) {
+                    //*************reintialisation du profil
+                    setProfil(profilRecup);
+                    //*************reintialisation des formations
+                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 3) {
+                        setFormation((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setFormationpk(getFormation().getFormationPK());
+                        setFormation2((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setFormationpk2(getFormation2().getFormationPK());
+                        setFormation3((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setFormationpk3(getFormation3().getFormationPK());
+                    }
+                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setFormation((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setFormationpk(getFormation().getFormationPK());
+                    }
+                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setFormation((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setFormationpk(getFormation().getFormationPK());
+                        setFormation2((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setFormationpk3(getFormation2().getFormationPK());
+                    }
+                }
             }
 
         } catch (AuthenticationException e) {

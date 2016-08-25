@@ -353,8 +353,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Formation getFormationById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getFormationById(Integer id) {
+      return getDaojpa().getFormationById(id);
     }
 
     @Override
@@ -689,5 +689,10 @@ public class Metier implements Imetier {
     @Override
     public void addUserRole(UserRoles userRole) {
         getDaojpa().addUserRole(userRole);
+    }
+
+    @Override
+    public Profil getProfilByUsername(String username) {
+        return getDaojpa().getProfilByUsername(username);
     }
 }

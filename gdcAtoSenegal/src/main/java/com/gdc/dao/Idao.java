@@ -151,7 +151,7 @@ public interface Idao {
 
     public void updateFormation(Formation f, Integer idUtilsateurFormModif);
 
-    public Formation getFormationById(Integer id);
+    public List getFormationById(Integer id);
 
     public List getFormationByName(String nom);
 
@@ -268,6 +268,8 @@ public interface Idao {
     public Profil getProfilById(Integer id);
 
     public List getProfilByCompetence(String x, String y, String z);
+    
+     public Profil getProfilByUsername(String leUsernames);
 
     public List getProfilByCompetenceFonctionnelle(String x, String y, String z);
 

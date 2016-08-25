@@ -90,8 +90,8 @@ public class Daojpa implements Idao {
                     .createQuery("from Users where username= :leUsername and password= :lePassword")
                     .setParameter("leUsername", login)
                     .setParameter("lePassword", password).list();
-            if (list.size()!=0) {
-             return (Users) list.get(0);   
+            if (list.size() != 0) {
+                return (Users) list.get(0);
             }
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
@@ -333,7 +333,7 @@ public class Daojpa implements Idao {
         try {
             getSessionFactory().getCurrentSession().save(f);
         } catch (Throwable th) {
-            System.out.println("erreur lors de l'ajout de la formation" + f.getProfilgl());
+            System.out.println("erreur lors de l'ajout de la formation" + f.getFormationPK().getNomDiplome());
             throw new pfcgdcexception(th, 6);
         }
     }
@@ -346,8 +346,20 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Formation getFormationById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public List getFormationById(Integer id) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Formation where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getUtilisateurByLoginAndPassporw(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getFormationByName(String nom) {
@@ -646,7 +658,7 @@ public class Daojpa implements Idao {
 
     @Override
     public void addUserRole(UserRoles userRole) {
-    try {
+        try {
             getSessionFactory().getCurrentSession().save(userRole);
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
@@ -656,4 +668,22 @@ public class Daojpa implements Idao {
         }
     }
 
+    @Override
+    public Profil getProfilByUsername(String leUsername) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Candidat where username= :leUsername")
+                    .setParameter("leUsername", leUsername).list();
+            if (list.size() != 0) {
+                Candidat candidat = (Candidat) list.get(0);
+                return candidat.getIdTypeDeProfil();
+            }
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getProfilByUsername(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
+    }
 }
