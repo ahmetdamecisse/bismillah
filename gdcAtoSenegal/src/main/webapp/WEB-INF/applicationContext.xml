@@ -38,7 +38,7 @@
     <bean id="ContactercandidatPK" class="com.gdc.model.ContactercandidatPK"/>
     <bean id="Entretien" class="com.gdc.model.Entretien"/>
     <bean id="Experiencesprofessionnelles" class="com.gdc.model.Experiencesprofessionnelles"/>
-    <bean id="ExperiencesprofessionnellesPK" class="com.gdc.model.ExperiencesprofessionnellesPK"/>
+     <bean id="ExperiencesprofessionnellesPK" class="com.gdc.model.ExperiencesprofessionnellesPK"/>
     <bean id="Faireuntest" class="com.gdc.model.Faireuntest"/>
     <bean id="FaireuntestPK" class="com.gdc.model.FaireuntestPK"/>
     <bean id="Fichedeposte" class="com.gdc.model.Fichedeposte"/>
@@ -59,7 +59,7 @@
     <bean id="ModelisationPK" class="com.gdc.model.ModelisationPK"/>
     <bean id="Notification" class="com.gdc.model.Notification"/>
     <bean id="Outils" class="com.gdc.model.Outils"/>
-    <bean id="OutilsPK" class="com.gdc.model.OutilsPK"/>
+     <bean id="OutilsPK" class="com.gdc.model.OutilsPK"/>
     <bean id="Profil" class="com.gdc.model.Profil"/>
     <bean id="Profilgl" class="com.gdc.model.Profilgl"/>
     <bean id="Recruteur" class="com.gdc.model.Recruteur"/>
@@ -78,22 +78,17 @@
         <property name="sessionFactory" ref="SessionFactory" />
     </bean>
     
-    <!-- Spring authentification pour la connexion au niveau du bean redigerCV -->
-    <bean id="redigerCV" name="redigerCV" class="com.gdc.managed.bean.RedigerCV">
-        <property name="authenticationManager" ref="authenticationManager"></property>
-    </bean>
-    
     <!-- Data Source Declaration -->
     <bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/memoiregdc" />
         <property name="user" value="root" />
         <property name="password" value="admin" />
-        <property name="maxPoolSize" value="15" />
+        <property name="maxPoolSize" value="10" />
         <property name="maxStatements" value="0" />
         <property name="minPoolSize" value="5" />
     </bean>
-    
+
     <!-- Session Factory Declaration -->
     <bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="DataSource" />
@@ -149,7 +144,7 @@
             </props>
         </property>
     </bean>
-    
+
     <!-- Enable the configuration of transactional behavior based on annotations -->
     <tx:annotation-driven transaction-manager="txManager"/>
 
