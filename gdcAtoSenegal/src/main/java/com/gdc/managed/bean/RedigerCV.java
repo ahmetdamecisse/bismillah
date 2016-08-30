@@ -741,7 +741,7 @@ public class RedigerCV implements Serializable {
         }
         modelisation.setModelisationPK(modelisationPK);
         modelisation.setProfilgl(profilgl);
-        metier.addMethodologie(methodologie);
+        metier.addModelisation(modelisation);
         //modelisation 2
         modelisationPK2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
         if (modelisationPK2.getDomaine() == null) {
@@ -749,7 +749,7 @@ public class RedigerCV implements Serializable {
         }
         modelisation2.setModelisationPK(modelisationPK2);
         modelisation2.setProfilgl(profilgl);
-        metier.addMethodologie(methodologie2);
+        metier.addModelisation(modelisation2);
         //modelisation 3
         modelisationPK3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
         if (modelisationPK3.getDomaine() == null) {
@@ -757,7 +757,7 @@ public class RedigerCV implements Serializable {
         }
         modelisation3.setModelisationPK(modelisationPK3);
         modelisation3.setProfilgl(profilgl);
-        metier.addMethodologie(methodologie3);
+        metier.addModelisation(modelisation3);
         //  base de données 1
         bddPK.setIdTypeDeProfil(profil.getIdTypeDeProfil());
         if (bddPK.getDomaine() == null) {
@@ -860,26 +860,26 @@ public class RedigerCV implements Serializable {
                         setFormation2((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(1));
                         setFormationpk3(getFormation2().getFormationPK());
                     }
-//                    //*************reintialisation des langues
-//                    if (metier.getLangueById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
-//                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
-//                        setLanguesPK(getLangues().getLanguesPK());
-//                        setLangues2((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(1));
-//                        setLanguesPK2(getLangues2().getLanguesPK());
-//                        setLangues3((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(2));
-//                        setLanguesPK3(getLangues3().getLanguesPK());
-//                    }
-//                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
-//                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
-//                        setLanguesPK(getLangues().getLanguesPK());
-//                    }
-//                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
-//                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
-//                        setLanguesPK(getLangues().getLanguesPK());
-//                        setLangues2((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(1));
-//                        setLanguesPK2(getLangues2().getLanguesPK());
-//                
-//                   }
+                    //*************reintialisation des langues
+                    if (metier.getLangueById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setLanguesPK(getLangues().getLanguesPK());
+                        setLangues2((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setLanguesPK2(getLangues2().getLanguesPK());
+                        setLangues3((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setLanguesPK3(getLangues3().getLanguesPK());
+                    }
+                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setLanguesPK(getLangues().getLanguesPK());
+                    }
+                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setLanguesPK(getLangues().getLanguesPK());
+                        setLangues2((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setLanguesPK2(getLangues2().getLanguesPK());
+                
+                   }
                 }
             }
 
