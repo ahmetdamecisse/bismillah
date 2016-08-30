@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface Imetier {
 
-     //Utilisateur
+    //Utilisateur
     public List getALLutilisateur();
 
     public Users getUtilisateurById(Integer id);
@@ -181,6 +181,8 @@ public interface Imetier {
     public Langues getLanguesById(Integer id);
 
     public List getLanguesByName(String nom);
+
+    public List getLangueById(Integer id);
 
     //Listedequestion
     public List getAllListequestion();

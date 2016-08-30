@@ -8,6 +8,7 @@ package com.gdc.managed.bean;
 import com.gdc.model.*;
 import com.gdc.services.Imetier;
 import java.io.Serializable;
+import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -601,43 +602,221 @@ public class RedigerCV implements Serializable {
     }
 
     public void enregistrer() {
-        //----------------MAJ du user--------------
+        //----------------Le candidat a un profil--------------
         metier.addProfil(profil); // à ne pas upprimer car ça permet d'avoir l'id du profil du candidat à crée
-
+        //----------------le profil est de type GL-------------
         profilgl.setIdTypeDeProfil(profil.getIdTypeDeProfil());
         profilgl.setProfil(profil);//pour régler les conflits de relation pouvant subvenir entre profil et profil gl oneTOone
         metier.addProfilgl(profilgl);
-
+        //----------------un candidat ayant un profil de type GL peut être crée maintenant-------------
         candidat.setUsername(user.getUsername());
         candidat.setIdTypeDeProfil(profil);
         candidat.setUsers(user);
         metier.addCandidat(candidat);
-
+        //----------------Diplôme 1 du candidat-------------
         formationpk.setIdTypeDeProfil(profil.getIdTypeDeProfil());
         if (formationpk.getNomDiplome() == null) {
-            formationpk.setNomDiplome(user.getUsername() + " diplôme 1 à préciser");
+            formationpk.setNomDiplome(user.getUsername() + " le diplôme est important à préciser");
         }
         formation.setFormationPK(formationpk);
         formation.setProfilgl(profilgl);
         metier.addFormation(formation);
-
+        //----------------Diplôme 2 du candidat-------------
         formationpk2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
         if (formationpk2.getNomDiplome() == null) {
-            formationpk2.setNomDiplome(user.getUsername() + " diplôme 2 à préciser");
+            formationpk2.setNomDiplome(user.getUsername() + " le diplôme est important à préciser");
         }
         formation2.setFormationPK(formationpk2);
         formation2.setProfilgl(profilgl);
         metier.addFormation(formation2);
-
+        //----------------Diplôme 3 du candidat-------------
         formationpk3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
         if (formationpk3.getNomDiplome() == null) {
-            formationpk3.setNomDiplome(user.getUsername() + " diplôme 3 à préciser");
+            formationpk3.setNomDiplome(user.getUsername() + " le diplôme est important à préciser");
         }
         formation3.setFormationPK(formationpk3);
         formation3.setProfilgl(profilgl);
         metier.addFormation(formation3);
-        //******************Persistence du parcours académique
-        //****************************************************
+        //******************Fin Persistence du parcours académique
+        //langue parlé 1
+        languesPK.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (languesPK.getNom() == null) {
+            languesPK.setNom(user.getUsername() + "la langue est importante");
+        }
+        langues.setLanguesPK(languesPK);
+        langues.setProfilgl(profilgl);
+        metier.addLangues(langues);
+        //langue parlée 2
+        languesPK2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (languesPK2.getNom() == null) {
+            languesPK2.setNom(user.getUsername() + "la langue est importante");
+        }
+        langues2.setLanguesPK(languesPK2);
+        langues2.setProfilgl(profilgl);
+        metier.addLangues(langues2);
+        //langue parlée 3
+        languesPK3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (languesPK3.getNom() == null) {
+            languesPK3.setNom(user.getUsername() + "la langue est importante");
+        }
+        langues3.setLanguesPK(languesPK3);
+        langues3.setProfilgl(profilgl);
+        metier.addLangues(langues3);
+        //langage 1
+        langagepk.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (langagepk.getDomaine() == null) {
+            langagepk.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        langage.setLangagesPK(langagepk);
+        langage.setProfilgl(profilgl);
+        metier.addLangages(langage);
+        //langage 2
+        langagepk2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (langagepk2.getDomaine() == null) {
+            langagepk2.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        langage2.setLangagesPK(langagepk2);
+        langage2.setProfilgl(profilgl);
+        metier.addLangages(langage2);
+        //langage 3
+        langagepk3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (langagepk3.getDomaine() == null) {
+            langagepk3.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        langage3.setLangagesPK(langagepk3);
+        langage3.setProfilgl(profilgl);
+        metier.addLangages(langage3);
+        //outil 1
+        outilspk.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (outilspk.getDomaine() == null) {
+            outilspk.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        outils.setOutilsPK(outilspk);
+        outils.setProfilgl(profilgl);
+        metier.addOutils(outils);
+        //outil 2
+        outilspk2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (outilspk2.getDomaine() == null) {
+            outilspk2.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        outils2.setOutilsPK(outilspk2);
+        outils2.setProfilgl(profilgl);
+        metier.addOutils(outils2);
+        //outil 3
+        outilspk3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (outilspk3.getDomaine() == null) {
+            outilspk3.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        outils3.setOutilsPK(outilspk3);
+        outils3.setProfilgl(profilgl);
+        metier.addOutils(outils3);
+        //méthodologie 1
+        methodologiepk.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (methodologiepk.getDomaine() == null) {
+            methodologiepk.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        methodologie.setMethodologiePK(methodologiepk);
+        methodologie.setProfilgl(profilgl);
+        metier.addMethodologie(methodologie);
+        //méthodologie 2
+        methodologiepk2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (methodologiepk2.getDomaine() == null) {
+            methodologiepk2.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        methodologie2.setMethodologiePK(methodologiepk2);
+        methodologie2.setProfilgl(profilgl);
+        metier.addMethodologie(methodologie2);
+        //méthodologie 3
+        methodologiepk3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (methodologiepk3.getDomaine() == null) {
+            methodologiepk3.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        methodologie3.setMethodologiePK(methodologiepk3);
+        methodologie3.setProfilgl(profilgl);
+        metier.addMethodologie(methodologie3);
+        //modelisation 1
+        modelisationPK.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (modelisationPK.getDomaine() == null) {
+            modelisationPK.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        modelisation.setModelisationPK(modelisationPK);
+        modelisation.setProfilgl(profilgl);
+        metier.addMethodologie(methodologie);
+        //modelisation 2
+        modelisationPK2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (modelisationPK2.getDomaine() == null) {
+            modelisationPK2.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        modelisation2.setModelisationPK(modelisationPK2);
+        modelisation2.setProfilgl(profilgl);
+        metier.addMethodologie(methodologie2);
+        //modelisation 3
+        modelisationPK3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (modelisationPK3.getDomaine() == null) {
+            modelisationPK3.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        modelisation3.setModelisationPK(modelisationPK3);
+        modelisation3.setProfilgl(profilgl);
+        metier.addMethodologie(methodologie3);
+        //  base de données 1
+        bddPK.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (bddPK.getDomaine() == null) {
+            bddPK.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        bdd.setBddPK(bddPK);
+        bdd.setProfilgl(profilgl);
+        metier.addBdd(bdd);
+        //  base de données 2
+        bddPK2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (bddPK2.getDomaine() == null) {
+            bddPK2.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        bdd2.setBddPK(bddPK2);
+        bdd2.setProfilgl(profilgl);
+        metier.addBdd(bdd2);
+        //  base de données 3
+        bddPK3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (bddPK3.getDomaine() == null) {
+            bddPK3.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        bdd3.setBddPK(bddPK3);
+        bdd3.setProfilgl(profilgl);
+        metier.addBdd(bdd3);
+        //  materiels et os 1
+        materielssystemesexploitationpk.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (materielssystemesexploitationpk.getDomaine() == null) {
+            materielssystemesexploitationpk.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        materielssystemesexploitation.setMaterielssystemesexploitationPK(materielssystemesexploitationpk);
+        materielssystemesexploitation.setProfilgl(profilgl);
+        metier.addMaterielssystemesexploitation(materielssystemesexploitation);
+        //  materiels et os 2
+        materielssystemesexploitationpk2.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (materielssystemesexploitationpk2.getDomaine() == null) {
+            materielssystemesexploitationpk2.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        materielssystemesexploitation2.setMaterielssystemesexploitationPK(materielssystemesexploitationpk2);
+        materielssystemesexploitation2.setProfilgl(profilgl);
+        metier.addMaterielssystemesexploitation(materielssystemesexploitation2);
+        //  materiels et os 3
+        materielssystemesexploitationpk3.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (materielssystemesexploitationpk3.getDomaine() == null) {
+            materielssystemesexploitationpk3.setDomaine(user.getUsername() + "la langue est importante");
+        }
+        materielssystemesexploitation3.setMaterielssystemesexploitationPK(materielssystemesexploitationpk3);
+        materielssystemesexploitation3.setProfilgl(profilgl);
+        metier.addMaterielssystemesexploitation(materielssystemesexploitation3);
+        // experience profess 1
+        experiencesprofessionnellespk.setIdTypeDeProfil(profil.getIdTypeDeProfil());
+        if (experiencesprofessionnellespk.getDatededebut() == null) {
+            experiencesprofessionnellespk.setDatededebut(new Date());
+        }
+        if (experiencesprofessionnellespk.getDatefin() == null) {
+            experiencesprofessionnellespk.setDatefin(new Date());
+        }
+        experiencesprofessionnelles.setExperiencesprofessionnellesPK(experiencesprofessionnellespk);
+        experiencesprofessionnelles.setProfilgl(profilgl);
+        metier.addExperiencesprofessionnelles(experiencesprofessionnelles);
     }
 
     public void anuuler() {
@@ -663,7 +842,7 @@ public class RedigerCV implements Serializable {
                     //*************reintialisation du profil
                     setProfil(profilRecup);
                     //*************reintialisation des formations
-                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 3) {
+                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
                         setFormation((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(0));
                         setFormationpk(getFormation().getFormationPK());
                         setFormation2((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(1));
@@ -681,6 +860,26 @@ public class RedigerCV implements Serializable {
                         setFormation2((Formation) metier.getFormationById(profilRecup.getIdTypeDeProfil()).get(1));
                         setFormationpk3(getFormation2().getFormationPK());
                     }
+//                    //*************reintialisation des langues
+//                    if (metier.getLangueById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+//                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
+//                        setLanguesPK(getLangues().getLanguesPK());
+//                        setLangues2((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(1));
+//                        setLanguesPK2(getLangues2().getLanguesPK());
+//                        setLangues3((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(2));
+//                        setLanguesPK3(getLangues3().getLanguesPK());
+//                    }
+//                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+//                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
+//                        setLanguesPK(getLangues().getLanguesPK());
+//                    }
+//                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+//                        setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
+//                        setLanguesPK(getLangues().getLanguesPK());
+//                        setLangues2((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(1));
+//                        setLanguesPK2(getLangues2().getLanguesPK());
+//                
+//                   }
                 }
             }
 

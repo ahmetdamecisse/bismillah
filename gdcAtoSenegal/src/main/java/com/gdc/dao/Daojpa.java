@@ -50,7 +50,7 @@ public class Daojpa implements Idao {
 
     public void addUtilisateur(Users u) {
         try {
-            getSessionFactory().getCurrentSession().save(u);
+            getSessionFactory().getCurrentSession().saveOrUpdate(u);
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
             System.err.println("Erreurs lors de l'execution de la méthode addUtilisateur(): \n");
@@ -132,7 +132,7 @@ public class Daojpa implements Idao {
 
     public void addCandidat(Candidat c) {
         try {
-            getSessionFactory().getCurrentSession().save(c);
+            getSessionFactory().getCurrentSession().saveOrUpdate(c);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout du du candidat" + c.getUsername());
             throw new pfcgdcexception(th, 3);
@@ -201,7 +201,7 @@ public class Daojpa implements Idao {
 
     public void addBdd(Bdd bdd) {
         try {
-            getSessionFactory().getCurrentSession().save(bdd);
+            getSessionFactory().getCurrentSession().saveOrUpdate(bdd);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout de la bdd" + bdd.getProfilgl());
             throw new pfcgdcexception(th, 3);
@@ -254,7 +254,7 @@ public class Daojpa implements Idao {
 
     public void addExperiencesprofessionnelles(Experiencesprofessionnelles e) {
         try {
-            getSessionFactory().getCurrentSession().save(e);
+            getSessionFactory().getCurrentSession().saveOrUpdate(e);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet experience pro" + e.getDescription());
             throw new pfcgdcexception(th, 10);
@@ -331,7 +331,7 @@ public class Daojpa implements Idao {
 
     public void addFormation(Formation f) {
         try {
-            getSessionFactory().getCurrentSession().save(f);
+            getSessionFactory().getCurrentSession().saveOrUpdate(f);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout de la formation" + f.getFormationPK().getNomDiplome());
             throw new pfcgdcexception(th, 6);
@@ -372,7 +372,7 @@ public class Daojpa implements Idao {
 
     public void addLangages(Langages l) {
         try {
-            getSessionFactory().getCurrentSession().save(l);
+            getSessionFactory().getCurrentSession().saveOrUpdate(l);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet langage" + l.getProfilgl());
             throw new pfcgdcexception(th, 11);
@@ -401,7 +401,7 @@ public class Daojpa implements Idao {
 
     public void addLangues(Langues l) {
         try {
-            getSessionFactory().getCurrentSession().save(l);
+            getSessionFactory().getCurrentSession().saveOrUpdate(l);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet Langues" + l.getProfilgl());
             throw new pfcgdcexception(th, 9);
@@ -446,7 +446,7 @@ public class Daojpa implements Idao {
 
     public void addMaterielssystemesexploitation(Materielssystemesexploitation m) {
         try {
-            getSessionFactory().getCurrentSession().save(m);
+            getSessionFactory().getCurrentSession().saveOrUpdate(m);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet materiel et système d'exploitation" + m.getProfilgl());
             throw new pfcgdcexception(th, 8);
@@ -475,7 +475,7 @@ public class Daojpa implements Idao {
 
     public void addMethodologie(Methodologie m) {
         try {
-            getSessionFactory().getCurrentSession().save(m);
+            getSessionFactory().getCurrentSession().saveOrUpdate(m);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet méthodologie" + m.getProfilgl());
             throw new pfcgdcexception(th, 11);
@@ -504,7 +504,7 @@ public class Daojpa implements Idao {
 
     public void addModelisation(Modelisation m) {
         try {
-            getSessionFactory().getCurrentSession().save(m);
+            getSessionFactory().getCurrentSession().saveOrUpdate(m);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet modélisation" + m.getProfilgl());
             throw new pfcgdcexception(th, 11);
@@ -557,7 +557,7 @@ public class Daojpa implements Idao {
 
     public void addOutils(Outils o) {
         try {
-            getSessionFactory().getCurrentSession().save(o);
+            getSessionFactory().getCurrentSession().saveOrUpdate(o);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet outil" + o.getProfilgl());
             throw new pfcgdcexception(th, 9);
@@ -587,7 +587,7 @@ public class Daojpa implements Idao {
     public void addProfil(Profil p) {
 
         try {
-            getSessionFactory().getCurrentSession().save(p);
+            getSessionFactory().getCurrentSession().saveOrUpdate(p);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout du profil");
             throw new pfcgdcexception(th, 5);
@@ -621,7 +621,7 @@ public class Daojpa implements Idao {
 
     public void addProfilgl(Profilgl p) {
         try {
-            getSessionFactory().getCurrentSession().save(p);
+            getSessionFactory().getCurrentSession().saveOrUpdate(p);
         } catch (Throwable th) {
             System.out.println("erreur lors de l'ajout du profilGl");
             throw new pfcgdcexception(th, 5);
@@ -659,7 +659,7 @@ public class Daojpa implements Idao {
     @Override
     public void addUserRole(UserRoles userRole) {
         try {
-            getSessionFactory().getCurrentSession().save(userRole);
+            getSessionFactory().getCurrentSession().saveOrUpdate(userRole);
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
             System.err.println("Erreurs lors de l'execution de la méthode addUserRole: \n");
@@ -681,6 +681,22 @@ public class Daojpa implements Idao {
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
             System.err.println("Erreurs lors de l'execution de la méthode getProfilByUsername(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
+    }
+
+    @Override
+    public List getLangueById(Integer id) {
+       try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Langues where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getLanguesByID(): \n");
             th.printStackTrace();
             System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }

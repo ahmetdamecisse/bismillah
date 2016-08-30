@@ -416,7 +416,7 @@ public class Metier implements Imetier {
 
     @Override
     public Langues getLanguesById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          return getDaojpa().getLanguesById(id);
     }
 
     @Override
@@ -694,5 +694,10 @@ public class Metier implements Imetier {
     @Override
     public Profil getProfilByUsername(String username) {
         return getDaojpa().getProfilByUsername(username);
+    }
+
+    @Override
+    public List getLangueById(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -180,6 +180,8 @@ public interface Idao {
     public Langues getLanguesById(Integer id);
 
     public List getLanguesByName(String nom);
+    
+    public List getLangueById(Integer id);
 
     //Listedequestion
     public List getAllListequestion();
