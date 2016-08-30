@@ -22,7 +22,7 @@ public class BddPK implements Serializable {
     @Column(name = "idTypeDeProfil")
     private int idTypeDeProfil;
     @Basic(optional = false)
-    @Size(min = 1, max = 254)
+    @Size(min = 0, max = 254)
     @Column(name = "domaine")
     private String domaine;
 

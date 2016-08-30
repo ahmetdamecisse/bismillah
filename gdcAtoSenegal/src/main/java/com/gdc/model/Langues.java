@@ -34,7 +34,7 @@ public class Langues implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected LanguesPK languesPK;
-    @Size(max = 254)
+    @Size(max = 250)
     @Column(name = "niveau")
     private String niveau;
     @JoinColumn(name = "idTypeDeProfil", referencedColumnName = "idTypeDeProfil", insertable = false, updatable = false)
