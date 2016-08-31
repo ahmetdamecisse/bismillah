@@ -819,11 +819,8 @@ public class RedigerCV implements Serializable {
         metier.addExperiencesprofessionnelles(experiencesprofessionnelles);
     }
 
-    public void anuuler() {
-        //----------------Les insertions se feront dans cette partie-----------------------------------------------------------------
-        FacesMessage msg = new FacesMessage("Successful", "Bonjour :" + user.getPrenom() + " " + "votre cv a été crée avec succès");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-
+    public String annuler() {
+       return "candidats.AtoS?faces-redirect=true";
     }
 
     public String controlConnexion() {

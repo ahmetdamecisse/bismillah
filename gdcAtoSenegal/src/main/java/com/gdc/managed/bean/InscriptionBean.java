@@ -70,7 +70,7 @@ public class InscriptionBean {
             FacesMessage msg2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, user.getUsername(), " est dèja utilisé. Merci de choisir un autre username!");
             RequestContext.getCurrentInstance().showMessageInDialog(msg2);
         } else if (!user.getMail().contains("@") || !user.getMail().contains(".")) {
-            FacesMessage msg4 = new FacesMessage(FacesMessage.SEVERITY_INFO, user.getMail(), " Adresse Email invalide");
+            FacesMessage msg4 = new FacesMessage(FacesMessage.SEVERITY_INFO, user.getMail(), " Addresse Email invalide");
             RequestContext.getCurrentInstance().showMessageInDialog(msg4);
         } else {
             metier.addUtilisateur(user);
