@@ -87,7 +87,7 @@ public interface Imetier {
 
     public void updateBdd(Bdd bdd, Integer idUtilsateurbddModif);
 
-    public Bdd getBddById(Integer id);
+    public List getBddById(Integer id);
 
     public List getBddByName(String nom);
 
@@ -113,7 +113,7 @@ public interface Imetier {
 
     public void updateExperiencesprofessionnelles(Experiencesprofessionnelles e, Integer idUtilsateurEpModif);
 
-    public Experiencesprofessionnelles getExperiencesprofessionnellesById(Integer id);
+    public List getExperiencesprofessionnellesById(Integer id);
 
     public List getExperiencesprofessionnellesByName(String nom);
 
@@ -165,7 +165,7 @@ public interface Imetier {
 
     public void updateLangages(Langages l, Integer idUtilsateurLangageModif);
 
-    public Langages getLangagesById(Integer id);
+    public List getLangagesById(Integer id);
 
     public List getLangagesByName(String nom);
 
@@ -203,7 +203,7 @@ public interface Imetier {
 
     public void updateMaterielssystemesexploitation(Materielssystemesexploitation m, Integer idUtilsateurMSModif);
 
-    public Materielssystemesexploitation getMaterielssystemesexploitationById(Integer id);
+    public List getMaterielssystemesexploitationById(Integer id);
 
     public List getMaterielssystemesexploitationByName(String nom);
 
@@ -216,7 +216,7 @@ public interface Imetier {
 
     public void updateMethodologie(Methodologie m, Integer idUtilsateurMethoModif);
 
-    public Methodologie getMethodologieById(Integer id);
+    public List getMethodologieById(Integer id);
 
     public List getMethodologieByName(String nom);
 
@@ -229,7 +229,7 @@ public interface Imetier {
 
     public void updateModelisation(Modelisation m, Integer idUtilsateurModelModif);
 
-    public Modelisation getModelisationById(Integer id);
+    public List getModelisationById(Integer id);
 
     public List getModelisationByName(String nom);
 
@@ -255,7 +255,7 @@ public interface Imetier {
 
     public void updateOutils(Outils o, Integer idUtilsateurOutilModif);
 
-    public Outils getOutilsById(Integer id);
+    public List getOutilsById(Integer id);
 
     public List getOutilsByName(String nom);
 

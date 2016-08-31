@@ -216,8 +216,19 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Bdd getBddById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getBddById(Integer id) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Bdd where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getbddById: \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getBddByName(String nom) {
@@ -269,8 +280,19 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Experiencesprofessionnelles getExperiencesprofessionnellesById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getExperiencesprofessionnellesById(Integer id) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Experiencesprofessionnelles where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getExperiencesprofessionnellesById: \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getExperiencesprofessionnellesByName(String nom) {
@@ -355,7 +377,7 @@ public class Daojpa implements Idao {
             return list;
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-            System.err.println("Erreurs lors de l'execution de la méthode getUtilisateurByLoginAndPassporw(): \n");
+            System.err.println("Erreurs lors de l'execution de la méthode getFormationById: \n");
             th.printStackTrace();
             System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }
@@ -387,8 +409,19 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Langages getLangagesById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getLangagesById(Integer id) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Langages where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getLangagesByIdByID(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getLangagesByName(String nom) {
@@ -461,8 +494,19 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Materielssystemesexploitation getMaterielssystemesexploitationById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getMaterielssystemesexploitationById(Integer id) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Materielssystemesexploitation where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getMaterielssystemesexploitationById: \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getMaterielssystemesexploitationByName(String nom) {
@@ -490,8 +534,19 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Methodologie getMethodologieById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getMethodologieById(Integer id) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Methodologie where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getMethodologieById: \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getMethodologieByName(String nom) {
@@ -519,8 +574,19 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Modelisation getModelisationById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getModelisationById(Integer id) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Modelisation where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getModelisationById: \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getModelisationByName(String nom) {
@@ -572,8 +638,19 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Outils getOutilsById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getOutilsById(Integer id) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Outils where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getOutilsById): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getOutilsByName(String nom) {
@@ -689,7 +766,7 @@ public class Daojpa implements Idao {
 
     @Override
     public List getLangueById(Integer id) {
-       try {
+        try {
             List list = getSessionFactory().getCurrentSession()
                     .createQuery("from Langues where idTypeDeProfil= :lidTypeDeProfil")
                     .setParameter("lidTypeDeProfil", id).list();

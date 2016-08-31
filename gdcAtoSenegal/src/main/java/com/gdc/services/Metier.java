@@ -200,8 +200,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Bdd getBddById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getBddById(Integer id) {
+       return getDaojpa().getBddById(id);
     }
 
     @Override
@@ -262,8 +262,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Experiencesprofessionnelles getExperiencesprofessionnellesById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getExperiencesprofessionnellesById(Integer id) {
+        return getDaojpa().getExperiencesprofessionnellesById(id);
     }
 
     @Override
@@ -384,8 +384,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Langages getLangagesById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getLangagesById(Integer id) {
+        return getDaojpa().getLangagesById(id);
     }
 
     @Override
@@ -466,8 +466,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Materielssystemesexploitation getMaterielssystemesexploitationById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getMaterielssystemesexploitationById(Integer id) {
+       return getDaojpa().getMaterielssystemesexploitationById(id);
     }
 
     @Override
@@ -497,8 +497,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Methodologie getMethodologieById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getMethodologieById(Integer id) {
+        return getDaojpa().getMethodologieById(id);
     }
 
     @Override
@@ -528,8 +528,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Modelisation getModelisationById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getModelisationById(Integer id) {
+      return getDaojpa().getModelisationById(id);
     }
 
     @Override
@@ -589,8 +589,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Outils getOutilsById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getOutilsById(Integer id) {
+     return getDaojpa().getOutilsById(id);
     }
 
     @Override

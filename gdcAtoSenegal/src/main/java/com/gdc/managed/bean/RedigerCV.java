@@ -869,17 +869,149 @@ public class RedigerCV implements Serializable {
                         setLangues3((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(2));
                         setLanguesPK3(getLangues3().getLanguesPK());
                     }
-                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                    if (metier.getLangueById(profilRecup.getIdTypeDeProfil()).size() == 1) {
                         setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
                         setLanguesPK(getLangues().getLanguesPK());
                     }
-                    if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                    if (metier.getLangueById(profilRecup.getIdTypeDeProfil()).size() == 2) {
                         setLangues((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
                         setLanguesPK(getLangues().getLanguesPK());
                         setLangues2((Langues) metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(1));
                         setLanguesPK2(getLangues2().getLanguesPK());
-                
-                   }
+                    }//******************************************************************************
+                    //*************reintialisation des langages
+                    if (metier.getLangagesById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                        setLangage((Langages) metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setLangagepk(getLangage().getLangagesPK());
+                        setLangage2((Langages) metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setLangagepk2(getLangage2().getLangagesPK());
+                        setLangage3((Langages) metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setLangagepk3(getLangage3().getLangagesPK());
+                    }
+                    if (metier.getLangagesById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setLangage((Langages) metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setLangagepk(getLangage().getLangagesPK());
+                    }
+                    if (metier.getLangagesById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setLangage((Langages) metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setLangagepk(getLangage().getLangagesPK());
+                        setLangage2((Langages) metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setLangagepk2(getLangage2().getLangagesPK());
+                    }//******************************************************************************
+                    //*************reintialisation des outils
+                    if (metier.getOutilsById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                        setOutils((Outils) metier.getOutilsById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setOutilspk(getOutils().getOutilsPK());
+                        setOutils2((Outils) metier.getOutilsById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setOutilspk2(getOutils2().getOutilsPK());
+                        setOutils3((Outils) metier.getOutilsById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setOutilspk3(getOutils3().getOutilsPK());
+                    }
+                    if (metier.getOutilsById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setOutils((Outils) metier.getOutilsById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setOutilspk(getOutils().getOutilsPK());
+                    }
+                    if (metier.getOutilsById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setOutils((Outils) metier.getOutilsById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setOutilspk(getOutils().getOutilsPK());
+                        setOutils2((Outils) metier.getOutilsById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setOutilspk2(getOutils2().getOutilsPK());
+                    }//******************************************************************************
+                    //*************reintialisation des methodologies
+                    if (metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                        setMethodologie((Methodologie) metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setMethodologiepk(getMethodologie().getMethodologiePK());
+                        setMethodologie2((Methodologie) metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setMethodologiepk2(getMethodologie2().getMethodologiePK());
+                        setMethodologie3((Methodologie) metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setMethodologiepk3(getMethodologie3().getMethodologiePK());
+                    }
+                    if (metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setMethodologie((Methodologie) metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setMethodologiepk(getMethodologie().getMethodologiePK());
+                    }
+                    if (metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setMethodologie((Methodologie) metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setMethodologiepk(getMethodologie().getMethodologiePK());
+                        setMethodologie2((Methodologie) metier.getMethodologieById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setMethodologiepk2(getMethodologie2().getMethodologiePK());
+                    }//******************************************************************************
+                    //*************reintialisation des modelisations
+                    if (metier.getModelisationById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                        setModelisation((Modelisation) metier.getModelisationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setModelisationPK(getModelisation().getModelisationPK());
+                        setModelisation2((Modelisation) metier.getModelisationById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setModelisationPK2(getModelisation2().getModelisationPK());
+                        setModelisation3((Modelisation) metier.getModelisationById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setModelisationPK3(getModelisation3().getModelisationPK());
+                    }
+                    if (metier.getModelisationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setModelisation((Modelisation) metier.getModelisationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setModelisationPK(getModelisation().getModelisationPK());
+                    }
+                    if (metier.getModelisationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setModelisation((Modelisation) metier.getModelisationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setModelisationPK(getModelisation().getModelisationPK());
+                        setModelisation2((Modelisation) metier.getModelisationById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setModelisationPK(getModelisation2().getModelisationPK());
+                    }//******************************************************************************
+                    //*************reintialisation des bdd
+                    if (metier.getBddById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                        setBdd((Bdd) metier.getBddById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setBddPK(getBdd().getBddPK());
+                        setBdd2((Bdd) metier.getBddById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setBddPK2(getBdd2().getBddPK());
+                        setBdd3((Bdd) metier.getBddById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setBddPK3(getBdd3().getBddPK());
+                    }
+                    if (metier.getBddById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setBdd((Bdd) metier.getBddById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setBddPK(getBdd().getBddPK());
+                    }
+                    if (metier.getBddById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setBdd((Bdd) metier.getBddById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setBddPK(getBdd().getBddPK());
+                        setBdd2((Bdd) metier.getBddById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setBddPK2(getBdd2().getBddPK());
+                    }//******************************************************************************
+                    //*************reintialisation des experiences professionnelles
+                    if (metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                        setExperiencesprofessionnelles((Experiencesprofessionnelles) metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setExperiencesprofessionnellespk(getExperiencesprofessionnelles().getExperiencesprofessionnellesPK());
+                        setExperiencesprofessionnelles2((Experiencesprofessionnelles) metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setExperiencesprofessionnellespk2(getExperiencesprofessionnelles2().getExperiencesprofessionnellesPK());
+                        setExperiencesprofessionnelles3((Experiencesprofessionnelles) metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setExperiencesprofessionnellespk3(getExperiencesprofessionnelles3().getExperiencesprofessionnellesPK());
+                    }
+                    if (metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setExperiencesprofessionnelles((Experiencesprofessionnelles) metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setExperiencesprofessionnellespk(getExperiencesprofessionnelles().getExperiencesprofessionnellesPK());
+                    }
+                    if (metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setExperiencesprofessionnelles((Experiencesprofessionnelles) metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setExperiencesprofessionnellespk(getExperiencesprofessionnelles().getExperiencesprofessionnellesPK());
+                        setExperiencesprofessionnelles2((Experiencesprofessionnelles) metier.getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setExperiencesprofessionnellespk2(getExperiencesprofessionnelles2().getExperiencesprofessionnellesPK());
+                    }//******************************************************************************
+                    //*************reintialisation des os
+                    if (metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                        setMaterielssystemesexploitation((Materielssystemesexploitation) metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setMaterielssystemesexploitationpk(getMaterielssystemesexploitation().getMaterielssystemesexploitationPK());
+                        setMaterielssystemesexploitation2((Materielssystemesexploitation) metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setMaterielssystemesexploitationpk2(getMaterielssystemesexploitation2().getMaterielssystemesexploitationPK());
+                        setMaterielssystemesexploitation3((Materielssystemesexploitation) metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(2));
+                        setMaterielssystemesexploitationpk3(getMaterielssystemesexploitation3().getMaterielssystemesexploitationPK());
+                    }
+                    if (metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                        setMaterielssystemesexploitation((Materielssystemesexploitation) metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setMaterielssystemesexploitationpk(getMaterielssystemesexploitation().getMaterielssystemesexploitationPK());
+                    }
+                    if (metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                        setMaterielssystemesexploitation((Materielssystemesexploitation) metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(0));
+                        setMaterielssystemesexploitationpk(getMaterielssystemesexploitation().getMaterielssystemesexploitationPK());
+                        setMaterielssystemesexploitation2((Materielssystemesexploitation) metier.getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(1));
+                        setMaterielssystemesexploitationpk2(getMaterielssystemesexploitation2().getMaterielssystemesexploitationPK());
+                    }//******************************************************************************
                 }
             }
 

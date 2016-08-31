@@ -178,12 +178,11 @@
                                     <h:panelGrid columns="2" columnClasses="label, value">
                                         <h:outputText value="Nombre d'années d'expériences: " style="color: #282828; font-size: 15px"/>
                                         <p:spinner id="nbreanneesexperience" value="#{redigerCV.profil.nombreAnneesExperience}" min="0" max="20"  />
-
+                                          <h:outputText/><h:outputText/>
                                         <h:outputText value="Principales compétences: " style="color: #282828; font-size: 15px"/>
                                         <p:inputTextarea rows="6" cols="20" counter="display4" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false"  value="#{redigerCV.profil.principalesCompetences}" placeholder="Exemple : 1 Conception, Analyse, Coordination de projet,  Recettes, Bases de données. 2 Sciences de l’information et du système"/>
                                         <h:outputText id="display4" style="color: #282828" />
                                         <h:outputText value="" />
-
                                         <h:outputText value="Compétences fonctionnelles: " style="color: #282828; font-size: 15px"/>
                                         <p:inputTextarea rows="4" cols="20" counter="display3" maxlength="330" counterTemplate="{0} caractères restants." autoResize="false"  value="#{redigerCV.profil.competencesFonctionnelles}" placeholder="Exemple: Ferroviaire, Protection sociale, Analyse de données (BI) et CMMI"/>
                                         <h:outputText id="display3" style="color: #282828" />
@@ -192,9 +191,9 @@
                                 </p:panel>
                                 <p:panel header="Langues parlées">
                                     <p:messages />
-                                    <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:panelGrid columns="4" columnClasses="label, value">
 
-                                        <h:outputText value="Anglais: " style="color: #282828; font-size: 15px"/>
+                                        <h:outputText value="Langue 1: " style="color: #282828; font-size: 15px"/>
                                         <p:inputText value="#{redigerCV.languesPK.nom}" label="Email"/>
 
                                         <h:outputText value="Niveau: " style="color: #282828; font-size: 15px"/>
@@ -204,7 +203,7 @@
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
-                                        <h:outputText value="Français: " style="color: #282828; font-size: 15px"/>
+                                        <h:outputText value="Langue 2" style="color: #282828; font-size: 15px"/>
                                         <p:inputText value="#{redigerCV.languesPK2.nom}"  label="Français"/>
 
                                         <h:outputText value="Niveau: " style="color: #282828; font-size: 15px"/>
@@ -214,7 +213,7 @@
                                             <f:selectItem itemLabel="Lu, écrit et parlé" itemValue="Lu, écrit et parlé" />
                                         </p:selectOneMenu>
 
-                                        <h:outputText value="Autre: " style="color: #282828; font-size: 15px"/>
+                                        <h:outputText value="Langue 3" style="color: #282828; font-size: 15px"/>
                                         <p:inputText value="#{redigerCV.languesPK3.nom}"  label="Email"/>
 
                                         <h:outputText value="Niveau: " style="color: #282828; font-size: 15px"/>
