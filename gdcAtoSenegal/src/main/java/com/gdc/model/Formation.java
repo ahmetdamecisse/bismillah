@@ -125,7 +125,7 @@ public class Formation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.testeur.Formation[ formationPK=" + formationPK + " ]";
+        return "Nom du diplôme: "+formationPK.getNomDiplome()+" Université: "+universite+" Année d'obtention: "+anneeObtention+" Mention: "+mention;
     }
     
 }
