@@ -201,7 +201,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getBddById(Integer id) {
-       return getDaojpa().getBddById(id);
+        return getDaojpa().getBddById(id);
     }
 
     @Override
@@ -354,7 +354,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getFormationById(Integer id) {
-      return getDaojpa().getFormationById(id);
+        return getDaojpa().getFormationById(id);
     }
 
     @Override
@@ -416,7 +416,7 @@ public class Metier implements Imetier {
 
     @Override
     public Langues getLanguesById(Integer id) {
-          return getDaojpa().getLanguesById(id);
+        return getDaojpa().getLanguesById(id);
     }
 
     @Override
@@ -467,7 +467,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getMaterielssystemesexploitationById(Integer id) {
-       return getDaojpa().getMaterielssystemesexploitationById(id);
+        return getDaojpa().getMaterielssystemesexploitationById(id);
     }
 
     @Override
@@ -529,7 +529,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getModelisationById(Integer id) {
-      return getDaojpa().getModelisationById(id);
+        return getDaojpa().getModelisationById(id);
     }
 
     @Override
@@ -590,7 +590,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getOutilsById(Integer id) {
-     return getDaojpa().getOutilsById(id);
+        return getDaojpa().getOutilsById(id);
     }
 
     @Override
@@ -698,6 +698,49 @@ public class Metier implements Imetier {
 
     @Override
     public List getLangueById(Integer id) {
-         return getDaojpa().getLangueById(id);
+        return getDaojpa().getLangueById(id);
     }
-}
+
+    @Override
+    public List getAllOffresemploi() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Transactional(readOnly = false)
+    @Override
+    public void addOffresemploi(Offresemploi o) {
+        getDaojpa().addOffresemploi(o);
+        }
+
+        @Override
+        public void removeOffresemploi
+        (Offresemploi o
+        
+            ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public void updateOffresemploi
+        (Offresemploi o
+        
+            ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public Notification getOffresemploiById
+        (Integer id
+        
+            ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public List getOffresemploiByName
+        (String nom
+        
+            ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    }

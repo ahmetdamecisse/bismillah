@@ -8,6 +8,7 @@ package com.gdc.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,15 +17,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -41,6 +43,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Notification.findByCorpsMessage", query = "SELECT n FROM Notification n WHERE n.corpsMessage = :corpsMessage"),
     @NamedQuery(name = "Notification.findByDateNotification", query = "SELECT n FROM Notification n WHERE n.dateNotification = :dateNotification")})
 public class Notification implements Serializable {
+    @Lob
+    @Column(name = "pj")
+    private byte[] pj;
+    @ManyToMany(mappedBy = "notificationList")
+    private List<Candidat> candidatList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,10 +63,6 @@ public class Notification implements Serializable {
     @Size(max = 50000)
     @Column(name = "corpsMessage")
     private String corpsMessage;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "pj")
-    private byte[] pj;
     @Column(name = "dateNotification")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateNotification;
@@ -111,14 +114,6 @@ public class Notification implements Serializable {
         this.corpsMessage = corpsMessage;
     }
 
-    public byte[] getPj() {
-        return pj;
-    }
-
-    public void setPj(byte[] pj) {
-        this.pj = pj;
-    }
-
     public Date getDateNotification() {
         return dateNotification;
     }
@@ -158,6 +153,23 @@ public class Notification implements Serializable {
     @Override
     public String toString() {
         return "com.testeur.Notification[ idNotification=" + idNotification + " ]";
+    }
+
+    public byte[] getPj() {
+        return pj;
+    }
+
+    public void setPj(byte[] pj) {
+        this.pj = pj;
+    }
+
+    @XmlTransient
+    public List<Candidat> getCandidatList() {
+        return candidatList;
+    }
+
+    public void setCandidatList(List<Candidat> candidatList) {
+        this.candidatList = candidatList;
     }
     
 }

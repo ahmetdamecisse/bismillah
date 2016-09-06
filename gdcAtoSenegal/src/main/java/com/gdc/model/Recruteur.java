@@ -7,21 +7,17 @@
 package com.gdc.model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -43,8 +39,6 @@ public class Recruteur implements Serializable {
     @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Users users;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
-    private List<Fichedetest> fichedetestList;
 
     public Recruteur() {
     }
@@ -67,15 +61,6 @@ public class Recruteur implements Serializable {
 
     public void setUsers(Users users) {
         this.users = users;
-    }
-
-    @XmlTransient
-    public List<Fichedetest> getFichedetestList() {
-        return fichedetestList;
-    }
-
-    public void setFichedetestList(List<Fichedetest> fichedetestList) {
-        this.fichedetestList = fichedetestList;
     }
 
     @Override

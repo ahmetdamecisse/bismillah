@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface Idao {
 
-     //Utilisateur
+    //Utilisateur
     public List getALLutilisateur();
 
     public Users getUtilisateurById(Integer id);
@@ -165,7 +165,7 @@ public interface Idao {
     public void updateLangages(Langages l, Integer idUtilsateurLangageModif);
 
     public List getLangagesByName(String nom);
-    
+
     public List getLangagesById(Integer id);
 
     //Langues
@@ -180,7 +180,7 @@ public interface Idao {
     public Langues getLanguesById(Integer id);
 
     public List getLanguesByName(String nom);
-    
+
     public List getLangueById(Integer id);
 
     //Listedequestion
@@ -270,8 +270,8 @@ public interface Idao {
     public Profil getProfilById(Integer id);
 
     public List getProfilByCompetence(String x, String y, String z);
-    
-     public Profil getProfilByUsername(String leUsernames);
+
+    public Profil getProfilByUsername(String leUsernames);
 
     public List getProfilByCompetenceFonctionnelle(String x, String y, String z);
 
@@ -301,9 +301,19 @@ public interface Idao {
     public String loginControl(String login, String password);
 
     //test d'existence de username
-
     public boolean ceUsernameEstIlUtiliseDeja(String username);
 
-    //Créer un utilisateur de type candidat ayant un profil gl
+    //Offres d'emploi
+    public List getAllOffresemploi();
 
-   }
+    public void addOffresemploi(Offresemploi o);
+
+    public void removeOffresemploi(Offresemploi o);
+
+    public void updateOffresemploi(Offresemploi o);
+
+    public Notification getOffresemploiById(Integer id);
+
+    public List getOffresemploiByName(String nom);
+
+}

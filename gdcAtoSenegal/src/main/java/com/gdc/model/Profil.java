@@ -136,5 +136,5 @@ public class Profil implements Serializable {
     public String toString() {
         return "com.testeur.Profil[ idTypeDeProfil=" + idTypeDeProfil + " ]";
     }
-    
+
 }

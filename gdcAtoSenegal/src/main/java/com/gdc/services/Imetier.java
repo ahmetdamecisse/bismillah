@@ -303,5 +303,17 @@ public interface Imetier {
 
     //test d'existence de username
     public boolean ceUsernameEstIlUtiliseDeja(String username);
-    //Créer un utilisateur de type candidat ayant un profil gl
+    //Offres d'emploi
+    public List getAllOffresemploi();
+
+    public void addOffresemploi(Offresemploi o);
+
+    public void removeOffresemploi(Offresemploi o);
+
+    public void updateOffresemploi(Offresemploi o);
+
+    public Notification getOffresemploiById(Integer id);
+
+    public List getOffresemploiByName(String nom);
+
 }

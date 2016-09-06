@@ -7,11 +7,14 @@
 package com.gdc.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,6 +22,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,6 +35,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Candidat.findAll", query = "SELECT c FROM Candidat c"),
     @NamedQuery(name = "Candidat.findByUsername", query = "SELECT c FROM Candidat c WHERE c.username = :username")})
 public class Candidat implements Serializable {
+    @JoinTable(name = "postuleroffresemploi", joinColumns = {
+        @JoinColumn(name = "username", referencedColumnName = "username")}, inverseJoinColumns = {
+        @JoinColumn(name = "idOffreEmploi", referencedColumnName = "idOffreEmploi")})
+    @ManyToMany
+    private List<Offresemploi> offresemploiList;
+    @JoinTable(name = "consulternotification", joinColumns = {
+        @JoinColumn(name = "username", referencedColumnName = "username")}, inverseJoinColumns = {
+        @JoinColumn(name = "idNotification", referencedColumnName = "idNotification")})
+    @ManyToMany
+    private List<Notification> notificationList;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -97,6 +111,24 @@ public class Candidat implements Serializable {
     @Override
     public String toString() {
         return "com.testeur.Candidat[ username=" + username + " ]";
+    }
+
+    @XmlTransient
+    public List<Offresemploi> getOffresemploiList() {
+        return offresemploiList;
+    }
+
+    public void setOffresemploiList(List<Offresemploi> offresemploiList) {
+        this.offresemploiList = offresemploiList;
+    }
+
+    @XmlTransient
+    public List<Notification> getNotificationList() {
+        return notificationList;
+    }
+
+    public void setNotificationList(List<Notification> notificationList) {
+        this.notificationList = notificationList;
     }
     
 }

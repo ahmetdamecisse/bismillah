@@ -38,7 +38,7 @@
     <bean id="ContactercandidatPK" class="com.gdc.model.ContactercandidatPK"/>
     <bean id="Entretien" class="com.gdc.model.Entretien"/>
     <bean id="Experiencesprofessionnelles" class="com.gdc.model.Experiencesprofessionnelles"/>
-     <bean id="ExperiencesprofessionnellesPK" class="com.gdc.model.ExperiencesprofessionnellesPK"/>
+    <bean id="ExperiencesprofessionnellesPK" class="com.gdc.model.ExperiencesprofessionnellesPK"/>
     <bean id="Faireuntest" class="com.gdc.model.Faireuntest"/>
     <bean id="FaireuntestPK" class="com.gdc.model.FaireuntestPK"/>
     <bean id="Fichedeposte" class="com.gdc.model.Fichedeposte"/>
@@ -58,8 +58,9 @@
     <bean id="Modelisation" class="com.gdc.model.Modelisation"/>
     <bean id="ModelisationPK" class="com.gdc.model.ModelisationPK"/>
     <bean id="Notification" class="com.gdc.model.Notification"/>
+    <bean id="Offresemploi" class="com.gdc.model.Offresemploi"/>
     <bean id="Outils" class="com.gdc.model.Outils"/>
-     <bean id="OutilsPK" class="com.gdc.model.OutilsPK"/>
+    <bean id="OutilsPK" class="com.gdc.model.OutilsPK"/>  
     <bean id="Profil" class="com.gdc.model.Profil"/>
     <bean id="Profilgl" class="com.gdc.model.Profilgl"/>
     <bean id="Recruteur" class="com.gdc.model.Recruteur"/>
@@ -78,9 +79,9 @@
         <property name="sessionFactory" ref="SessionFactory" />
     </bean>
     
-<!--   authenticationManager utilisé dans redugerCV -->
+    <!--   authenticationManager utilisé dans redugerCV -->
     <bean id="RedigerCV" class="com.gdc.managed.bean.RedigerCV" scope="prototype"> 
-    <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="authenticationManager" ref="authenticationManager"/>
     </bean>
     
     <!-- Data Source Declaration -->
@@ -132,6 +133,7 @@
                 <value>com.gdc.model.ModelisationPK</value>
                 <value>com.gdc.model.Notification</value>
                 <value>com.gdc.model.Outils</value>
+                <value>com.gdc.model.Offresemploi</value>
                 <value>com.gdc.model.OutilsPK</value>
                 <value>com.gdc.model.Profil</value>
                 <value>com.gdc.model.Profilgl</value>
