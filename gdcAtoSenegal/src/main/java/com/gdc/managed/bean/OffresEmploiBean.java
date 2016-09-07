@@ -6,10 +6,13 @@
 package com.gdc.managed.bean;
 
 import com.gdc.model.Offresemploi;
+import com.gdc.model.Recruteur;
 import com.gdc.services.Imetier;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -31,9 +34,51 @@ public class OffresEmploiBean {
         this.metier = metier;
     }
 
+    //Injecting Managed beans
+    @ManagedProperty(value = "#{redigerCV}")
+    private RedigerCV redigerCV;
+
+    public void setRedigerCV(RedigerCV redigerCV) {
+        this.redigerCV = redigerCV;
+    }
+
+    public RedigerCV getRedigerCV() {
+        return redigerCV;
+    }
+
+    private Offresemploi offresemploi = new Offresemploi();
+
+    public Offresemploi getOffresemploi() {
+        return offresemploi;
+    }
+
+    public void setOffresemploi(Offresemploi offresemploi) {
+        this.offresemploi = offresemploi;
+    }
+
     /**
      * Creates a new instance of OffresEmploiBean
      */
     public OffresEmploiBean() {
+    }
+
+    public String validerOffreEmploi() {
+        //persistance
+        Recruteur recruteur = new Recruteur("ahmet");
+        offresemploi.setUsername(recruteur);
+        metier.addOffresemploi(offresemploi);
+        //informations
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Enregistrement", " L'offre d'emploi est sauvegardée avec succès!");
+        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
+        return null;
+    }
+
+    public String annulerOffreEmploi() {
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Vous avez annulé la saisie de l'offre d'emploi!");
+        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
+        return null;
+    }
+
+    public void viderFormulaireOffreEmploi() {
     }
 }

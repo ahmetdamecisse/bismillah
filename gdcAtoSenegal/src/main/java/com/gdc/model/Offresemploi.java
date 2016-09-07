@@ -250,7 +250,7 @@ public class Offresemploi implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gdc.dao.Offresemploi[ idOffreEmploi=" + idOffreEmploi + " ]";
+        return "com.gdc.dao.Offresemploi[ idOffreEmploi=" + idOffreEmploi+" intitulé du poste: "+intitulePoste+" description: "+description+" username: "+username + " ]";
     }
     
 }

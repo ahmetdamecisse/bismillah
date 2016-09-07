@@ -95,47 +95,45 @@
                     </div>
                     <div class="col-sm-9">
                         <h:form>
-                            <p:growl id="msgs" showDetail="true" />  
                             <p:panel  id="basic1" header="Formulaire Offres D'emploi"  styleClass="redColoredPanel" style="margin-bottom:20px; text-align: center">
                                 <div>
                                     <h:form> <br/> 
+                                         <p:growl id="growl1" showDetail="true"/> 
                                         <div style="text-align: justify">
                                             <h:outputText value="Intitulé du poste:" style="margin-right: 83px"/>
-                                            <p:inputText style="width: 500px; height: 35px"/> <br/>
+                                            <p:inputText style="width: 500px; height: 35px" value="#{offresEmploiBean.offresemploi.intitulePoste}"/> <br/>
                                         </div><br/>
                                         <div  style="text-align: justify">
                                             <h:outputText value="Description:" style="margin-right: 120px"/>
-                                            <p:inputText style="width: 500px; height: 35px"/> <br/>
+                                            <p:inputText style="width: 500px; height: 35px" value="#{offresEmploiBean.offresemploi.description}"/> <br/>
                                         </div><br/>
                                         <div  style="text-align: justify">
                                             <h:outputText value="Type de contrat:" style="margin-right: 90px"/>
-                                            <p:inputText style="width: 500px; height: 35px"/> <br/>
+                                            <p:inputText style="width: 500px; height: 35px" value="#{offresEmploiBean.offresemploi.typeDeContrat}"/> <br/>
                                         </div><br/>
 
                                         <div  style="text-align: justify">
                                             <h:outputText value="Catégorie:" style="margin-right: 135px" />
-                                            <p:inputText style="width: 500px; height: 35px"/> <br/>
+                                            <p:inputText style="width: 500px; height: 35px" value="#{offresEmploiBean.offresemploi.categorie}"/> <br/>
                                         </div><br/>
                                         <div  style="text-align: justify">
                                             <h:outputText value="Profil recherché :" style="margin-right: 87px" />
-                                            <p:inputTextarea style="width: 500px; height: 35px"/> <br/>
+                                            <p:inputTextarea style="width: 500px; height: 35px" value="#{offresEmploiBean.offresemploi.profilRecherche}"/> <br/>
                                         </div><br/>
                                         <div  style="text-align: justify">
                                             <h:outputText value="Diplome demandés:" style="margin-right: 65px" />
-                                            <p:inputTextarea style="width: 500px; height: 35px"/> <br/>
+                                            <p:inputTextarea style="width: 500px; height: 35px" value="#{offresEmploiBean.offresemploi.diplomeDemandes}"/> <br/>
                                         </div><br/> 
                                         <div class="row">
                                             <div class="col-sm-7" style="text-align: justify">
                                                 <h:outputText value="Langues parlées:" style="margin-right: 90px" />
-                                                <p:inputTextarea style="width: 200px; height: 35px"/>
+                                                <p:inputTextarea style="width: 200px; height: 35px" value="#{offresEmploiBean.offresemploi.languesParlees}"/>
                                             </div>
                                             <div class="col-sm-5" style="text-align: justify">
                                                 <div class="row">
 
                                                     <h:outputText value="Années d'expériences:" style="margin-right: 2px"/>
-
-
-                                                    <p:inputText style="width: 80px; height: 35px"/> <br/>
+                                                    <p:spinner id="nbre" size="4" value="#{offresEmploiBean.offresemploi.nbreDanneesDexperiences}" min="0" max="20"/> <br/>
 
                                                 </div>
                                             </div><br/>
@@ -143,33 +141,29 @@
                                         <div class="row">
                                             <div class="col-sm-7" style="text-align: justify">
                                                 <h:outputText value="Début du contrat:" style="margin-right: 85px" />
-                                                <p:inputText style="width: 200px; height: 35px"/>
+                                                <p:calendar id="datedebcontar" value="#{offresEmploiBean.offresemploi.debutContrat}" pattern="dd-MM-yyyy" mask="true"  style="width: 200px; height: 35px" size="15"/>
                                             </div>
                                             <div class="col-sm-5" style="text-align: justify">
                                                 <div class="row">
-
-                                                    <h:outputText value="Durée du contrat:" style="margin-right: 40px"/>
-
-
-                                                    <p:inputText style="width: 80px; height: 35px"/> <br/>
-
+                                                    <h:outputText value="Fin du contrat:" style="margin-right:0px"/>
+                                                    <p:calendar id="datefincontar" value="#{offresEmploiBean.offresemploi.fincontrat}" pattern="dd-MM-yyyy" mask="true"  style="width: 80px; height: 35px" size="15"/>
                                                 </div>
                                             </div><br/>
                                         </div><br/>
                                         <div style="text-align: justify">
                                             <h:outputText value="Prérequis du poste:" style="margin-right: 70px"/>
-                                            <p:inputTextarea style="width: 500px; height: 35px"/> <br/>
+                                            <p:inputTextarea style="width: 500px; height: 35px" value="#{offresEmploiBean.offresemploi.prerequisDuPoste}"/> <br/>
                                         </div><br/>
                                         <div  style="text-align: justify">
                                             <h:outputText value="Descriptif de la société:" style="margin-right: 40px"/>
-                                            <p:inputTextarea style="width: 500px; height: 70px"/> <br/>
+                                            <p:inputTextarea style="width: 500px; height: 70px" value="#{offresEmploiBean.offresemploi.descriptifDeLaSociete}"/> <br/>
                                         </div><br/>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <p:commandButton value="Valider" style="min-width: 200px"/>
+                                                <p:commandButton value="Valider" style="min-width: 200px" update="growl1" action="#{offresEmploiBean.validerOffreEmploi()}" icon="ui-icon-disk"/>
                                             </div> 
                                             <div class="col-sm-6">
-                                                <p:commandButton value="Annuler" style="min-width: 200px"/>
+                                                <p:commandButton value="Annuler" style="min-width: 200px" update="growl1" action="#{offresEmploiBean.annulerOffreEmploi()}" icon="ui-icon-disk"/>
                                             </div> <br/>
                                         </div>
                                     </h:form>
