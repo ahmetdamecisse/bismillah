@@ -44,7 +44,7 @@
                         <p:menuitem value="Tableau de bord" url="http://localhost:8080/gdcAtoSenegal/tableau-de-bord.AtoS" icon="ui-icon-blog" style="color:white"/>
                         <p:menuitem value="Mon CV" url="http://localhost:8080/gdcAtoSenegal/mon-cv.AtoS" icon="ui-icon-home" style="color:white"/>
                         <p:menuitem value="Offres d'emploi" url="http://localhost:8080/gdcAtoSenegal/offresEmploi.AtoS" icon="ui-icon-home" style="color:white"/>
-        
+
                         <f:facet name="options">
                             <p:inputText style="margin-right:10px" placeholder="Search"/>
                         </f:facet>
@@ -55,7 +55,45 @@
             <div style="background-color: #ffffff" >
                 <div class="row content panel-heading">
                     <!--lister les offres d'emploi-->
-                     <p style="font-style: italic; color:#0073a0; text-align: center; font-size: 30px">Lister les offres d'emploi proposées.</p>
+                    <p style="font-style: italic; color:#0073a0; text-align: center; font-size: 30px">GDC AtoS Sénégal recrute!</p>
+                </div>
+                <div class="row content panel-heading">
+                    <h:form id="form" style="margin-right: 30px;margin-left: 30px">
+                        <p:treeTable value="#{offresEmploiBean.root}" var="document">
+                            <f:facet name="header">
+                                Offres d'emploi
+                            </f:facet>
+                            <p:column headerText="Intitulé">
+                                <h:outputText value="#{document.intitulePoste}" />
+                            </p:column>
+                            <p:column headerText="Description">
+                                <h:outputText value="#{document.description}" />
+                            </p:column>
+                            <p:column headerText="Profil recherché">
+                                <h:outputText value="#{document.profilRecherche}" />
+                            </p:column>
+                            <p:column style="width:24px">
+                                <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()" title="Plus de détails" styleClass="ui-icon ui-icon-search" >
+                                    <f:setPropertyActionListener value="#{document}" target="#{offresEmploiBean.selectedOffre}" />
+                                </p:commandLink>
+                            </p:column>
+                        </p:treeTable>
+
+                        <p:dialog id="dialog" header="Une offre d'emploi" showEffect="fade" widgetVar="documentDialog" modal="true" resizable="false">
+                            <p:outputPanel id="documentPanel">
+                                <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty offresEmploiBean.selectedOffre}">
+                                    <h:outputLabel for="name" value="Intitulé du poste: " style="color: #262626" />
+                                    <h:outputText id="name" value="#{offresEmploiBean.selectedOffre.intitulePoste}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="size" value="Description: " style="color: #262626"/>
+                                    <h:outputText id="size" value="#{offresEmploiBean.selectedOffre.description}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="type" value="Type de contrat " style="color: #262626"/>
+                                    <h:outputText id="type" value="#{offresEmploiBean.selectedOffre.typeDeContrat}" style="font-weight:bold" />
+                                </p:panelGrid>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
                 </div>
                 <hr style="height: 1px; color: #357ebd; background-color: #357ebd; width: 100%; border: none;"></hr>
                 <footer >

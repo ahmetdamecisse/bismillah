@@ -111,6 +111,21 @@ public class Offresemploi implements Serializable {
         return idOffreEmploi;
     }
 
+    public Offresemploi(String intitulePoste, String description, String typeDeContrat, String categorie, String profilRecherche, String diplomeDemandes, String languesParlees, Date debutContrat, Date fincontrat, String prerequisDuPoste, String descriptifDeLaSociete, Integer nbreDanneesDexperiences) {
+        this.intitulePoste = intitulePoste;
+        this.description = description;
+        this.typeDeContrat = typeDeContrat;
+        this.categorie = categorie;
+        this.profilRecherche = profilRecherche;
+        this.diplomeDemandes = diplomeDemandes;
+        this.languesParlees = languesParlees;
+        this.debutContrat = debutContrat;
+        this.fincontrat = fincontrat;
+        this.prerequisDuPoste = prerequisDuPoste;
+        this.descriptifDeLaSociete = descriptifDeLaSociete;
+        this.nbreDanneesDexperiences = nbreDanneesDexperiences;
+    }
+
     public void setIdOffreEmploi(Integer idOffreEmploi) {
         this.idOffreEmploi = idOffreEmploi;
     }

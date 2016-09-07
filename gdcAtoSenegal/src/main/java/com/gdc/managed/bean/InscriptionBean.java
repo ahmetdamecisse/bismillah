@@ -8,6 +8,7 @@ package com.gdc.managed.bean;
 import com.gdc.model.UserRoles;
 import com.gdc.model.Users;
 import com.gdc.services.Imetier;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -20,7 +21,7 @@ import org.primefaces.context.RequestContext;
  */
 @ManagedBean(name = "inscriptionBean")
 @SessionScoped
-public class InscriptionBean {
+public class InscriptionBean implements Serializable{
 
     //Spring User Service is injected...
     @ManagedProperty(value = "#{Metier}")

@@ -782,7 +782,7 @@ public class Daojpa implements Idao {
 
     @Override
     public List getAllOffresemploi() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return  getSessionFactory().getCurrentSession().createQuery("from Offresemploi").list();
     }
 
     @Override
