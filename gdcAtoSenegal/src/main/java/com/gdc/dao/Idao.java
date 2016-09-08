@@ -73,7 +73,7 @@ public interface Idao {
 
     public void updateRecruteur(Users recruteurRemplaçant, Integer idRecruteurRemplace);
 
-    public Recruteur getRecruteurById(Integer id);
+    public Recruteur getRecruteurById(String username);
 
     public List getRecruteurByName(String nom);
 

@@ -169,8 +169,8 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public Recruteur getRecruteurById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Recruteur getRecruteurById(String username) {
+        return getDaojpa().getRecruteurById(username);
     }
 
     @Override

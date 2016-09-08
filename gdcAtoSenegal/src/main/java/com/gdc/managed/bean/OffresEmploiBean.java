@@ -40,9 +40,11 @@ public class OffresEmploiBean implements Serializable {
     public void init() {
         listeDesOffresEmploi = metier.getAllOffresemploi();
         root = new DefaultTreeNode(new Offresemploi("intitulés", "descriptions", "types de contrat", "categories", "profils recherché", "diplomes demandes", "langues parlees", new Date(), new Date(), "prerequis du poste", "descriptions de la societe", Integer.MIN_VALUE));
-        DefaultTreeNode uneOffre1= new DefaultTreeNode(listeDesOffresEmploi.get(0), root);
-        DefaultTreeNode uneOffre2= new DefaultTreeNode(listeDesOffresEmploi.get(1), root);
-        DefaultTreeNode uneOffre3= new DefaultTreeNode(listeDesOffresEmploi.get(2), root);
+        if (!listeDesOffresEmploi.isEmpty()) {
+            for (int i = 0; i < listeDesOffresEmploi.size(); i++) {
+                 DefaultTreeNode uneOffre1 = new DefaultTreeNode(listeDesOffresEmploi.get(i), root);
+            }
+        }
     }
 
     public Imetier getMetier() {
@@ -105,9 +107,8 @@ public class OffresEmploiBean implements Serializable {
     }
 
     public String validerOffreEmploi() {
-        //persistance
-        Recruteur recruteur = new Recruteur("ahmet");
-        offresemploi.setUsername(recruteur);
+        //persistance avec le recruteur qui s'est connecté
+        offresemploi.setUsername(metier.getRecruteurById(redigerCV.getUser().getUsername()));
         metier.addOffresemploi(offresemploi);
         //informations
         FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Enregistrement", " L'offre d'emploi est sauvegardée avec succès!");
@@ -117,6 +118,13 @@ public class OffresEmploiBean implements Serializable {
 
     public String annulerOffreEmploi() {
         FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Vous avez annulé la saisie de l'offre d'emploi!");
+        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
+        return null;
+    }
+
+    public String postulerAuxOffreEmploi() {
+         //persistance avec le candidat qui s'est connecté
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Postulation", " Votre postulation à cette offre d'emploi est bien enregistrée!");
         RequestContext.getCurrentInstance().showMessageInDialog(msg1);
         return null;
     }

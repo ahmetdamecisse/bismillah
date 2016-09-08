@@ -83,17 +83,44 @@
                         <p:dialog id="dialog" header="Une offre d'emploi" showEffect="fade" widgetVar="offreDialog" modal="true" resizable="false">
                             <p:outputPanel id="offrePanel">
                                 <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty offresEmploiBean.selectedOffre}">
-                                    <h:outputLabel for="intitule" value="Intitulé du poste: " style="color: #000"  />
+                                    <h:outputLabel for="intitule" value="Intitulé du poste " style="color: #000"  />
                                     <h:outputText id="name" value="#{offresEmploiBean.selectedOffre.intitulePoste}" style="font-weight:bold" />
 
-                                    <h:outputLabel for="description" value="Description:" style="color: #000"/>
+                                    <h:outputLabel for="description" value="Description" style="color: #000"/>
                                     <h:outputText id="size" value="#{offresEmploiBean.selectedOffre.description}" style="font-weight:bold" />
 
                                     <h:outputLabel for="type" value="Type de contrat " style="color: #000"/>
                                     <h:outputText id="type" value="#{offresEmploiBean.selectedOffre.typeDeContrat}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="categorie" value="Catégorie " style="color: #000"  />
+                                    <h:outputText id="name2" value="#{offresEmploiBean.selectedOffre.categorie}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="profilRecherche" value="Profil recherché " style="color: #000"/>
+                                    <h:outputText id="size2" value="#{offresEmploiBean.selectedOffre.profilRecherche}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="diplomesDemandes" value="diplômes demandés " style="color: #000"/>
+                                    <h:outputText id="type1" value="#{offresEmploiBean.selectedOffre.diplomeDemandes}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="languesParlees" value="Langues parlées " style="color: #000"  />
+                                    <h:outputText id="name3" value="#{offresEmploiBean.selectedOffre.languesParlees}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="debutContrat" value="Début du contrat " style="color: #000"/>
+                                    <h:outputText id="size3" value="#{offresEmploiBean.selectedOffre.debutContrat}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="finContrat" value="Fin du contrat " style="color: #000"/>
+                                    <h:outputText id="type2" value="#{offresEmploiBean.selectedOffre.fincontrat}" style="font-weight:bold" />
+                                    
+                                    <h:outputLabel for="prerequisPoste" value="Prérequis du poste " style="color: #000"  />
+                                    <h:outputText id="name4" value="#{offresEmploiBean.selectedOffre.prerequisDuPoste}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="descripSociete" value="Description de la société " style="color: #000"/>
+                                    <h:outputText id="size4" value="#{offresEmploiBean.selectedOffre.descriptifDeLaSociete}" style="font-weight:bold" />
+
+                                    <h:outputLabel for="nobreAnneesExperience" value="Nombre d'années d'expèrience " style="color: #000"/>
+                                    <h:outputText id="type4" value="#{offresEmploiBean.selectedOffre.nbreDanneesDexperiences}" style="font-weight:bold" />
                                 </p:panelGrid>
                                 <div class="" style="background: #ffffff">
-                                    <p:commandButton value="Postulez!" update="growl" action="#{offresEmploiBean.annulerOffreEmploi()}" />
+                                    <p:commandButton value="Postulez!" update="growl" action="#{offresEmploiBean.postulerAuxOffreEmploi()}" />
                                 </div>
                             </p:outputPanel>
                         </p:dialog>

@@ -187,8 +187,21 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Recruteur getRecruteurById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Recruteur getRecruteurById(String username) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Recruteur where username= :leusername")
+                    .setParameter("leusername", username).list();
+            if (!list.isEmpty()) {
+               return (Recruteur) list.get(0);
+            }
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getRecruteurById: \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getRecruteurByName(String nom) {
@@ -782,12 +795,12 @@ public class Daojpa implements Idao {
 
     @Override
     public List getAllOffresemploi() {
-       return  getSessionFactory().getCurrentSession().createQuery("from Offresemploi").list();
+        return getSessionFactory().getCurrentSession().createQuery("from Offresemploi").list();
     }
 
     @Override
     public void addOffresemploi(Offresemploi o) {
-      try {
+        try {
             getSessionFactory().getCurrentSession().saveOrUpdate(o);
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");

@@ -14,6 +14,7 @@
         <sec:intercept-url pattern="/faqCandidat.AtoS" access="permitAll"/>
         <sec:intercept-url pattern="/inscription.AtoS" access="permitAll"/>
         <sec:intercept-url pattern="/employeur.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
+        <sec:intercept-url pattern="/offresEmploi.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
         <sec:intercept-url pattern="/candidats.AtoS" access="hasRole('ROLE_CANDIDAT')" />
         <sec:intercept-url pattern="/redigerUnCv.AtoS" access="hasRole('ROLE_CANDIDAT')" />
         <sec:form-login login-page="/connexion.AtoS"/>
