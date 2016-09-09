@@ -98,7 +98,7 @@ public class Langages implements Serializable {
 
     @Override
     public String toString() {
-        return "com.testeur.Langages[ langagesPK=" + langagesPK + " ]";
+        return "Nom du langage: "+langagesPK.getDomaine() + " Niveau: "+niveau+"/3";
     }
     
 }

@@ -34,6 +34,27 @@ public class testsDaoMetier {
 //            }
 //        }
 //    }
+    
+    @Test
+    public void LanguesEtLangageDuCandidatQuiSestConnecte() {
+        Users userRecup = metier.getUtilisateurByLoginAndPassporw("baba3", "baba3");
+        if (userRecup != null) {
+            Profil profilRecup = metier.getProfilByUsername(userRecup.getUsername());
+            if (profilRecup != null) {
+                if (metier.getFormationById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                    System.out.println("****Langages maîtrisés par le candidat Quia pour login: baba3 et pour mot de passe :baba3***");
+                    System.out.println(metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(0));
+                    System.out.println(metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(1));
+                    System.out.println(metier.getLangagesById(profilRecup.getIdTypeDeProfil()).get(2));
+                   System.out.println("****Langues parlées par le candidat Quia pour login: baba3 et pour mot de passe :baba3***");
+                    System.out.println(metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(0));
+                    System.out.println(metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(1));
+                    System.out.println(metier.getLangueById(profilRecup.getIdTypeDeProfil()).get(2));
+                }
+            }
+        }
+    }
+    
 //
 //    @Test
 //    public void tousLesUtilisateurs() {
