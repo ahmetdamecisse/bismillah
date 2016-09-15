@@ -15,11 +15,11 @@
             /WEB-INF/jsfspring-sec-security-config.xml
         </param-value> 
     </context-param>
-<!--    Le theme primefaces utilisé -->
-<!--    <context-param>
+    <!--    Le theme primefaces utilisé -->
+    <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>start</param-value>
-    </context-param>-->
+        <param-value>cupertino</param-value>
+    </context-param>
     <!-- The Bootstrap listener to start up and shut down Spring's root WebApplicationContext. It is registered to Servlet Container --> 
     <listener> 
         <listener-class> 

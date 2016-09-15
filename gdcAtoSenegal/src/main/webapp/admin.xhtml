@@ -12,7 +12,7 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <title>candidat</title>
+            <title>administrateur</title>
         </f:facet>
         <f:facet name="middle">
             <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
@@ -37,16 +37,20 @@
                 <a>
                     <img style="max-width:150px" src="resources/images/atoslogo.jpg"></img>
                 </a>
+                <a>
+                    <img style="max-width:150px; float: right" src="resources/images/EspaceRecrutement.jpg"></img>
+                </a>
                 <h:form>  
                     <p:growl id="messages"/>
                     <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
                         <p:menuitem value="accueil" url="http://localhost:8080/gdcAtoSenegal/index.AtoS" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Tableau de bord" url="http://localhost:8080/gdcAtoSenegal/tableau-de-bord.AtoS" icon="ui-icon-blog" style="color:white"/>
-                        <p:menuitem value="Mon CV" url="http://localhost:8080/gdcAtoSenegal/mon-cv.AtoS" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Offres d'emploi" url="http://localhost:8080/gdcAtoSenegal/listeOffreEmploiProposesCandidat.AtoS" icon="ui-icon-home" style="color:white"/>
-        
+                        <p:menuitem value="Publier les offres" url="http://localhost:8080/gdcAtoSenegal/offresEmploi.AtoS" icon="ui-icon-blog" style="color:white"/>
+                        <p:menuitem value="Accéder à la CVthèque" url="http://localhost:8080/gdcAtoSenegal/cvtheque.AtoS" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Fiche de test" url="http://localhost:8080/gdcAtoSenegal/ficheTest.AtoS" icon="ui-icon-home" style="color:white"/>
+                        <p:menuitem value="Fiche de poste" url="http://localhost:8080/gdcAtoSenegal/fichePoste.AtoS" icon="ui-icon-contact" style="color:white"/>
+
                         <f:facet name="options">
-                            <p:commandButton id="logout" value="Déconnexion" action="#{redigerCV.controlDeConnexion()}" style="margin-right: 10px"/>
+                             <p:commandButton id="logout" value="Déconnexion" action="#{redigerCV.controlDeConnexion()}" style="margin-right: 10px"/>
                             <p:inputText style="margin-right:10px" placeholder="Search"/>
                         </f:facet>
                     </p:menubar>
@@ -55,13 +59,13 @@
 
             <div style="background-color: #ffffff" >
                 <div class="row content panel-heading">
-                    <p style="font-style: italic; color:#0073a0; text-align: center; font-size: 30px">Bienvenue dans votre space de candidaure.</p>
+                    <p style="font-style: italic; color:#0073a0; text-align: center; font-size: 30px">Bienvenue sur votre espace de recrutement</p>
                     <div class="col-sm-12">
                         <div style="text-align: center">
                             <h:form id="form">           
                                 <p:growl id="msgs" showDetail="true" />
                                 <p:accordionPanel styleClass="ui-top">
-                                    <p:tab title="Bénéficiez d'un ensemble de services pour obtenir un emploi." titleStyle="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
+                                    <p:tab title="Bénéficiez de l'ensemble de ces services pour accélérer votre recrutement" titleStyle="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
                                         <h:panelGrid columns="2" cellpadding="10" styleClass="" >
                                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                                 <!-- Indicators -->
@@ -71,7 +75,7 @@
                                                     <li data-target="#myCarousel" data-slide-to="2"></li>
                                                     <li data-target="#myCarousel" data-slide-to="3"></li>
                                                 </ol>
-                                                <div class="carousel-inner" role="listbox" >
+                                                <div class="carousel-inner" role="listbox" style="width: 1000px" >
                                                     <div class="item active">
                                                         <img src="resources/images/atos1.jpg" alt="Chania" width="460" height="345"></img>
                                                     </div>
@@ -116,23 +120,20 @@
                                                     <h:form>
                                                         <p:growl id="msgs" showDetail="true" />
 
-                                                        <p:panel id="basic" header="Rédigez votre CV" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                        <p:panel id="basic" header="Mon profil" styleClass="redColoredPanel" style="margin-bottom:20px">
                                                             <h:panelGrid columns="2" cellpadding="10">
-                                                                <p:graphicImage value="resources/images/cv_1.jpg" style="margin-bottom: 20px; margin-right: 10px"/>
+                                                                <p:graphicImage value="resources/images/profil.jpg" style="margin-bottom: 20px; margin-right: 10px"/>
                                                                 <p style="text-align: justify">
-                                                                    .Informations personnelles
+                                                                    .Voir mon profil
                                                                 </p>
                                                                 <p style="text-align: justify">
-                                                                    .Parcours académique
+                                                                    .Modifier mon profil
 
                                                                 </p>
                                                                 <p style="text-align: justify">
-                                                                    .Compétences
+                                                                    .Supprimer mon profil
                                                                 </p>
-                                                                <p style="text-align: justify">
-                                                                    .Expériences professionnelles
-                                                                </p>
-                                                                <p:commandButton value="Rédigez votre CV" action="redigerUnCv" ajax="false" style="width: 200px"/>
+                                                                <p:commandButton value="Mon profil" action="offresEmploi" ajax="false" style="width: 200px"/>
 
                                                             </h:panelGrid>
                                                         </p:panel>
@@ -144,16 +145,16 @@
                                                     <h:form >
                                                         <p:growl id="msgs" showDetail="true" />
 
-                                                        <p:panel id="basic" header="Consultez nos offres d'emploi" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                        <p:panel id="basic" header="Tableau de bord" styleClass="redColoredPanel" style="margin-bottom:20px">
                                                             <h:panelGrid columns="2" cellpadding="10">
-                                                                <p:graphicImage value="resources/images/offresEmploi.jpg" style="margin-bottom: 20px; margin-right: 10px" />
+                                                                <p:graphicImage value="resources/images/tableau de bord.jpg" style="margin-bottom: 20px; margin-right: 10px" />
                                                                 <p style="text-align: justify">
-                                                                    .Postulez aux offres d'emploi d'AtoS
+                                                                    .Statistiques sur les candidats
                                                                 </p>
                                                                 <p style="text-align: justify">
-                                                                    .Déposez votre candidature spontanée
+                                                                    .Statistiques sur les recruteurs
                                                                 </p>
-                                                                <p:commandButton value="Consultez nos offres d'emploi" action="listeOffreEmploiProposesCandidat" ajax="false" style="width: 250px"/> <br/><br/>
+                                                                <p:commandButton value="Tableau de bord" action="cvtheque" ajax="false" style="width: 250px"/> <br/><br/>
                                                             </h:panelGrid>
                                                         </p:panel>
 
@@ -165,32 +166,34 @@
                                                     <h:form >
                                                         <p:growl id="msgs" showDetail="true" />
 
-                                                        <p:panel id="basic" header="Comment trouver un emploi à Atos?" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                        <p:panel id="basic" header="Candidats" styleClass="redColoredPanel" style="margin-bottom:20px">
                                                             <h:panelGrid columns="2" cellpadding="10">
-                                                                <p:graphicImage value="resources/images/commenttrouver.jpg" style="margin-bottom: 35px; margin-right: 10px" />
+                                                                <p:graphicImage value="resources/images/candidats.jpg" style="margin-bottom: 35px; margin-right: 10px" />
                                                                 <p class="myText">
-                                                                    .Nous vous donnons des conseils
-                                                                </p> <p class="myText">
-                                                                    .Nous vous guidons 
+                                                                    .Voir les candidats
                                                                 </p>
-                                                                <p:commandButton value="Comment trouver un emploi à Atos?" action="commentTrouverEmploi" ajax="false" style="width: 230px;"/><br/><br/>
+                                                             
+                                                                <p class="myText">
+                                                                    .Voir les candidatures 
+                                                                </p>
+                                                                <p:commandButton value="Candidats" action="fichePoste" ajax="false" style="width: 230px;"/><br/><br/>
                                                             </h:panelGrid>
                                                         </p:panel>
-                                                </h:form>
-                                                </div>
+                                                    </h:form>
+                                                </div> 
                                                 <div class="col-sm-6"> 
                                                     <h:form>
                                                         <p:growl id="msgs" showDetail="true" />
-                                                        <p:panel id="basic" header="FAQ" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                        <p:panel id="basic" header="Recruteurs" styleClass="redColoredPanel" style="margin-bottom:20px">
                                                             <h:panelGrid columns="2" cellpadding="10">
-                                                                <p:graphicImage value="resources/images/faq.jpg" style="margin-bottom: 10px; margin-right: 10px"/>
+                                                                <p:graphicImage value="resources/images/recruteurs2.jpg" style="margin-bottom: 10px; margin-right: 10px"/>
                                                                 <p class="myText">
-                                                                    .Des réponses à vos éventuelles questions
+                                                                    .Voir les recruteurs
                                                                 </p>
                                                                 <p class="myText">
-                                                                    .Des remarques importantes
+                                                                    .Voir les fiches de poste
                                                                 </p>
-                                                                <p:commandButton value="FAQ" action="faqCandidat" ajax="false" style="width: 250px"/><br/><br/>
+                                                                <p:commandButton value="Recruteurs" action="formulaire" ajax="false" style="width: 250px"/><br/><br/>
                                                             </h:panelGrid>
                                                         </p:panel>
                                                     </h:form>
