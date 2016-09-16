@@ -50,7 +50,7 @@
                         <p:menuitem value="Fiche de poste" url="http://localhost:8080/gdcAtoSenegal/fichePoste.AtoS" icon="ui-icon-contact" style="color:white"/>
 
                         <f:facet name="options">
-                             <p:commandButton id="logout" value="Déconnexion" action="#{redigerCV.controlDeConnexion()}" style="margin-right: 10px"/>
+                            <p:commandButton id="logout" value="Déconnexion" action="#{redigerCV.controlDeConnexion()}" style="margin-right: 10px"/>
                             <p:inputText style="margin-right:10px" placeholder="Search"/>
                         </f:facet>
                     </p:menubar>
@@ -91,8 +91,8 @@
                                                     <div class="item">
                                                         <img src="resources/images/atos4.jpg" alt="Flower" width="460" height="345"></img>
                                                     </div>
-                                                    
-                                                     <div class="item">
+
+                                                    <div class="item">
                                                         <img src="resources/images/atosSenegal.jpg" alt="Chania" width="460" height="345"></img>
                                                     </div>
                                                 </div>
@@ -112,97 +112,153 @@
 
                             <div class="row content panel-heading"><br/>
                                 <div class="col-sm-12">
-<!--                                    <p:accordionPanel styleClass="ui-top">
-                                        <p:tab title="Bénéficiez de l'ensemble de ces services pour accélérer votre recrutement" titleStyle="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">-->
+                                    <div class="row col-sm-12">
+                                        <div class="col-sm-6"> 
+                                            <h:form>
+                                                <p:growl id="msgs" showDetail="true" />
 
-                                            <div class="row col-sm-12">
-                                                <div class="col-sm-6"> 
-                                                    <h:form>
-                                                        <p:growl id="msgs" showDetail="true" />
+                                                <p:panel id="basic" header="Gérer vos offres" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                    <h:panelGrid columns="2" cellpadding="10">
+                                                        <p:graphicImage value="resources/images/offres_1.jpg" style="margin-bottom: 20px; margin-right: 10px"/>
+                                                        <p style="text-align: justify">
+                                                            .Publiez et gérez vos offres
+                                                        </p>
+                                                        <p style="text-align: justify">
+                                                            .Gérez vos candidatures
 
-                                                        <p:panel id="basic" header="Gérer vos offres" styleClass="redColoredPanel" style="margin-bottom:20px">
-                                                            <h:panelGrid columns="2" cellpadding="10">
-                                                                <p:graphicImage value="resources/images/offres_1.jpg" style="margin-bottom: 20px; margin-right: 10px"/>
-                                                                <p style="text-align: justify">
-                                                                    .Publiez et gérez vos offres
-                                                                </p>
-                                                                <p style="text-align: justify">
-                                                                    .Gérez vos candidatures
+                                                        </p>
+                                                        <p style="text-align: justify">
+                                                            .Contactez les candidats
+                                                        </p>
+                                                        <p:commandButton value="Publier une offre" action="offresEmploi" ajax="false" style="width: 200px"/>
 
-                                                                </p>
-                                                                <p style="text-align: justify">
-                                                                    .Contactez les candidats
-                                                                </p>
-                                                                <p:commandButton value="Publier une offre" action="offresEmploi" ajax="false" style="width: 200px"/>
+                                                    </h:panelGrid>
+                                                </p:panel>
 
-                                                            </h:panelGrid>
-                                                        </p:panel>
+                                            </h:form>
+                                        </div>
 
-                                                    </h:form>
-                                                </div>
+                                        <div class="col-sm-6"> 
+                                            <h:form >
+                                                <p:growl id="msgs" showDetail="true" />
 
-                                                <div class="col-sm-6"> 
-                                                    <h:form >
-                                                        <p:growl id="msgs" showDetail="true" />
+                                                <p:panel id="basic" header="Consulter la CVthèque" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                    <h:panelGrid columns="2" cellpadding="10">
+                                                        <p:graphicImage value="resources/images/cvtheque_2.jpg" style="margin-bottom: 20px; margin-right: 10px" />
+                                                        <p style="text-align: justify">
+                                                            .Recherchez les profils les plus adaptés à vos besoins.
+                                                        </p>
+                                                        <p style="text-align: justify">
+                                                            .Sélectionnez et contactez les cadres et jeunes diplômés.
+                                                        </p>
+                                                        <p:commandButton value="Consulter la CVthèque" action="cvtheque" ajax="false" style="width: 250px"/> <br/><br/>
+                                                    </h:panelGrid>
+                                                </p:panel>
 
-                                                        <p:panel id="basic" header="Consulter la CVthèque" styleClass="redColoredPanel" style="margin-bottom:20px">
-                                                            <h:panelGrid columns="2" cellpadding="10">
-                                                                <p:graphicImage value="resources/images/cvtheque_2.jpg" style="margin-bottom: 20px; margin-right: 10px" />
-                                                                <p style="text-align: justify">
-                                                                    .Recherchez les profils les plus adaptés à vos besoins.
-                                                                </p>
-                                                                <p style="text-align: justify">
-                                                                    .Sélectionnez et contactez les cadres et jeunes diplômés.
-                                                                </p>
-                                                                <p:commandButton value="Consulter la CVthèque" action="cvtheque" ajax="false" style="width: 250px"/> <br/><br/>
-                                                            </h:panelGrid>
-                                                        </p:panel>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                    <div class="row col-sm-12">
+                                        <div class="col-sm-6"> 
+                                            <h:form >
+                                                <p:growl id="msgs" showDetail="true" />
 
-                                                    </h:form>
-                                                </div>
-                                            </div>
-                                            <div class="row col-sm-12">
-                                                <div class="col-sm-6"> 
-                                                    <h:form >
-                                                        <p:growl id="msgs" showDetail="true" />
+                                                <p:panel id="basic" header="Saisir une fiche de poste" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                    <h:panelGrid columns="2" cellpadding="10">
+                                                        <p:graphicImage value="resources/images/FicheDePoste.jpg" style="margin-bottom: 35px; margin-right: 10px" />
+                                                        <p class="myText">
+                                                            .Décrivez le poste
+                                                        </p>
+                                                        <!--                                                                <p class="myText">
+                                                                                                                            .Décrivez le le profil requis
+                                                                                                                        </p>-->
+                                                        <p class="myText">
+                                                            .Décrivez et clarifiez ce que vous attendez de vos collaborateur. 
+                                                        </p>
+                                                        <p:commandButton value="Saisir une fiche de poste" action="fichePoste" ajax="false" style="width: 230px;"/><br/><br/>
+                                                    </h:panelGrid>
+                                                </p:panel>
+                                            </h:form>
+                                        </div> 
+                                        <div class="col-sm-6"> 
+                                            <h:form>
+                                                <p:growl id="msgs" showDetail="true" />
+                                                <p:panel id="basic" header="Saisir une fiche de test" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                    <h:panelGrid columns="2" cellpadding="10">
+                                                        <p:graphicImage value="resources/images/test_2.jpg" style="margin-bottom: 10px; margin-right: 10px"/>
+                                                        <p class="myText">
+                                                            .Remplissez la fiche de test avec des questions réponses
+                                                        </p>
+                                                        <p class="myText">
+                                                            .Testez les candidats en ligne
+                                                        </p>
+                                                        <p:commandButton value="Saisir une fiche de test" action="formulaire" ajax="false" style="width: 250px"/><br/><br/>
+                                                    </h:panelGrid>
+                                                </p:panel>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                    <div class="row col-sm-12">
+                                        <div class="col-sm-6"> 
+                                            <h:form >
+                                                <p:growl id="msgs" showDetail="true" />
 
-                                                        <p:panel id="basic" header="Saisir une fiche de poste" styleClass="redColoredPanel" style="margin-bottom:20px">
-                                                            <h:panelGrid columns="2" cellpadding="10">
-                                                                <p:graphicImage value="resources/images/FicheDePoste.jpg" style="margin-bottom: 35px; margin-right: 10px" />
-                                                                <p class="myText">
-                                                                    .Décrivez le poste
-                                                                </p>
-<!--                                                                <p class="myText">
-                                                                    .Décrivez le le profil requis
-                                                                </p>-->
-                                                                <p class="myText">
-                                                                    .Décrivez et clarifiez ce que vous attendez de vos collaborateur. 
-                                                                </p>
-                                                                <p:commandButton value="Saisir une fiche de poste" action="fichePoste" ajax="false" style="width: 230px;"/><br/><br/>
-                                                            </h:panelGrid>
-                                                        </p:panel>
-                                                    </h:form>
-                                                </div> 
-                                                <div class="col-sm-6"> 
-                                                    <h:form>
-                                                        <p:growl id="msgs" showDetail="true" />
-                                                        <p:panel id="basic" header="Saisir une fiche de test" styleClass="redColoredPanel" style="margin-bottom:20px">
-                                                            <h:panelGrid columns="2" cellpadding="10">
-                                                                <p:graphicImage value="resources/images/test_2.jpg" style="margin-bottom: 10px; margin-right: 10px"/>
-                                                                <p class="myText">
-                                                                    .Remplissez la fiche de test avec des questions réponses
-                                                                </p>
-                                                                <p class="myText">
-                                                                    .Testez les candidats en ligne
-                                                                </p>
-                                                                <p:commandButton value="Saisir une fiche de test" action="formulaire" ajax="false" style="width: 250px"/><br/><br/>
-                                                            </h:panelGrid>
-                                                        </p:panel>
-                                                    </h:form>
-                                                </div>
-                                            </div>
-<!--                                        </p:tab>
-                                    </p:accordionPanel>-->
+                                                <p:panel id="basic" header="Candidats" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                    <h:panelGrid columns="2" cellpadding="10">
+                                                        <p:graphicImage value="resources/images/candidats.jpg" style="margin-bottom: 35px; margin-right: 10px" />
+                                                        <p class="myText">
+                                                            .Notifier un candidatat
+                                                        </p>
+                                                        <p class="myText">
+                                                            .Fixer un entretien 
+                                                        </p>
+                                                        <p class="myText">
+                                                            .Archiver une candidature
+                                                        </p>
+                                                        <p:commandButton value="Candidats" action="fichePoste" ajax="false" style="width: 230px;"/><br/><br/>
+                                                    </h:panelGrid>
+                                                </p:panel>
+                                            </h:form>
+                                        </div> 
+                                        <div class="col-sm-6"> 
+                                            <h:form>
+                                                <p:growl id="msgs" showDetail="true" />
+                                                <p:panel id="basic" header="Suivi des entretiens" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                    <h:panelGrid columns="2" cellpadding="10">
+                                                        <p:graphicImage value="resources/images/suiviEntretiens.jpg" style="margin-bottom: 10px; margin-right: 10px"/>
+                                                        <p class="myText">
+                                                            .Entretiens dèja effectués avec certains candidats
+                                                        </p>
+                                                        <p class="myText">
+                                                            .Mails envoyés aux candidats
+                                                        </p>
+                                                        <p:commandButton value="Suivi des entretiens" action="formulaire" ajax="false" style="width: 250px"/><br/><br/>
+                                                    </h:panelGrid>
+                                                </p:panel>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                    <div class="row col-sm-12">
+                                        <div class="col-sm-3"> </div>
+                                        <div class="col-sm-6"> 
+                                            <h:form>
+                                                <p:growl id="msgs" showDetail="true" />
+                                                <p:panel id="basic" header="Statistiques" styleClass="redColoredPanel" style="margin-bottom:20px">
+                                                    <h:panelGrid columns="2" cellpadding="10">
+                                                        <p:graphicImage value="resources/images/statistiques.jpg" style="margin-bottom: 10px; margin-right: 10px"/>
+                                                        <p class="myText">
+                                                            .Nombre de recrues sur une période donnée
+                                                        </p>
+                                                        <p class="myText">
+                                                            .Histogramme du nombre de recrues par mois sur l'année en cours
+                                                        </p>
+                                                        <p:commandButton value="Statistiques" action="formulaire" ajax="false" style="width: 250px"/><br/><br/>
+                                                    </h:panelGrid>
+                                                </p:panel>
+                                            </h:form>
+                                        </div>
+                                        <div class="col-sm-3"> </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
