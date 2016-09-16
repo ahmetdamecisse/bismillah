@@ -46,7 +46,7 @@ public class OffresEmploiBean implements Serializable {
             }
         }
     }
-
+//fghjkl
     public Imetier getMetier() {
         return metier;
     }
