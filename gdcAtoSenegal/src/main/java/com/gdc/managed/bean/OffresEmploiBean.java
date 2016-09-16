@@ -6,7 +6,6 @@
 package com.gdc.managed.bean;
 
 import com.gdc.model.Offresemploi;
-import com.gdc.model.Recruteur;
 import com.gdc.services.Imetier;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,7 +15,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.swing.tree.TreeNode;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.DefaultTreeNode;
 
