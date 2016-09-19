@@ -147,8 +147,21 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Candidat getCandidatById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Candidat getCandidatById(String username) {
+       try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Candidat where username= :leusername")
+                    .setParameter("leusername", username).list();
+            if (!list.isEmpty()) {
+               return (Candidat) list.get(0);
+            }
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getCandidatById: \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getCandidatByName(String nom) {

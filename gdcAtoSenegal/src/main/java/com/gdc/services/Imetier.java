@@ -53,7 +53,7 @@ public interface Imetier {
 
     public void updateCandidat(Users utilisateurModifinat, Integer idCandidatAmodifier);
 
-    public Candidat getCandidatById(Integer id);
+    public Candidat getCandidatById(String username);
 
     public List getCandidatByName(String nom);
 
