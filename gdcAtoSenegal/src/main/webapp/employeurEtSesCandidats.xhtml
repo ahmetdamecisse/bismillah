@@ -63,7 +63,7 @@
                     <h:form id="form" style="margin-right: 30px;margin-left: 30px">
                         <p:treeTable value="#{notificationsBean.root}" var="unCandidat">
                             <f:facet name="header">
-                                Tous les cansidats
+                                Tous les candidats
                             </f:facet>
                             <p:column headerText="idTypeProfil">
                                 <h:outputText value="#{unCandidat.idTypeDeProfil.idTypeDeProfil}" />
@@ -75,7 +75,7 @@
                                 <h:outputText value="#{unCandidat.users.nom}" />
                             </p:column>
                             <p:column style="width:32px">
-                                <p:commandLink update=":form:candidatPanel" oncomplete="PF('candidatDialog').show()" title="Plus de détails" styleClass="ui-icon ui-icon-search" >
+                                <p:commandLink update=":form:candidatPanel" oncomplete="PF('candidatDialog').show()" title="Plus de détails" styleClass="fa fa-search" >
                                     <f:setPropertyActionListener value="#{unCandidat}" target="#{notificationsBean.selectedCandidat}" />
                                 </p:commandLink>
                             </p:column>
@@ -83,17 +83,53 @@
 
                         <p:dialog id="dialog" header="Un candidat" showEffect="fade" widgetVar="candidatDialog" modal="true" resizable="false">
                             <p:outputPanel id="candidatPanel">
-                                <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty notificationsBean.selectedCandidat}">
-                                    <h:outputLabel for="idTypeProfil" value="idTypeProfil " style="color: #000"  />
-                                    <h:outputText id="name" value="#{notificationsBean.selectedCandidat.idTypeDeProfil.idTypeDeProfil}" style="font-weight:bold" />
-
-                                    <h:outputLabel for="prenom" value="Prénom" style="color: #000"/>
-                                    <h:outputText id="size" value="#{notificationsBean.selectedCandidat.users.prenom}" style="font-weight:bold" />
-
+                                <p:panelGrid  style="margin-top:20px" rendered="#{not empty notificationsBean.selectedCandidat}">
+                                    <f:facet name="header">
+                                        <p:row>
+                                            <p:column >idTypeProfil</p:column>
+                                            <p:column >Prénom</p:column>
+                                            <p:column >Nom</p:column>
+                                            <p:column>Spécialité</p:column>
+                                            <p:column >Adresse</p:column>
+                                            <p:column >Date de naissance</p:column>
+                                            <p:column >Téléphone</p:column>
+                                            <p:column>Mail</p:column>
+                                        </p:row>
+                                    </f:facet>  
+                                    <p:row>
+                                        <p:column>
+                                            <h:outputText value="#{notificationsBean.selectedCandidat.idTypeDeProfil.idTypeDeProfil}" style="font-weight:bold"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{notificationsBean.selectedCandidat.users.prenom}" style="font-weight:bold" />
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{notificationsBean.selectedCandidat.users.nom}" style="font-weight:bold"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{notificationsBean.selectedCandidat.users.specialite}" style="font-weight:bold" />
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{notificationsBean.selectedCandidat.users.localisation}" style="font-weight:bold"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{notificationsBean.selectedCandidat.users.dateDeNaissance}" style="font-weight:bold" />
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{notificationsBean.selectedCandidat.users.telephone}" style="font-weight:bold"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText value="#{notificationsBean.selectedCandidat.users.mail}" style="font-weight:bold" />
+                                        </p:column>
+                                    </p:row>
+                                    <f:facet name="footer">
+                                        <p:row>
+                                            <p:commandButton value="Archiver" icon="fa fa-archive" update="growl" action="#{notificationsBean.archiverCandidat()}" />
+                                            <p:commandButton value="Notifier" icon="fa fa-envelope-o" update="growl" action="#{notificationsBean.notifierCandidat()}" />
+                                            <p:commandButton value="Fixer un entretien" icon="fa fa-fw fa-edit" update="growl" action="#{notificationsBean.fixerEntretienCandidat()}" />
+                                        </p:row>
+                                    </f:facet>
                                 </p:panelGrid>
-                                <div class="" style="background: #ffffff">
-                                    <p:commandButton value="Postulez!" update="growl" action="#{offresEmploiBean.postulerAuxOffreEmploi()}" />
-                                </div>
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>

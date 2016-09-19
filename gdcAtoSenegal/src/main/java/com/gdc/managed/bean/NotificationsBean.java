@@ -12,9 +12,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import org.primefaces.context.RequestContext;
 import org.primefaces.model.DefaultTreeNode;
 
 /**
@@ -46,6 +48,24 @@ public class NotificationsBean implements Serializable {
     private List listecandidats;
     private DefaultTreeNode root;
     private Candidat selectedCandidat;
+    
+     public String archiverCandidat() {
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Tests!");
+        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
+        return null;
+    }
+     
+     public String notifierCandidat() {
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Tests!");
+        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
+        return null;
+    }
+     
+     public String fixerEntretienCandidat() {
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Tests!");
+        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
+        return null;
+    }
 
     public Candidat getSelectedCandidat() {
         return selectedCandidat;
