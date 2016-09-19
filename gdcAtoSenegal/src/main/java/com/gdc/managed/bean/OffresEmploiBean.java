@@ -7,7 +7,6 @@ package com.gdc.managed.bean;
 
 import com.gdc.model.Candidat;
 import com.gdc.model.Offresemploi;
-import com.gdc.model.Recruteur;
 import com.gdc.services.Imetier;
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -98,7 +98,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getAllCandidat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      return getDaojpa().getAllCandidat();
     }
 
     @Transactional(readOnly = false)

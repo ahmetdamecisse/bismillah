@@ -127,7 +127,7 @@ public class Daojpa implements Idao {
     }
 
     public List getAllCandidat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getSessionFactory().getCurrentSession().createQuery("from Candidat").list();
     }
 
     public void addCandidat(Candidat c) {
