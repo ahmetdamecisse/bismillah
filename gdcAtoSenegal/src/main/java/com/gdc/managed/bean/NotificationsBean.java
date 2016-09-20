@@ -24,6 +24,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.DefaultTreeNode;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -54,6 +55,15 @@ public class NotificationsBean implements Serializable {
     private List listecandidats;
     private DefaultTreeNode root;
     private Candidat selectedCandidat;
+    //**********************variable dans l'envoi du mail***************
+    private String from;
+    private String PASSWORD;
+    private String RECIPIENT;
+    private String subject;
+    private String body;
+    private UploadedFile pieceJointe;
+    private boolean afficherInterfaceMailActivator = false;
+    //**********************variable dans l'envoi du mail***************
 
     public String archiverCandidat() {
         FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Tests!");
@@ -63,11 +73,10 @@ public class NotificationsBean implements Serializable {
 
     public String notifierCandidat() {
         //**********************variable dans l'envoi du mail***************
-        String from = "ahmetdamecisse";  // GMail user name (just the part before "@gmail.com")
-        String PASSWORD = "ahmeth1989"; // GMail password
-        String RECIPIENT = "ahmet.dame@hotmail.fr";
-        String subject = "Java send mail example";
-        String body = "Welcome to JavaMail!";
+        from = "ahmetdamecisse";  // GMail user name (just the part before "@gmail.com") On doit le faire avec compte et un mot de passe prévu à cet effet
+        PASSWORD = "ahmeth1989"; // GMail password
+        RECIPIENT = selectedCandidat.getUsers().getMail();
+        subject = "Informations";
         //**********************variable dans l'envoi du mail***************
         String[] to = {RECIPIENT}; // list of recipient email addresses
         sendFromGMail(from, PASSWORD, to, subject, body);
@@ -121,6 +130,11 @@ public class NotificationsBean implements Serializable {
         }
     }
 
+    public String afficherInterfaceMail() {
+        setAfficherInterfaceMailActivator(true);
+        return null;
+    }
+
     public String fixerEntretienCandidat() {
         FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Tests!");
         RequestContext.getCurrentInstance().showMessageInDialog(msg1);
@@ -160,6 +174,62 @@ public class NotificationsBean implements Serializable {
     }
 
     public NotificationsBean() {
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getPASSWORD() {
+        return PASSWORD;
+    }
+
+    public void setPASSWORD(String PASSWORD) {
+        this.PASSWORD = PASSWORD;
+    }
+
+    public String getRECIPIENT() {
+        return RECIPIENT;
+    }
+
+    public void setRECIPIENT(String RECIPIENT) {
+        this.RECIPIENT = RECIPIENT;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public UploadedFile getPieceJointe() {
+        return pieceJointe;
+    }
+
+    public void setPieceJointe(UploadedFile pieceJointe) {
+        this.pieceJointe = pieceJointe;
+    }
+
+    public boolean isAfficherInterfaceMailActivator() {
+        return afficherInterfaceMailActivator;
+    }
+
+    public void setAfficherInterfaceMailActivator(boolean afficherInterfaceMailActivator) {
+        this.afficherInterfaceMailActivator = afficherInterfaceMailActivator;
     }
 
 }

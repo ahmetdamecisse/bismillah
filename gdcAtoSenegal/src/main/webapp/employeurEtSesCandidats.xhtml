@@ -125,11 +125,21 @@
                                     <f:facet name="footer">
                                         <p:row>
                                             <p:commandButton value="Archiver" icon="fa fa-archive" update="growl" action="#{notificationsBean.archiverCandidat()}" />
-                                            <p:commandButton value="Notifier" icon="fa fa-envelope-o" update="growl" action="#{notificationsBean.notifierCandidat()}" />
+                                            <p:commandButton value="Notifier" icon="fa fa-envelope-o" update="growl" action="#{notificationsBean.afficherInterfaceMail()}" />
                                             <p:commandButton value="Fixer un entretien" icon="fa fa-fw fa-edit" update="growl" action="#{notificationsBean.fixerEntretienCandidat()}" />
                                         </p:row>
                                     </f:facet>
                                 </p:panelGrid>
+                                <!--*************************************Interface de saisi du mail début-->
+                                <p:separator/>
+                                <p:editor id="editor" widgetVar="editorWidget" value="#{notificationsBean.body}" width="900" rendered="#{notificationsBean.afficherInterfaceMailActivator}"/>
+                                <p:separator/>
+                                <h:panelGrid columns="4" style="margin-top: 10px">
+                                    <p:commandButton value="Envoyer" icon="fa fa-send" update="growl" action="#{notificationsBean.notifierCandidat()}" rendered="#{notificationsBean.afficherInterfaceMailActivator}"/>
+                                    <p:commandButton value="Vider" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" rendered="#{notificationsBean.afficherInterfaceMailActivator}"/>
+                                    <p:fileUpload  value="#{notificationsBean.pieceJointe}" mode="simple" skinSimple="false" rendered="#{notificationsBean.afficherInterfaceMailActivator}"/>
+                                </h:panelGrid>
+                                <!--***************************************Interface de saisi du mail fin-->
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
