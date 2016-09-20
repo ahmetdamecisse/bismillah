@@ -266,7 +266,14 @@ public class Daojpa implements Idao {
     }
 
     public void addEntretien(Entretien e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            getSessionFactory().getCurrentSession().saveOrUpdate(e);
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode addEntretien(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
     }
 
     public void removeEntretien(Entretien e) {

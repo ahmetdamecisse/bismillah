@@ -7,9 +7,12 @@ package com.gdc.managed.bean;
 
 import com.gdc.model.Candidat;
 import com.gdc.services.Imetier;
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,7 +24,9 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.UploadedFile;
@@ -55,6 +60,7 @@ public class NotificationsBean implements Serializable {
     private List listecandidats;
     private DefaultTreeNode root;
     private Candidat selectedCandidat;
+    private String etatProfil;
     //**********************variable dans l'envoi du mail***************
     private String from;
     private String PASSWORD;
@@ -66,7 +72,7 @@ public class NotificationsBean implements Serializable {
     //**********************variable dans l'envoi du mail***************
 
     public String archiverCandidat() {
-        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Tests!");
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Archivavge!");
         RequestContext.getCurrentInstance().showMessageInDialog(msg1);
         return null;
     }
@@ -79,12 +85,13 @@ public class NotificationsBean implements Serializable {
         subject = "Informations";
         //**********************variable dans l'envoi du mail***************
         String[] to = {RECIPIENT}; // list of recipient email addresses
-        sendFromGMail(from, PASSWORD, to, subject, body);
+        File file = new File("C:\\Users\\A618092\\Desktop\\mes bagages\\Version la plus récente\\memoire Thies\\ProjetMemoreGantt.gan");
+        sendFromGMail(from, PASSWORD, to, subject, body, file);
 
         return null;
     }
 
-    private static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
+    private static void sendFromGMail(String from, String pass, String[] to, String subject, String body, File file) {
         Properties props = System.getProperties();
         String host = "smtp.gmail.com";
         props.put("mail.smtp.starttls.enable", "true");
@@ -110,8 +117,22 @@ public class NotificationsBean implements Serializable {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
             }
 
+            FileDataSource datasource1 = new FileDataSource(file);
+            DataHandler handler1 = new DataHandler(datasource1);
+            MimeBodyPart partiePieceJointe = new MimeBodyPart();
+            partiePieceJointe.setDataHandler(handler1);
+            partiePieceJointe.setFileName(datasource1.getName());
+
+            MimeBodyPart partieContenu = new MimeBodyPart();
+            partieContenu.setContent(body, "text/plain");
+
+            MimeMultipart mimeMultipart = new MimeMultipart();
+            mimeMultipart.addBodyPart(partieContenu);
+            mimeMultipart.addBodyPart(partiePieceJointe);
+
             message.setSubject(subject);
-            message.setText(body);
+            message.setContent(mimeMultipart);
+
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);
             transport.sendMessage(message, message.getAllRecipients());
@@ -132,12 +153,6 @@ public class NotificationsBean implements Serializable {
 
     public String afficherInterfaceMail() {
         setAfficherInterfaceMailActivator(true);
-        return null;
-    }
-
-    public String fixerEntretienCandidat() {
-        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Tests!");
-        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
         return null;
     }
 
@@ -230,6 +245,14 @@ public class NotificationsBean implements Serializable {
 
     public void setAfficherInterfaceMailActivator(boolean afficherInterfaceMailActivator) {
         this.afficherInterfaceMailActivator = afficherInterfaceMailActivator;
+    }
+
+    public String getEtatProfil() {
+        return etatProfil;
+    }
+
+    public void setEtatProfil(String etatProfil) {
+        this.etatProfil = etatProfil;
     }
 
 }

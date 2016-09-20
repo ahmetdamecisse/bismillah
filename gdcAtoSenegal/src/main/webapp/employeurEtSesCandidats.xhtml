@@ -124,9 +124,9 @@
                                     </p:row>
                                     <f:facet name="footer">
                                         <p:row>
-                                            <p:commandButton value="Archiver" icon="fa fa-archive" update="growl" action="#{notificationsBean.archiverCandidat()}" />
+                                            <p:commandButton value="Archiver" icon="fa fa-archive" update="growl" oncomplete="PF('dlg').show()" />
                                             <p:commandButton value="Notifier" icon="fa fa-envelope-o" update="growl" action="#{notificationsBean.afficherInterfaceMail()}" />
-                                            <p:commandButton value="Fixer un entretien" icon="fa fa-fw fa-edit" update="growl" action="#{notificationsBean.fixerEntretienCandidat()}" />
+                                            <p:commandButton value="Fixer un entretien" icon="fa fa-fw fa-edit" update="growl" oncomplete="PF('dlg2').show()" />
                                         </p:row>
                                     </f:facet>
                                 </p:panelGrid>
@@ -139,7 +139,43 @@
                                     <p:commandButton value="Vider" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" rendered="#{notificationsBean.afficherInterfaceMailActivator}"/>
                                     <p:fileUpload  value="#{notificationsBean.pieceJointe}" mode="simple" skinSimple="false" rendered="#{notificationsBean.afficherInterfaceMailActivator}"/>
                                 </h:panelGrid>
-                                <!--***************************************Interface de saisi du mail fin-->
+                                <!--*************Interface de saisi du mail fin etn debut Interface pour l'archivage-->
+                                <p:dialog header="Archivavge" widgetVar="dlg" showEffect="fade" hideEffect="fade">
+                                    <h:panelGrid style="margin-top: 10px"> 
+                                        <p:selectOneMenu id="typedArchivage" value="#{notificationsBean.etatProfil}" style="width:130px">
+                                            <f:selectItem itemLabel="Choisir une valeur" itemValue="" />
+                                            <f:selectItem itemLabel="Classé sans suite" itemValue="Classé sans suite" />
+                                            <f:selectItem itemLabel="En phase d'étude" itemValue="En phase d'étude" />
+                                            <f:selectItem itemLabel="Recruté" itemValue="Recruté" />
+                                        </p:selectOneMenu>
+                                    </h:panelGrid>
+                                    <f:facet name="footer">
+                                        <p:row>
+                                            <p:commandButton value="Archiver" icon="fa fa-archive" update="growl" action="#{notificationsBean.archiverCandidat()}" />   
+                                        </p:row>
+                                    </f:facet>
+                                </p:dialog>
+                                <!--***************************************Interface pour l'archivage debut entrtien**************************************-->
+                                <p:dialog header="entretien" widgetVar="dlg2" showEffect="fade" hideEffect="fade">
+                                    <h:panelGrid columns="2" style="margin-top: 10px"> 
+                                        <p:outputLabel for="typeDentretien" value="Type: " />
+                                        <p:selectOneMenu id="typeDentretien" value="#{entretienBean.entretien.typeEntretien}" style="width:125px">
+                                            <f:selectItem itemLabel="Choisir une valeur" itemValue="" />
+                                            <f:selectItem itemLabel="Entretien technique" itemValue="Entretien technique" />
+                                            <f:selectItem itemLabel="Entretien DRH" itemValue="Entretien DRH" />
+                                        </p:selectOneMenu>
+                                        <p:outputLabel for="datetime1" value="Date de début: " />
+                                        <p:calendar id="datetime1" value="#{entretienBean.entretien.dateDebEntreti}" pattern="dd/MM/yyyy HH:mm:ss" />
+                                        <p:outputLabel for="datetime2" value="Date de fin: " />
+                                        <p:calendar id="datetime2" value="#{entretienBean.entretien.ateFinEntreti}" pattern="dd/MM/yyyy HH:mm:ss" />
+                                    </h:panelGrid>
+                                    <f:facet name="footer">
+                                        <p:row>
+                                            <p:commandButton value="Fixer un entretien" icon="fa fa-fw fa-edit" update="growl" action="#{entretienBean.fixerEntretienCandidat()}" />   
+                                        </p:row>
+                                    </f:facet>
+                                </p:dialog>
+                                <!--***************************************Interface pour l'archivage debut entrtien**************************************-->
                             </p:outputPanel>
                         </p:dialog>
                     </h:form>
