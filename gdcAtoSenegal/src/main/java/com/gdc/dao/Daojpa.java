@@ -631,11 +631,16 @@ public class Daojpa implements Idao {
     }
 
     public void addNotification(Notification n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       try {
+            getSessionFactory().getCurrentSession().save(n);
+        } catch (Throwable th) {
+            System.out.println("erreur lors de la persistence de l'objet Notification" + n.getCorpsMessage());
+            throw new pfcgdcexception(th, 10);
+        }
     }
 
     public void removeNotification(Notification n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      //To change body of generated methods, choose Tools | Templates.
     }
 
     public void updateNotification(Notification n) {

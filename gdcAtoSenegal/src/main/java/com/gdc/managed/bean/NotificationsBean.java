@@ -6,16 +6,15 @@
 package com.gdc.managed.bean;
 
 import com.gdc.model.Candidat;
+import com.gdc.model.Notification;
 import com.gdc.model.Profil;
+import com.gdc.model.Recruteur;
 import com.gdc.services.Imetier;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.annotation.PostConstruct;
@@ -32,7 +31,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import org.apache.commons.io.FileUtils;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.UploadedFile;
@@ -51,6 +49,10 @@ public class NotificationsBean implements Serializable {
     //Spring User Service is injected...
     @ManagedProperty(value = "#{Metier}")
     Imetier metier;
+    
+     //Injecting Managed beans
+    @ManagedProperty(value = "#{redigerCV}")
+    private RedigerCV redigerCV;
 
     @PostConstruct
     public void init() {
@@ -73,6 +75,7 @@ public class NotificationsBean implements Serializable {
     private String RECIPIENT;
     private String subject;
     private String body;
+    private Notification notification=new Notification();
     private UploadedFile pieceJointe;
     private boolean afficherInterfaceMailActivator = false;
     //**********************variable dans l'envoi du mail***************
@@ -94,7 +97,16 @@ public class NotificationsBean implements Serializable {
         PASSWORD = "ahmeth1989"; // GMail password
         RECIPIENT = selectedCandidat.getUsers().getMail();
         subject = "Informations";
-        //**********************variable dans l'envoi du mail***************
+        //**********************variable dans l'envoi du mail debut persistence notification***************
+        Recruteur recruteurQuiNotifie=metier.getRecruteurById(redigerCV.getUser().getUsername());
+        notification.setUsername(recruteurQuiNotifie);
+        notification.setDestinateur(recruteurQuiNotifie.getUsers().getPrenom()+" "+recruteurQuiNotifie.getUsers().getNom());
+        notification.setDestinataire(selectedCandidat.getUsername());
+        notification.setCorpsMessage(body);
+       // notification.setPj(pieceJointe);
+        notification.setDateNotification(new Date());
+        metier.addNotification(notification);
+        //**********************fin persistence notification***************
         String[] to = {RECIPIENT}; // list of recipient email addresses
         File file = new File("C:\\Users\\A618092\\Desktop\\mes bagages\\Version la plus récente\\memoire Thies\\ProjetMemoreGantt.gan");
         sendFromGMail(from, PASSWORD, to, subject, body, file);
@@ -267,4 +279,19 @@ public class NotificationsBean implements Serializable {
         this.etatProfil = etatProfil;
     }
 
+    public Notification getNotification() {
+        return notification;
+    }
+
+    public void setNotification(Notification notification) {
+        this.notification = notification;
+    }
+
+    public RedigerCV getRedigerCV() {
+        return redigerCV;
+    }
+
+    public void setRedigerCV(RedigerCV redigerCV) {
+        this.redigerCV = redigerCV;
+    }
 }

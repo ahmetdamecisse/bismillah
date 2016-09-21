@@ -98,7 +98,7 @@ public class Metier implements Imetier {
 
     @Override
     public List getAllCandidat() {
-      return getDaojpa().getAllCandidat();
+        return getDaojpa().getAllCandidat();
     }
 
     @Transactional(readOnly = false)
@@ -119,7 +119,7 @@ public class Metier implements Imetier {
 
     @Override
     public Candidat getCandidatById(String username) {
-       return getDaojpa().getCandidatById(username);
+        return getDaojpa().getCandidatById(username);
     }
 
     @Override
@@ -542,9 +542,10 @@ public class Metier implements Imetier {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Transactional(readOnly = false)
     @Override
     public void addNotification(Notification n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        getDaojpa().addNotification(n);
     }
 
     @Override
@@ -710,37 +711,29 @@ public class Metier implements Imetier {
     @Override
     public void addOffresemploi(Offresemploi o) {
         getDaojpa().addOffresemploi(o);
-        }
-
-        @Override
-        public void removeOffresemploi
-        (Offresemploi o
-        
-            ) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void updateOffresemploi
-        (Offresemploi o
-        
-            ) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public Notification getOffresemploiById
-        (Integer id
-        
-            ) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public List getOffresemploiByName
-        (String nom
-        
-            ) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
     }
+
+    @Override
+    public void removeOffresemploi(Offresemploi o
+    ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updateOffresemploi(Offresemploi o
+    ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Notification getOffresemploiById(Integer id
+    ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List getOffresemploiByName(String nom
+    ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
