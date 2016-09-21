@@ -43,7 +43,10 @@ public class EntretienBean implements Serializable {
         // entretien.setVersion(1);
         entretien.setUsername(metier.getRecruteurById(redigerCV.getUser().getUsername()));
         entretien.setResultat(BigInteger.ZERO);
-        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", entretien.getTypeEntretien());
+        
+        metier.addEntretien(entretien);
+        
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Entretien", "Enregistré avec succès.");
         RequestContext.getCurrentInstance().showMessageInDialog(msg1);
         return null;
     }

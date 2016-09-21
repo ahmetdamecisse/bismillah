@@ -22,6 +22,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -58,6 +59,7 @@ public class Entretien implements Serializable {
     private Date ateFinEntreti;
     @Column(name = "resultat")
     private BigInteger resultat;
+    @Version
     @Column(name = "version")
     private Integer version;
     @JoinColumn(name = "username", referencedColumnName = "username")

@@ -621,7 +621,7 @@ public class Metier implements Imetier {
 
     @Override
     public Profil getProfilById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getDaojpa().getProfilById(id);
     }
 
     @Override

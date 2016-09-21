@@ -6,11 +6,16 @@
 package com.gdc.managed.bean;
 
 import com.gdc.model.Candidat;
+import com.gdc.model.Profil;
 import com.gdc.services.Imetier;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.annotation.PostConstruct;
@@ -27,6 +32,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import org.apache.commons.io.FileUtils;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.UploadedFile;
@@ -72,7 +78,12 @@ public class NotificationsBean implements Serializable {
     //**********************variable dans l'envoi du mail***************
 
     public String archiverCandidat() {
-        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Annulation", " Archivavge!");
+        Profil p = selectedCandidat.getIdTypeDeProfil();
+        p.setEtatProfil(etatProfil);
+
+        metier.addProfil(p);
+
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Archivage", " effectué avec succès.");
         RequestContext.getCurrentInstance().showMessageInDialog(msg1);
         return null;
     }
@@ -116,7 +127,8 @@ public class NotificationsBean implements Serializable {
             for (int i = 0; i < toAddress.length; i++) {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
             }
-
+            //converting an UploadedFile into a java File.
+            
             FileDataSource datasource1 = new FileDataSource(file);
             DataHandler handler1 = new DataHandler(datasource1);
             MimeBodyPart partiePieceJointe = new MimeBodyPart();
@@ -148,7 +160,7 @@ public class NotificationsBean implements Serializable {
             FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Echec", " de l'envoi de la notification!");
             RequestContext.getCurrentInstance().showMessageInDialog(msg1);
             me.printStackTrace();
-        }
+        } 
     }
 
     public String afficherInterfaceMail() {

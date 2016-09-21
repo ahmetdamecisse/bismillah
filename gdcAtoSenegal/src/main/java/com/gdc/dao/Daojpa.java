@@ -148,12 +148,12 @@ public class Daojpa implements Idao {
     }
 
     public Candidat getCandidatById(String username) {
-       try {
+        try {
             List list = getSessionFactory().getCurrentSession()
                     .createQuery("from Candidat where username= :leusername")
                     .setParameter("leusername", username).list();
             if (!list.isEmpty()) {
-               return (Candidat) list.get(0);
+                return (Candidat) list.get(0);
             }
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
@@ -206,7 +206,7 @@ public class Daojpa implements Idao {
                     .createQuery("from Recruteur where username= :leusername")
                     .setParameter("leusername", username).list();
             if (!list.isEmpty()) {
-               return (Recruteur) list.get(0);
+                return (Recruteur) list.get(0);
             }
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
@@ -714,7 +714,22 @@ public class Daojpa implements Idao {
     }
 
     public Profil getProfilById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from Profil where idTypeDeProfil= :lidTypeDeProfil")
+                    .setParameter("lidTypeDeProfil", id).list();
+            Profil p;
+            if (!list.isEmpty()) {
+              p=(Profil) list.get(0);
+              return  p;
+            }
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getProfilById): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public List getProfilByCompetence(String x, String y, String z) {
