@@ -65,65 +65,128 @@
             </div>
             <div style="background-color: #ffffff" >
                 <div class="row content panel-heading">
+                    <p:growl id="growl" showDetail="true" />
                     <h:form>
-                    <div class="col-sm-3">
-                        
-                            <p:growl id="msgs" showDetail="true" />
-                            
+                        <div class="col-sm-3">
                             <p:panel id="basic" header="Critères de recherche" style="margin-bottom:20px;background: #ffffff"><br/>
                                 <h:panelGrid columns="2" cellpadding="10" style="background: #ffffff">
                                     <h:form>
                                         <p:outputLabel value="FILIATION" style="font-size: 12px"/>
-                                        <p:inputText value="#{userWizard.user.filiation}" required="true" label="filiation"/><br/><br/>
+                                        <p:inputText value="#{cvthequeBean.filiation}"  label="filiation"/><br/><br/>
                                         <p:outputLabel value="COMPETENCES FONCTIONNELLES" style="font-size: 12px" />
-                                        <p:inputText value="#{userWizard.user.competenceT}" required="true" label="competenceT"/><br/> <br/> 
+                                        <p:inputText value="#{cvthequeBean.copetencesFonctionnelles}"  label="competenceT"/><br/> <br/> 
                                         <p:outputLabel value="COMPETENCES TECHNIQUES" style="font-size:12px"/>
-                                        <p:inputText value="#{userWizard.user.competenceF}" required="true" label="competenceF"/><br/> <br/> 
+                                        <p:inputText value="#{cvthequeBean.competencesTechniques}" label="competenceF"/><br/> <br/> 
                                         <p:outputLabel value="NOMBRE D'EXPERIENCES" style="font-size:12px"/>
-                                        <p:inputText value="#{userWizard.user.experience}" required="true" label="experience"/><br/> <br/> 
+                                        <p:spinner id="nbreanneesexperience" value="#{cvthequeBean.experience}" min="0" max="30"  /><br/> <br/> 
                                         <p:outputLabel value="LOCALITE" style="font-size:12px"/>
-                                        <p:inputText value="#{userWizard.user.localite}" required="true" label="localite"/><br/> <br/> 
-                                        <p:commandButton value="Rechercher"/>
+                                        <p:inputText value="#{cvthequeBean.localité}" label="localite"/><br/> <br/> 
+                                        <p:commandButton value="Rechercher" icon="fa fa-search" update="growl" action="#{cvthequeBean.rechercher()}"/>
                                     </h:form>
                                 </h:panelGrid>
                             </p:panel>
-                        
-                    </div>
-                    <div class="col-sm-9">
-                         
-                            <p:dataScroller value="#{controlUtilisateur.allUsers()}" var="car" chunkSize="10" style="background: #ffffff">
-                                <f:facet name="header">
-                                    Liste des CV
-                                </f:facet>
+                        </div>
+                        <div class="col-sm-9">
+                            <p:carousel value="#{cvthequeBean.listeDesCvTrouves}" headerText="Liste des CV trouvés" var="cv"  itemStyleClass="mobile-person-item" numVisible="1" easing="easeOutBounce" style="width:800px" circular="true" >
+                                <h:panelGrid columns="2" style="width:100%;background: #ffffff" columnClasses="label,value">
+                                    <f:facet name="header" >
+<!--                                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> Si chaque candidat avait sa photo-->
+                                        <p:graphicImage value="resources/images/cv2.jpg"/> 
+                                    </f:facet>
+                                    <h:outputText value="Nom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
 
-                                <h:panelGrid columns="2" style="width:100%; background: #ffffff" columnClasses="logo,detail">
-                                    <p:outputPanel>
-                                        <h:panelGrid columns="30">
-                                            <p:graphicImage value="resources/images/cv.jpg"/> 
+                                    <h:outputText value="Prénom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.prenom}" />
 
-                                            <h:outputText value="#{car.nom}" style="font-weight: bold"/>
+                                    <h:outputText value="Mail: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
 
-                                            <p>&nbsp;</p>
-                                            <h:outputText value="#{car.prenom}" style="font-weight: bold"/>
+                                    <h:outputText value="Spécialité: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.specialite}" />
 
-                                            <p>&nbsp;</p>
-                                            <h:outputText value="#{car.localisation}" style="font-weight: bold"/>
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
 
-                                            <p>&nbsp;</p>
-                                            <h:outputText value="#{car.specialite}" style="font-weight: bold"/><br/>
-                                            <h:commandLink>
-                                                <p:graphicImage value="/resources/images/pdf.jpg" />
-                                                <p:dataExporter type="pdf" target="table" fileName="cars" pageOnly="true" />
-                                            </h:commandLink>
-                                        </h:panelGrid>
+                                    <h:outputText value="Nom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
 
-                                        <hr></hr>
-                                    </p:outputPanel>
+                                    <h:outputText value="Prénom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.prenom}" />
+
+                                    <h:outputText value="Mail: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+
+                                    <h:outputText value="Spécialité: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.specialite}" />
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Nom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <h:outputText value="Prénom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.prenom}" />
+
+                                    <h:outputText value="Mail: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+
+                                    <h:outputText value="Spécialité: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.specialite}" />
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Nom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <h:outputText value="Prénom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.prenom}" />
+
+                                    <h:outputText value="Mail: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+
+                                    <h:outputText value="Spécialité: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.specialite}" />
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Nom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <h:outputText value="Prénom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.prenom}" />
+
+                                    <h:outputText value="Mail: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+
+                                    <h:outputText value="Spécialité: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.specialite}" />
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Nom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <h:outputText value="Prénom: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.prenom}" />
+
+                                    <h:outputText value="Mail: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+
+                                    <h:outputText value="Spécialité: " style="color: #282828"/>
+                                    <h:outputText value="#{cv.specialite}" />
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
                                 </h:panelGrid>
-                            </p:dataScroller>
-                        
-                    </div>
-                        </h:form>
+                            </p:carousel> 
+                        </div>
+                    </h:form>
 
                 </div>
 

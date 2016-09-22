@@ -631,7 +631,7 @@ public class Daojpa implements Idao {
     }
 
     public void addNotification(Notification n) {
-       try {
+        try {
             getSessionFactory().getCurrentSession().save(n);
         } catch (Throwable th) {
             System.out.println("erreur lors de la persistence de l'objet Notification" + n.getCorpsMessage());
@@ -640,7 +640,7 @@ public class Daojpa implements Idao {
     }
 
     public void removeNotification(Notification n) {
-      //To change body of generated methods, choose Tools | Templates.
+        //To change body of generated methods, choose Tools | Templates.
     }
 
     public void updateNotification(Notification n) {
@@ -725,8 +725,8 @@ public class Daojpa implements Idao {
                     .setParameter("lidTypeDeProfil", id).list();
             Profil p;
             if (!list.isEmpty()) {
-              p=(Profil) list.get(0);
-              return  p;
+                p = (Profil) list.get(0);
+                return p;
             }
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
@@ -782,8 +782,26 @@ public class Daojpa implements Idao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public String loginControl(String login, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String quiSestConnecte(String username) {
+        try {
+            List list = getSessionFactory().getCurrentSession()
+                    .createQuery("from UserRoles").list();
+            if (!list.isEmpty()) {
+                for (Iterator it = list.iterator(); it.hasNext();) {
+                    UserRoles userRoles = (UserRoles) it.next();
+                    if (userRoles.getUsername().getUsername().equalsIgnoreCase(username)) {
+                       return userRoles.getRole();
+                    }
+ 
+                }
+            }
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode quiSestConnecte): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     @Override

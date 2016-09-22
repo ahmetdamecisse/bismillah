@@ -297,8 +297,8 @@ public interface Idao {
     //Correction d'une fiche de test donnée
     public List getAllAnswersFi(Fichedetest f);
 
-    //login et le mot de passe pour connaitre si un candidat s'est connecté ou un employeur.
-    public String loginControl(String login, String password);
+    //login
+    public String quiSestConnecte(String login);
 
     //test d'existence de username
     public boolean ceUsernameEstIlUtiliseDeja(String username);

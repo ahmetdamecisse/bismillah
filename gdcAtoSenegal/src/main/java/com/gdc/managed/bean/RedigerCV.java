@@ -820,17 +820,18 @@ public class RedigerCV implements Serializable {
     }
 
     public String annuler() {
-       return "candidats.AtoS?faces-redirect=true";
+        return "candidats.AtoS?faces-redirect=true";
     }
 
     public String controlConnexion() {
-
+        String roleDeCeluiQuisestConneste = null;
         try {
             Authentication request = new UsernamePasswordAuthenticationToken(loginConnexion, passwordConnexion);
             Authentication result = authenticationManager.authenticate(request);
             SecurityContextHolder.getContext().setAuthentication(result);
             //***********************Après la connexion, on reinitialise le formulaire
             Users userRecup = metier.getUtilisateurByLoginAndPassporw(loginConnexion, passwordConnexion);
+            roleDeCeluiQuisestConneste = metier.quiSestConnecte(loginConnexion);
             if (userRecup != null) {
                 //*************reintialisation du user
                 setUser(userRecup);
@@ -1017,7 +1018,13 @@ public class RedigerCV implements Serializable {
             FacesMessage msgerreur = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Authentification ratée.", "nom d'utilisateur ou mot de passe incorrect!");
             RequestContext.getCurrentInstance().showMessageInDialog(msgerreur);
         }
-        return "candidats.AtoS?faces-redirect=true";
+        if (roleDeCeluiQuisestConneste.equalsIgnoreCase("ROLE_CANDIDAT")) {
+            return "candidats.AtoS?faces-redirect=true";
+        } else if (roleDeCeluiQuisestConneste.equalsIgnoreCase("ROLE_RECRUTEUR")) {
+            return "employeur.AtoS?faces-redirect=true";
+        } else {
+            return "admin.AtoS?faces-redirect=true";
+        }
     }
 
     public String controlDeConnexion() {

@@ -677,9 +677,9 @@ public class Metier implements Imetier {
     }
 
     @Override
-    public String loginControl(String login, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     public String quiSestConnecte(String username){
+       return getDaojpa().quiSestConnecte(username);
+     }
 
     @Override
     public boolean ceUsernameEstIlUtiliseDeja(String username) {
