@@ -98,6 +98,26 @@ public class RedigerCV implements Serializable {
     private MethodologiePK methodologiepk = new MethodologiePK();
     private MethodologiePK methodologiepk2 = new MethodologiePK();
     private MethodologiePK methodologiepk3 = new MethodologiePK();
+    private Modelisation modelisation = new Modelisation();
+    private Modelisation modelisation2 = new Modelisation();
+    private Modelisation modelisation3 = new Modelisation();
+    private ModelisationPK modelisationPK = new ModelisationPK();
+    private ModelisationPK modelisationPK2 = new ModelisationPK();
+    private ModelisationPK modelisationPK3 = new ModelisationPK();
+    private Bdd bdd = new Bdd();
+    private Bdd bdd2 = new Bdd();
+    private Bdd bdd3 = new Bdd();
+    private BddPK bddPK = new BddPK();
+    private BddPK bddPK2 = new BddPK();
+    private BddPK bddPK3 = new BddPK();
+    private Langues langues = new Langues();
+    private Langues langues2 = new Langues();
+    private Langues langues3 = new Langues();
+    private LanguesPK languesPK = new LanguesPK();
+    private LanguesPK languesPK2 = new LanguesPK();
+    private LanguesPK languesPK3 = new LanguesPK();
+    private String loginConnexion;
+    private String passwordConnexion;
 
     public MaterielssystemesexploitationPK getMaterielssystemesexploitationpk() {
         return materielssystemesexploitationpk;
@@ -314,26 +334,6 @@ public class RedigerCV implements Serializable {
     public void setLanguesPK3(LanguesPK languesPK3) {
         this.languesPK3 = languesPK3;
     }
-    private Modelisation modelisation = new Modelisation();
-    private Modelisation modelisation2 = new Modelisation();
-    private Modelisation modelisation3 = new Modelisation();
-    private ModelisationPK modelisationPK = new ModelisationPK();
-    private ModelisationPK modelisationPK2 = new ModelisationPK();
-    private ModelisationPK modelisationPK3 = new ModelisationPK();
-    private Bdd bdd = new Bdd();
-    private Bdd bdd2 = new Bdd();
-    private Bdd bdd3 = new Bdd();
-    private BddPK bddPK = new BddPK();
-    private BddPK bddPK2 = new BddPK();
-    private BddPK bddPK3 = new BddPK();
-    private Langues langues = new Langues();
-    private Langues langues2 = new Langues();
-    private Langues langues3 = new Langues();
-    private LanguesPK languesPK = new LanguesPK();
-    private LanguesPK languesPK2 = new LanguesPK();
-    private LanguesPK languesPK3 = new LanguesPK();
-    private String loginConnexion;
-    private String passwordConnexion;
 
     public String getLoginConnexion() {
         return loginConnexion;

@@ -87,98 +87,212 @@
                             </p:panel>
                         </div>
                         <div class="col-sm-9">
-                            <p:carousel value="#{cvthequeBean.listeDesCvTrouves}" headerText="Liste des CV trouvés" var="cv"  itemStyleClass="mobile-person-item" numVisible="1" easing="easeOutBounce" style="width:800px" circular="true" >
+                            <p:carousel value="#{cvthequeBean.listeDesCvDesCandidatsTrouves}" headerText="Liste des CV trouvés" var="cv"  itemStyleClass="mobile-person-item" numVisible="1" easing="easeOutBounce" style="width:800px" circular="true" >
                                 <h:panelGrid columns="2" style="width:100%;background: #ffffff" columnClasses="label,value">
                                     <f:facet name="header" >
 <!--                                        <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> Si chaque candidat avait sa photo-->
                                         <p:graphicImage value="resources/images/cv2.jpg"/> 
                                     </f:facet>
-                                    <h:outputText value="Nom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <h:outputText value="Nom: " style="color: #282828" />
+                                    <h:outputText value="#{cv.user.nom}" styleClass="outputLabel" style="color: #282828"/>
 
                                     <h:outputText value="Prénom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.prenom}" />
+                                    <h:outputText value="#{cv.user.prenom}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Mail: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+                                    <h:outputText value="Adresse: " style="color: #282828" />
+                                    <h:outputText value="#{cv.user.localisation}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Spécialité: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.specialite}" />
+                                    <h:outputText value="Mail: " style="color: #282828" />
+                                    <h:outputText value="#{cv.user.mail}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <h:outputText value="Téléphone: " style="color: #282828" />
+                                    <h:outputText value="#{cv.user.telephone}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <h:outputText value="Spécialité: " style="color: #282828" />
+                                    <h:outputText value="#{cv.user.specialite}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <h:outputText value="Date de naissance: " style="color: #282828" />
+                                    <h:outputText value="#{cv.user.dateDeNaissance}" styleClass="outputLabel" style="color: #282828"/>
+
 
                                     <p:separator style="width:400px;height:15px"/>
                                     <p:separator style="width:390px;height:15px"/>
 
-                                    <h:outputText value="Nom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Nom du dipôme: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation.formationPK.nomDiplome}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Prénom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.prenom}" />
+                                    <h:outputText value="Université/Ecole: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation.universite}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Mail: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+                                    <h:outputText value="Année d'obtention: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation.anneeObtention}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Spécialité: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.specialite}" />
+                                    <h:outputText value="Mention: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation.mention}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Nom du dipôme: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formationpk2.nomDiplome}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <p:separator style="width:400px;height:15px"/>
-                                    <p:separator style="width:390px;height:15px"/>
+                                    <h:outputText value="Université/Ecole: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation2.universite}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Nom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Année d'obtention: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation2.anneeObtention}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Prénom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.prenom}" />
+                                    <h:outputText value="Mention: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation2.mention}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Mail: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+                                    <h:outputText value="Nom du dipôme: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formationpk3.nomDiplome}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Spécialité: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.specialite}" />
+                                    <h:outputText value="Université/Ecole: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation3.universite}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <p:separator style="width:400px;height:15px"/>
-                                    <p:separator style="width:390px;height:15px"/>
+                                    <h:outputText value="Année d'obtention: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation3.anneeObtention}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Nom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Mention: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.formation3.mention}" styleClass="outputLabel" style="color: #282828"/>
+                                    <p:separator /><p:separator />
 
-                                    <h:outputText value="Prénom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.prenom}" />
+                                    <h:outputText value="Nombre d'années d'expériences: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.profil.nombreAnneesExperience}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Mail: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+                                    <h:outputText value="Principale compétences: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.profil.principalesCompetences}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Spécialité: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.specialite}" />
-
-                                    <p:separator style="width:400px;height:15px"/>
-                                    <p:separator style="width:390px;height:15px"/>
-
-                                    <h:outputText value="Nom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
-
-                                    <h:outputText value="Prénom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.prenom}" />
-
-                                    <h:outputText value="Mail: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
-
-                                    <h:outputText value="Spécialité: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.specialite}" />
+                                    <h:outputText value="Compétences fonctionnelles: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.profil.competencesFonctionnelles}" styleClass="outputLabel" style="color: #282828"/>
 
                                     <p:separator style="width:400px;height:15px"/>
                                     <p:separator style="width:390px;height:15px"/>
 
-                                    <h:outputText value="Nom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.nom}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Description: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.experiencesprofessionnelles.description}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Fonctions: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.experiencesprofessionnelles.fonction}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Environnement: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.experiencesprofessionnelles.environnement}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Projet: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.experiencesprofessionnelles.projet}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Missions: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.experiencesprofessionnelles.missionsRealisees}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Début: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.experiencesprofessionnellespk.datededebut}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Fin: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.experiencesprofessionnellespk.datefin}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Prénom: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.prenom}" />
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
 
-                                    <h:outputText value="Mail: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.mail}" style="color:#{car.color}"/>
+                                    <h:outputText value="Langage 1: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langagepk.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langage.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Langage 2: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langagepk2.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langage2.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Langage 3: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langagepk3.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langage3.niveau}" styleClass="outputLabel" style="color: #282828"/>
 
-                                    <h:outputText value="Spécialité: " style="color: #282828"/>
-                                    <h:outputText value="#{cv.specialite}" />
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Outil 1: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.outilspk.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.outils.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Outil 2: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.outilspk2.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.outils2.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Outil 3: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.outilspk3.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.outils3.niveau}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Methodologie 1: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.methodologiepk.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.methodologie.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Methodologie 2: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.methodologiepk2.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.methodologie2.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Methodologie 3: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.methodologiepk3.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.methodologie3.niveau}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Modélisation 1: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.modelisationPK.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.modelisation.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Modélisation 2: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.modelisationPK2.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.modelisation2.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Modélisation 3: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.modelisationPK3.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.modelisation3.niveau}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Base de données 1: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.bddPK.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.bdd.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Base de données 2: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.bddPK2.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.bdd2.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Base de données 3: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.bddPK3.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.bdd3.niveau}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Sytèmes d'exploitation 1: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.materielssystemesexploitationpk.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.materielssystemesexploitation.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Sytèmes d'exploitation 2: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.materielssystemesexploitationpk2.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.materielssystemesexploitation2.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Sytèmes d'exploitation 3: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.materielssystemesexploitationpk3.domaine}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.materielssystemesexploitation3.niveau}" styleClass="outputLabel" style="color: #282828"/>
+
+                                    <p:separator style="width:400px;height:15px"/>
+                                    <p:separator style="width:390px;height:15px"/>
+
+                                    <h:outputText value="Langue 1: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.languesPK.nom}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langues.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Langue 2: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.languesPK2.nom}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langues2.niveau}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Langue 3: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.languesPK3.nom}" styleClass="outputLabel" style="color: #282828"/>
+                                    <h:outputText value="Niveau: " style="color: #282828" />
+                                    <h:outputText value="#{redigerCV.langues3.niveau}" styleClass="outputLabel" style="color: #282828"/>
 
                                     <p:separator style="width:400px;height:15px"/>
                                     <p:separator style="width:390px;height:15px"/>

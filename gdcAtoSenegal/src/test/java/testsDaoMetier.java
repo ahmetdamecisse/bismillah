@@ -1,6 +1,7 @@
 
 import com.gdc.model.*;
 import com.gdc.services.Imetier;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,11 +35,18 @@ public class testsDaoMetier {
 //            }
 //        }
 //    }
-    @Test
-    public void QuiSestConnecte() {
-        String recup = metier.quiSestConnecte("ahmet");
-        System.out.println("*********************: "+recup);
-    }
+    
+     @Test
+    public void DonneesCV() {
+        List<Users> lesCV=new ArrayList();
+        lesCV=metier.getALLutilisateur();
+          }
+    
+//    @Test
+//    public void QuiSestConnecte() {
+//        String recup = metier.quiSestConnecte("ahmet");
+//        System.out.println("*********************: "+recup);
+//    }
 
 //    @Test
 //    public void LanguesEtLangageDuCandidatQuiSestConnecte() {
