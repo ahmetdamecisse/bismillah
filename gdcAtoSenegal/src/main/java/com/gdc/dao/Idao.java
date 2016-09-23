@@ -315,5 +315,8 @@ public interface Idao {
     public Notification getOffresemploiById(Integer id);
 
     public List getOffresemploiByName(String nom);
+    
+    //Charger tous les cv
+     public List chargertousLesCV(List listeDesUtilisateurs, List listeDesCandidatsDeLaBase);
 
 }

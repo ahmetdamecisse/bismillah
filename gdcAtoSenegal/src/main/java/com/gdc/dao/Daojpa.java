@@ -7,6 +7,8 @@ package com.gdc.dao;
 
 import com.gdc.exceptions.pfcgdcexception;
 import com.gdc.model.*;
+import com.gdc.services.Cv;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -790,9 +792,9 @@ public class Daojpa implements Idao {
                 for (Iterator it = list.iterator(); it.hasNext();) {
                     UserRoles userRoles = (UserRoles) it.next();
                     if (userRoles.getUsername().getUsername().equalsIgnoreCase(username)) {
-                       return userRoles.getRole();
+                        return userRoles.getRole();
                     }
- 
+
                 }
             }
         } catch (HibernateException th) {
@@ -886,5 +888,175 @@ public class Daojpa implements Idao {
     @Override
     public List getOffresemploiByName(String nom) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List chargertousLesCV(List listeDesUtilisateurs, List listeDesCandidatsDeLaBase) {
+        List<Cv> lesCvTrouves = new ArrayList();
+        //Les composantes du CV
+        Materielssystemesexploitation materielssystemesexploitation = null;
+        Materielssystemesexploitation materielssystemesexploitation2 = null;
+        Materielssystemesexploitation materielssystemesexploitation3 = null;
+        Experiencesprofessionnelles experiencesprofessionnelles2 = null;
+        Experiencesprofessionnelles experiencesprofessionnelles = null;
+        Experiencesprofessionnelles experiencesprofessionnelles3 = null;
+        Bdd bdd2 = null;
+        Bdd bdd = null;
+        Bdd bdd3 = null;
+        Modelisation modelisation2 = null;
+        Modelisation modelisation = null;
+        Modelisation modelisation3 = null;
+        Methodologie methodologie2 = null;
+        Methodologie methodologie = null;
+        Methodologie methodologie3 = null;
+        Outils outils2 = null;
+        Outils outils = null;
+        Outils outils3 = null;
+        Langages langages2 = null;
+        Langages langages = null;
+        Langages langages3 = null;
+        Langues langue2 = null;
+        Langues langues = null;
+        Langues langue3 = null;
+        Formation formation2 = null;
+        Formation formation = null;
+        Formation formation3 = null;
+        Profil profilRecup = null;
+        Users users = null;
+
+        if (!listeDesUtilisateurs.isEmpty() && !listeDesCandidatsDeLaBase.isEmpty()) {
+            for (Iterator it = listeDesUtilisateurs.iterator(); it.hasNext();) {
+                users = (Users) it.next();
+                for (Iterator<Candidat> it1 = listeDesCandidatsDeLaBase.iterator(); it1.hasNext();) {
+                    Candidat candi = it1.next();
+                    if (candi.getUsername().equalsIgnoreCase(users.getUsername())) {
+                        //*************************************************
+                        profilRecup = getProfilByUsername(users.getUsername());
+                        if (profilRecup != null) {
+                            if (getFormationById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                formation = (Formation) getFormationById(profilRecup.getIdTypeDeProfil()).get(0);
+                                formation2 = (Formation) getFormationById(profilRecup.getIdTypeDeProfil()).get(1);
+                                formation3 = (Formation) getFormationById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getFormationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                formation = (Formation) getFormationById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getFormationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                formation = (Formation) getFormationById(profilRecup.getIdTypeDeProfil()).get(0);
+                                formation2 = (Formation) getFormationById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }
+                            //*************reintialisation des langues
+                            if (getLangueById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                langues = (Langues) getLangueById(profilRecup.getIdTypeDeProfil()).get(0);
+                                langue2 = (Langues) getLangueById(profilRecup.getIdTypeDeProfil()).get(1);
+                                langue3 = (Langues) getLangueById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getLangueById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                langues = (Langues) getLangueById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getLangueById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                langues = (Langues) getLangueById(profilRecup.getIdTypeDeProfil()).get(0);
+                                langue2 = (Langues) getLangueById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }//******************************************************************************
+                            //*************reintialisation des langages
+                            if (getLangagesById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                langages = (Langages) getLangagesById(profilRecup.getIdTypeDeProfil()).get(0);
+                                langages2 = (Langages) getLangagesById(profilRecup.getIdTypeDeProfil()).get(1);
+                                langages3 = (Langages) getLangagesById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getLangagesById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                langages = (Langages) getLangagesById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getLangagesById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                langages = (Langages) getLangagesById(profilRecup.getIdTypeDeProfil()).get(0);
+                                langages2 = (Langages) getLangagesById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }//******************************************************************************
+                            //*************reintialisation des outils
+                            if (getOutilsById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                outils = (Outils) getOutilsById(profilRecup.getIdTypeDeProfil()).get(0);
+                                outils2 = (Outils) getOutilsById(profilRecup.getIdTypeDeProfil()).get(1);
+                                outils3 = (Outils) getOutilsById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getOutilsById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                outils = (Outils) getOutilsById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getOutilsById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                outils = (Outils) getOutilsById(profilRecup.getIdTypeDeProfil()).get(0);
+                                outils2 = (Outils) getOutilsById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }//******************************************************************************
+                            //*************reintialisation des methodologies
+                            if (getMethodologieById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                methodologie = (Methodologie) getMethodologieById(profilRecup.getIdTypeDeProfil()).get(0);
+                                methodologie2 = (Methodologie) getMethodologieById(profilRecup.getIdTypeDeProfil()).get(1);
+                                methodologie3 = (Methodologie) getMethodologieById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getMethodologieById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                methodologie = (Methodologie) getMethodologieById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getMethodologieById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                methodologie = (Methodologie) getMethodologieById(profilRecup.getIdTypeDeProfil()).get(0);
+                                methodologie2 = (Methodologie) getMethodologieById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }//******************************************************************************
+                            //*************reintialisation des modelisations
+                            if (getModelisationById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                modelisation = (Modelisation) getModelisationById(profilRecup.getIdTypeDeProfil()).get(0);
+                                modelisation2 = (Modelisation) getModelisationById(profilRecup.getIdTypeDeProfil()).get(1);
+                                modelisation3 = (Modelisation) getModelisationById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getModelisationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                modelisation = (Modelisation) getModelisationById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getModelisationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                modelisation = (Modelisation) getModelisationById(profilRecup.getIdTypeDeProfil()).get(0);
+                                modelisation2 = (Modelisation) getModelisationById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }//******************************************************************************
+                            //*************reintialisation des bdd
+                            if (getBddById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                bdd = (Bdd) getBddById(profilRecup.getIdTypeDeProfil()).get(0);
+                                bdd2 = (Bdd) getBddById(profilRecup.getIdTypeDeProfil()).get(1);
+                                bdd3 = (Bdd) getBddById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getBddById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                bdd = (Bdd) getBddById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getBddById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                bdd = (Bdd) getBddById(profilRecup.getIdTypeDeProfil()).get(0);
+                                bdd2 = (Bdd) getBddById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }//******************************************************************************
+                            //*************reintialisation des experiences professionnelles
+                            if (getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                experiencesprofessionnelles = (Experiencesprofessionnelles) getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(0);
+                                experiencesprofessionnelles2 = (Experiencesprofessionnelles) getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(1);
+                                experiencesprofessionnelles3 = (Experiencesprofessionnelles) getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                experiencesprofessionnelles = (Experiencesprofessionnelles) getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                experiencesprofessionnelles = (Experiencesprofessionnelles) getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(0);
+                                experiencesprofessionnelles2 = (Experiencesprofessionnelles) getExperiencesprofessionnellesById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }//******************************************************************************
+                            //*************reintialisation des os
+                            if (getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).size() >= 3) {
+                                materielssystemesexploitation = (Materielssystemesexploitation) getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(0);
+                                materielssystemesexploitation2 = (Materielssystemesexploitation) getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(1);
+                                materielssystemesexploitation3 = (Materielssystemesexploitation) getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(2);
+                            }
+                            if (getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).size() == 1) {
+                                materielssystemesexploitation = (Materielssystemesexploitation) getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(0);
+                            }
+                            if (getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).size() == 2) {
+                                materielssystemesexploitation = (Materielssystemesexploitation) getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(0);
+                                materielssystemesexploitation2 = (Materielssystemesexploitation) getMaterielssystemesexploitationById(profilRecup.getIdTypeDeProfil()).get(1);
+                            }//******************************************************************************
+                        }
+                        //On construit un cv et on l'ajoute dans la liste
+                        Cv unCv = new Cv(users, materielssystemesexploitation, materielssystemesexploitation2, materielssystemesexploitation3, experiencesprofessionnelles2, experiencesprofessionnelles, experiencesprofessionnelles3, bdd2, bdd, bdd3, modelisation2, modelisation, modelisation3, methodologie2, methodologie, methodologie3, outils2, outils, outils3, langages2, langages, langages3, langue2, langues, langue3, formation2, formation, formation3, profilRecup);
+                        lesCvTrouves.add(unCv);
+                    }
+                }
+            }
+        }
+        return lesCvTrouves;
     }
 }

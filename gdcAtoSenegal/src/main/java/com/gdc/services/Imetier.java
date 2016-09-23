@@ -299,10 +299,11 @@ public interface Imetier {
     public List getAllAnswersFi(Fichedetest f);
 
     //login
-     public String quiSestConnecte(String login);
+    public String quiSestConnecte(String login);
 
     //test d'existence de username
     public boolean ceUsernameEstIlUtiliseDeja(String username);
+
     //Offres d'emploi
     public List getAllOffresemploi();
 
@@ -315,5 +316,8 @@ public interface Imetier {
     public Notification getOffresemploiById(Integer id);
 
     public List getOffresemploiByName(String nom);
+
+    //Charger tous les cv
+    public List chargertousLesCV(List listeDesUtilisateurs, List listeDesCandidatsDeLaBase);
 
 }

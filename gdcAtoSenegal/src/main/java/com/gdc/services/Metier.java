@@ -736,4 +736,9 @@ public class Metier implements Imetier {
     ) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List chargertousLesCV(List listeDesUtilisateurs, List listeDesCandidatsDeLaBase) {
+       return getDaojpa().chargertousLesCV(listeDesUtilisateurs, listeDesCandidatsDeLaBase);
+    }
 }
