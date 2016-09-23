@@ -6,26 +6,15 @@
 package com.gdc.services;
 
 import com.gdc.model.Bdd;
-import com.gdc.model.BddPK;
-import com.gdc.model.Candidat;
 import com.gdc.model.Experiencesprofessionnelles;
-import com.gdc.model.ExperiencesprofessionnellesPK;
 import com.gdc.model.Formation;
-import com.gdc.model.FormationPK;
 import com.gdc.model.Langages;
-import com.gdc.model.LangagesPK;
 import com.gdc.model.Langues;
-import com.gdc.model.LanguesPK;
 import com.gdc.model.Materielssystemesexploitation;
-import com.gdc.model.MaterielssystemesexploitationPK;
 import com.gdc.model.Methodologie;
-import com.gdc.model.MethodologiePK;
 import com.gdc.model.Modelisation;
-import com.gdc.model.ModelisationPK;
 import com.gdc.model.Outils;
-import com.gdc.model.OutilsPK;
 import com.gdc.model.Profil;
-import com.gdc.model.Profilgl;
 import com.gdc.model.Users;
 
 /**
