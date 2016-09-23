@@ -56,9 +56,9 @@ public class CvthequeBean implements Serializable {
     }
 
     public String rechercher() {
-        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "cvthèque", " test de la fonction recherche.");
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "cvthèque", filiation+"|"+competencesTechniques+"|"+copetencesFonctionnelles+"|"+experience+"|"+localité);
         RequestContext.getCurrentInstance().showMessageInDialog(msg1);
-        return "cvtheque.AtoS?faces-redirect=true";
+       return "cvtheque.AtoS?faces-redirect=true";
     }
 
     public Imetier getMetier() {
