@@ -159,19 +159,19 @@
                                 <p:dialog header="entretien" widgetVar="dlg2" showEffect="fade" hideEffect="fade">
                                     <h:panelGrid columns="2" style="margin-top: 10px"> 
                                         <p:outputLabel for="typeDentretien" value="Type: " />
-                                        <p:selectOneMenu id="typeDentretien" value="#{entretienBean.entretien.typeEntretien}" style="width:125px">
+                                        <p:selectOneMenu id="typeDentretien" value="#{notificationsBean.entretien.typeEntretien}" style="width:125px">
                                             <f:selectItem itemLabel="Choisir une valeur" itemValue="" />
                                             <f:selectItem itemLabel="Entretien technique" itemValue="Entretien technique" />
                                             <f:selectItem itemLabel="Entretien DRH" itemValue="Entretien DRH" />
                                         </p:selectOneMenu>
                                         <p:outputLabel for="datetime1" value="Date de début: " />
-                                        <p:calendar id="datetime1" value="#{entretienBean.entretien.dateDebEntreti}" pattern="dd/MM/yyyy HH:mm:ss"/>
+                                        <p:calendar id="datetime1" value="#{notificationsBean.entretien.dateDebEntreti}" pattern="dd/MM/yyyy HH:mm:ss"/>
                                         <p:outputLabel for="datetime2" value="Date de fin: " />
-                                        <p:calendar id="datetime2" value="#{entretienBean.entretien.ateFinEntreti}" pattern="dd/MM/yyyy HH:mm:ss"/>
+                                        <p:calendar id="datetime2" value="#{notificationsBean.entretien.ateFinEntreti}" pattern="dd/MM/yyyy HH:mm:ss"/>
                                     </h:panelGrid>
                                     <f:facet name="footer">
                                         <p:row>
-                                            <p:commandButton value="Fixer un entretien" icon="fa fa-fw fa-edit" update="growl" action="#{entretienBean.fixerEntretienCandidat()}" />   
+                                            <p:commandButton value="Fixer un entretien" icon="fa fa-fw fa-edit" update="growl" action="#{notificationsBean.fixerEntretienCandidat()}" />   
                                         </p:row>
                                     </f:facet>
                                 </p:dialog>

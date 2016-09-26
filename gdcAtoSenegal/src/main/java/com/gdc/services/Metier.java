@@ -208,10 +208,10 @@ public class Metier implements Imetier {
     public List getBddByName(String nom) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public List getAllEntretien() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return getDaojpa().getAllEntretien();
     }
 
     @Transactional(readOnly = false)
@@ -677,9 +677,9 @@ public class Metier implements Imetier {
     }
 
     @Override
-     public String quiSestConnecte(String username){
-       return getDaojpa().quiSestConnecte(username);
-     }
+    public String quiSestConnecte(String username) {
+        return getDaojpa().quiSestConnecte(username);
+    }
 
     @Override
     public boolean ceUsernameEstIlUtiliseDeja(String username) {
@@ -739,6 +739,12 @@ public class Metier implements Imetier {
 
     @Override
     public List chargertousLesCV(List listeDesUtilisateurs, List listeDesCandidatsDeLaBase) {
-       return getDaojpa().chargertousLesCV(listeDesUtilisateurs, listeDesCandidatsDeLaBase);
+        return getDaojpa().chargertousLesCV(listeDesUtilisateurs, listeDesCandidatsDeLaBase);
+    }
+
+    @Transactional(readOnly = false)
+    @Override
+    public void addsuiviEntretien(Suivreentrtien se) {
+       getDaojpa().addsuiviEntretien(se);
     }
 }

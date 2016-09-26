@@ -264,12 +264,21 @@ public class Daojpa implements Idao {
     }
 
     public List getAllEntretien() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          try {
+            List list = getSessionFactory().getCurrentSession().createQuery("from Entretien").list();
+            return list;
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode getAllEntretien(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        return null;
     }
 
     public void addEntretien(Entretien e) {
         try {
-            getSessionFactory().getCurrentSession().saveOrUpdate(e);
+            getSessionFactory().getCurrentSession().save(e);
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
             System.err.println("Erreurs lors de l'execution de la méthode addEntretien(): \n");
@@ -1058,5 +1067,17 @@ public class Daojpa implements Idao {
             }
         }
         return lesCvTrouves;
+    }
+
+    @Override
+    public void addsuiviEntretien(Suivreentrtien se) {
+      try {
+            getSessionFactory().getCurrentSession().save(se);
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode addsuiviEntretien(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
     }
 }

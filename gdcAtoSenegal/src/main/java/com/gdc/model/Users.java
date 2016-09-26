@@ -8,7 +8,6 @@ package com.gdc.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,7 +22,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -46,6 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByDateDeNaissance", query = "SELECT u FROM Users u WHERE u.dateDeNaissance = :dateDeNaissance"),
     @NamedQuery(name = "Users.findByVersion", query = "SELECT u FROM Users u WHERE u.version = :version")})
 public class Users implements Serializable {
+   
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -240,5 +239,4 @@ public class Users implements Serializable {
     public String toString() {
         return "com.testeur.Users[ username=" + username + "nom: "+nom+" prenom: "+prenom+" localisation: "+localisation+" mail: "+mail+" telephone: "+telephone+" password: "+password+" specialité: "+specialite+" date de naissance: "+dateDeNaissance+" ]";
     }
-    
 }

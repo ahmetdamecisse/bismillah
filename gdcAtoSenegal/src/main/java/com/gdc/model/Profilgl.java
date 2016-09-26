@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Profilgl.findByIdTypeDeProfil", query = "SELECT p FROM Profilgl p WHERE p.idTypeDeProfil = :idTypeDeProfil"),
     @NamedQuery(name = "Profilgl.findByVersion", query = "SELECT p FROM Profilgl p WHERE p.version = :version")})
 public class Profilgl implements Serializable {
-    private static final long serialVersionUID = 1L;
+     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "idTypeDeProfil")
@@ -96,5 +96,4 @@ public class Profilgl implements Serializable {
     public String toString() {
         return "com.testeur.Profilgl[ idTypeDeProfil=" + idTypeDeProfil + " ]";
     }
-    
 }

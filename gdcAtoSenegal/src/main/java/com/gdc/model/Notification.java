@@ -155,14 +155,6 @@ public class Notification implements Serializable {
         return "com.testeur.Notification[ idNotification=" + idNotification + " ]";
     }
 
-    public byte[] getPj() {
-        return pj;
-    }
-
-    public void setPj(byte[] pj) {
-        this.pj = pj;
-    }
-
     @XmlTransient
     public List<Candidat> getCandidatList() {
         return candidatList;
@@ -170,6 +162,14 @@ public class Notification implements Serializable {
 
     public void setCandidatList(List<Candidat> candidatList) {
         this.candidatList = candidatList;
+    }
+
+    public byte[] getPj() {
+        return pj;
+    }
+
+    public void setPj(byte[] pj) {
+        this.pj = pj;
     }
     
 }

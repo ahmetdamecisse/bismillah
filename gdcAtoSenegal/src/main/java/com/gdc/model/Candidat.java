@@ -35,6 +35,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Candidat.findAll", query = "SELECT c FROM Candidat c"),
     @NamedQuery(name = "Candidat.findByUsername", query = "SELECT c FROM Candidat c WHERE c.username = :username")})
 public class Candidat implements Serializable {
+    @JoinTable(name = "suivreentrtien", joinColumns = {
+        @JoinColumn(name = "username", referencedColumnName = "username")}, inverseJoinColumns = {
+        @JoinColumn(name = "idEntretien", referencedColumnName = "idEntretien")})
+    @ManyToMany
+    private List<Entretien> entretienList;
     @JoinTable(name = "postuleroffresemploi", joinColumns = {
         @JoinColumn(name = "username", referencedColumnName = "username")}, inverseJoinColumns = {
         @JoinColumn(name = "idOffreEmploi", referencedColumnName = "idOffreEmploi")})
@@ -130,5 +135,13 @@ public class Candidat implements Serializable {
     public void setNotificationList(List<Notification> notificationList) {
         this.notificationList = notificationList;
     }
-    
+
+    @XmlTransient
+    public List<Entretien> getEntretienList() {
+        return entretienList;
+    }
+
+    public void setEntretienList(List<Entretien> entretienList) {
+        this.entretienList = entretienList;
+    }    
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 06 Septembre 2016 à 10:04
+-- Généré le: Lun 26 Septembre 2016 à 09:26
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.4.3
 
@@ -156,7 +156,14 @@ CREATE TABLE IF NOT EXISTS `entretien` (
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`idEntretien`),
   KEY `FK_fixerEntretien` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `entretien`
+--
+
+INSERT INTO `entretien` (`idEntretien`, `username`, `typeEntretien`, `dateDebEntreti`, `ateFinEntreti`, `resultat`, `version`) VALUES
+(3, 'ahmet', 'Entretien technique', '2016-09-30 14:00:00', '2016-09-21 19:52:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -294,8 +301,8 @@ CREATE TABLE IF NOT EXISTS `langues` (
 --
 
 INSERT INTO `langues` (`idTypeDeProfil`, `nom`, `niveau`) VALUES
-(4, 'Anglais', 'Lu'),
-(4, 'Espagnol', 'Lu'),
+(4, 'Anglais', 'Lu, écrit et parlé'),
+(4, 'Espagnol', 'écrit'),
 (4, 'Français', 'Lu');
 
 -- --------------------------------------------------------
@@ -404,14 +411,16 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `dateNotification` datetime DEFAULT NULL,
   PRIMARY KEY (`idNotification`),
   KEY `FK_envoyerNotification` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `notification`
 --
 
 INSERT INTO `notification` (`idNotification`, `username`, `destinateur`, `destinataire`, `corpsMessage`, `pj`, `dateNotification`) VALUES
-(2, 'ahmet', NULL, NULL, NULL, NULL, NULL);
+(3, 'ahmet', 'Ahmet CISSE', 'baba', 'Bonjour M. GOUDIABY,<br>Est-ce que vous ne pourriez pas passer à AtoS demain soir?<br><br>Bien cordialement<br>', NULL, '2016-09-21 12:45:17'),
+(4, 'ahmet', 'Ahmet CISSE', 'baba', 'Bonjour M. GOUDIABY,<br>Est-ce que vous ne pourriez pas passer à AtoS demain soir?<br><br>Bien cordialement', NULL, '2016-09-21 12:49:43'),
+(5, 'ahmet', 'Ahmet CISSE', 'baba2', 'Bonjour M. DIOP,<br>Est-ce que vous ne pourriez pas passer à AtoS demain soir?<br><br>Bien cordialement', NULL, '2016-09-21 12:50:53');
 
 -- --------------------------------------------------------
 
@@ -436,14 +445,16 @@ CREATE TABLE IF NOT EXISTS `offresemploi` (
   `nbreDanneesDexperiences` int(11) DEFAULT NULL,
   PRIMARY KEY (`idOffreEmploi`),
   KEY `FK_publierOffreEmploi` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `offresemploi`
 --
 
 INSERT INTO `offresemploi` (`idOffreEmploi`, `username`, `intitulePoste`, `description`, `typeDeContrat`, `categorie`, `profilRecherche`, `diplomeDemandes`, `LanguesParlees`, `debutContrat`, `fincontrat`, `prerequisDuPoste`, `descriptifDeLaSociete`, `nbreDanneesDexperiences`) VALUES
-(1, 'ahmet', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'ahmet', 'Développeur Java EE', 'On cherche un développeur Java EE très expéimenté et ... Pour l’obtention du Diplôme du Master Informatique Option génie informatique (MIGL), les étudiants doivent présenter un mémoire à la fin de la formation. \r\nC’est dans ce dessein que j’ai intégré AtoS Sénégal, structure dans laquelle j’ai été chargé de concevoir et de réaliser une plateforme de dépôt-suivi de candidature pour AtoS Sénégal dont la teneur est consignée dans ce mémoire.\r\n', 'CDI', 'Développement de logiciel', 'un ingénieur qui maîtrise Spring, primefaces, Ifaces, MySQL, PostgresSQL', 'Dipômes d''ingénieur de conception (DIC)', 'Anglais (trés bon niveau), Français (couramment), Arabe (bon niveau)', '2016-09-14', '2016-09-29', 'UML, OpenShift****Pour l’obtention du Diplôme du Master Informatique Option génie informatique (MIGL), les étudiants doivent présenter un mémoire à la fin de la formation.  C’est dans ce dessein que j’ai intégré AtoS Sénégal, structure dans laquelle j’ai été chargé de concevoir et de réaliser une plateforme de dépôt-suivi de candidature pour AtoS Sénégal dont la teneur est consignée dans ce mémoire.', 'GDC Atos Sénégal****Pour l’obtention du Diplôme du Master Informatique Option génie informatique (MIGL), les étudiants doivent présenter un mémoire à la fin de la formation.  C’est dans ce dessein que j’ai intégré AtoS Sénégal, structure dans laquelle j’ai été chargé de concevoir et de réaliser une plateforme de dépôt-suivi de candidature pour AtoS Sénégal dont la teneur est consignée dans ce mémoire.', 5),
+(3, 'ahmet', 'ytr', 'jhgfd', 'lkjhg', 'poiu', 'pmlkjhhgf', 'tgvrdfc', 'tgfvrd', '2016-09-04', '2016-09-29', 'okijhgfd', 'plokijuhygtfrd', 8),
+(4, 'ahmet', 'jhgfd', 'ujn', 'tgrfe', 'pm:olkjh', 'thgfedcyhb', 'olpmujtg', 'tgedfvghb', '2016-09-05', '2016-09-29', 'tgrfedc', 'tfdhfgbfhy', 5);
 
 -- --------------------------------------------------------
 
@@ -486,8 +497,9 @@ CREATE TABLE IF NOT EXISTS `postuleroffresemploi` (
 --
 
 INSERT INTO `postuleroffresemploi` (`username`, `idOffreEmploi`) VALUES
-('baba2', 1),
-('baba3', 1);
+('baba3', 1),
+('baba3', 3),
+('baba3', 4);
 
 -- --------------------------------------------------------
 
@@ -509,9 +521,9 @@ CREATE TABLE IF NOT EXISTS `profil` (
 --
 
 INSERT INTO `profil` (`idTypeDeProfil`, `nombreAnneesExperience`, `principalesCompetences`, `competencesFonctionnelles`, `etatProfil`) VALUES
-(1, NULL, NULL, NULL, NULL),
-(2, 1, '1', '1', NULL),
-(4, 5, 'Cordination2 de projet, SIG', 'Protection2 sociale, CMMI', NULL);
+(1, NULL, NULL, NULL, 'En phase d''étude'),
+(2, 1, '1', '1', 'Classé sans suite'),
+(4, 5, 'Cordination2 de projet, SIG', 'Protection2 sociale, CMMI', 'Classé sans suite');
 
 -- --------------------------------------------------------
 
@@ -550,7 +562,8 @@ CREATE TABLE IF NOT EXISTS `recruteur` (
 --
 
 INSERT INTO `recruteur` (`username`) VALUES
-('ahmet');
+('ahmet'),
+('camara');
 
 -- --------------------------------------------------------
 
@@ -561,7 +574,9 @@ INSERT INTO `recruteur` (`username`) VALUES
 CREATE TABLE IF NOT EXISTS `suivreentrtien` (
   `username` varchar(150) NOT NULL,
   `idEntretien` int(11) NOT NULL,
-  PRIMARY KEY (`username`,`idEntretien`)
+  PRIMARY KEY (`username`,`idEntretien`),
+  KEY `FK_suivreentrtien1` (`username`),
+  KEY `FK_suivreentrtien12` (`idEntretien`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -591,7 +606,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`username`, `nom`, `prenom`, `localisation`, `mail`, `telephone`, `password`, `enabled`, `specialite`, `dateDeNaissance`, `version`) VALUES
 ('ahmet', 'CISSE', 'Ahmet', 'Parcelles', 'ahmet.dame@hotmail.fr', '771047524', 'ahmet', 1, 'g?nie logiciel', '1989-01-09 00:00:00', 1),
-('baba', 'GOUGIABY', 'Baba', 'Pikine', 'baba@gmail.com', '775248596', 'baba', 1, 'RT', '1992-06-07 00:00:00', 1),
+('baba', 'GOUGIABY', 'Baba', 'Pikine', 'ahmet.dame@hotmail.fr', '775248596', 'baba', 1, 'RT', '1992-06-07 00:00:00', 1),
 ('baba2', 'DIOP', 'Baba', 'KM', 'ahmet.cisse@gmail.com', '(77) 104-75-24', 'baba2', 1, 'Génie logiciel', '2016-08-24 00:00:00', 1),
 ('baba3', 'Diop', 'Boubacar', 'Parcelles', 'ahmet.cisse@gmail.com', '(77) 104-78-95', 'baba3', 1, 'Génie logiciel', '2016-08-23 00:00:00', 1),
 ('camara', 'CAMARA', 'Ousmane', 'Kolda', 'ouz@gmail.com', '778529635', 'camara', 1, 'g?nie logiciel', '1990-07-19 00:00:00', 1),
@@ -771,6 +786,13 @@ ALTER TABLE `profilgl`
 --
 ALTER TABLE `recruteur`
   ADD CONSTRAINT `FK_GENERALISATION_3` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
+
+--
+-- Contraintes pour la table `suivreentrtien`
+--
+ALTER TABLE `suivreentrtien`
+  ADD CONSTRAINT `FK_suivreentrtien1` FOREIGN KEY (`username`) REFERENCES `candidat` (`username`),
+  ADD CONSTRAINT `FK_suivreentrtien2` FOREIGN KEY (`idEntretien`) REFERENCES `entretien` (`idEntretien`);
 
 --
 -- Contraintes pour la table `user_roles`

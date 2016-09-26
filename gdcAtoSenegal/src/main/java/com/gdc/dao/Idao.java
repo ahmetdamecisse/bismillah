@@ -103,6 +103,9 @@ public interface Idao {
 
     public List getEntretienByName(String nom);
 
+     //suivre Entretien
+    public void addsuiviEntretien(Suivreentrtien se);
+
     //Experiencesprofessionnelles
     public List getAllExperiencesprofessionnelles();
 
@@ -315,8 +318,8 @@ public interface Idao {
     public Notification getOffresemploiById(Integer id);
 
     public List getOffresemploiByName(String nom);
-    
+
     //Charger tous les cv
-     public List chargertousLesCV(List listeDesUtilisateurs, List listeDesCandidatsDeLaBase);
+    public List chargertousLesCV(List listeDesUtilisateurs, List listeDesCandidatsDeLaBase);
 
 }

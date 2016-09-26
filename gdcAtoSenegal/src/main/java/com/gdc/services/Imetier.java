@@ -103,6 +103,8 @@ public interface Imetier {
     public Entretien getEntretienById(Integer id);
 
     public List getEntretienByName(String nom);
+    
+    public void addsuiviEntretien(Suivreentrtien se);
 
     //Experiencesprofessionnelles
     public List getAllExperiencesprofessionnelles();

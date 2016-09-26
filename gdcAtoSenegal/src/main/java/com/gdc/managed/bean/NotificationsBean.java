@@ -6,12 +6,15 @@
 package com.gdc.managed.bean;
 
 import com.gdc.model.Candidat;
+import com.gdc.model.Entretien;
 import com.gdc.model.Notification;
 import com.gdc.model.Profil;
 import com.gdc.model.Recruteur;
+import com.gdc.model.Suivreentrtien;
 import com.gdc.services.Imetier;
 import java.io.File;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -49,8 +52,8 @@ public class NotificationsBean implements Serializable {
     //Spring User Service is injected...
     @ManagedProperty(value = "#{Metier}")
     Imetier metier;
-    
-     //Injecting Managed beans
+
+    //Injecting Managed beans
     @ManagedProperty(value = "#{redigerCV}")
     private RedigerCV redigerCV;
 
@@ -65,6 +68,7 @@ public class NotificationsBean implements Serializable {
         }
     }
 
+    private Entretien entretien = new Entretien();
     private List listecandidats;
     private DefaultTreeNode root;
     private Candidat selectedCandidat;
@@ -75,10 +79,28 @@ public class NotificationsBean implements Serializable {
     private String RECIPIENT;
     private String subject;
     private String body;
-    private Notification notification=new Notification();
+    private Notification notification = new Notification();
     private UploadedFile pieceJointe;
     private boolean afficherInterfaceMailActivator = false;
     //**********************variable dans l'envoi du mail***************
+
+    public String fixerEntretienCandidat() {
+        // entretien.setVersion(1);
+        entretien.setUsername(metier.getRecruteurById(redigerCV.getUser().getUsername()));
+        entretien.setResultat(BigInteger.ZERO);
+
+        metier.addEntretien(entretien);
+
+        Integer idEntreteintCree = entretien.getIdEntretien();
+        String usernameCandidatConcerne = selectedCandidat.getUsername();
+        Suivreentrtien suivreentrtien = new Suivreentrtien(usernameCandidatConcerne, idEntreteintCree);
+        
+        metier.addsuiviEntretien(suivreentrtien);
+
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Entretien", "Enregistré avec succès.");
+        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
+        return null;
+    }
 
     public String archiverCandidat() {
         Profil p = selectedCandidat.getIdTypeDeProfil();
@@ -98,12 +120,12 @@ public class NotificationsBean implements Serializable {
         RECIPIENT = selectedCandidat.getUsers().getMail();
         subject = "Informations";
         //**********************variable dans l'envoi du mail debut persistence notification***************
-        Recruteur recruteurQuiNotifie=metier.getRecruteurById(redigerCV.getUser().getUsername());
+        Recruteur recruteurQuiNotifie = metier.getRecruteurById(redigerCV.getUser().getUsername());
         notification.setUsername(recruteurQuiNotifie);
-        notification.setDestinateur(recruteurQuiNotifie.getUsers().getPrenom()+" "+recruteurQuiNotifie.getUsers().getNom());
+        notification.setDestinateur(recruteurQuiNotifie.getUsers().getPrenom() + " " + recruteurQuiNotifie.getUsers().getNom());
         notification.setDestinataire(selectedCandidat.getUsername());
         notification.setCorpsMessage(body);
-       // notification.setPj(pieceJointe);
+        // notification.setPj(pieceJointe);
         notification.setDateNotification(new Date());
         metier.addNotification(notification);
         //**********************fin persistence notification***************
@@ -140,7 +162,7 @@ public class NotificationsBean implements Serializable {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
             }
             //converting an UploadedFile into a java File.
-            
+
             FileDataSource datasource1 = new FileDataSource(file);
             DataHandler handler1 = new DataHandler(datasource1);
             MimeBodyPart partiePieceJointe = new MimeBodyPart();
@@ -172,7 +194,7 @@ public class NotificationsBean implements Serializable {
             FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "Echec", " de l'envoi de la notification!");
             RequestContext.getCurrentInstance().showMessageInDialog(msg1);
             me.printStackTrace();
-        } 
+        }
     }
 
     public String afficherInterfaceMail() {
@@ -294,4 +316,13 @@ public class NotificationsBean implements Serializable {
     public void setRedigerCV(RedigerCV redigerCV) {
         this.redigerCV = redigerCV;
     }
+
+    public Entretien getEntretien() {
+        return entretien;
+    }
+
+    public void setEntretien(Entretien entretien) {
+        this.entretien = entretien;
+    }
+
 }
