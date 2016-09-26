@@ -77,13 +77,17 @@
 
                         <p:dialog widgetVar="eventDialog" header="Plus de détails" showEffect="clip" hideEffect="clip">
                             <h:panelGrid id="eventDetails" columns="2">
-                                <p:outputLabel for="title" value="Titles:" />
-                                <p:inputText id="title" value="#{suiviEntrtienBean.event.title}" required="true" />
+                                <p:outputLabel for="title" value="Type d'entretien:" />
+                                <p:selectOneMenu id="title" value="#{suiviEntrtienBean.event.title}" required="true">
+                                    <f:selectItem itemLabel="Choisir une valeur" itemValue="" />
+                                    <f:selectItem itemLabel="Entretien technique" itemValue="Entretien technique" />
+                                    <f:selectItem itemLabel="Entretien DRH" itemValue="Entretien DRH" />
+                                </p:selectOneMenu>
 
-                                <p:outputLabel for="from" value="From:" />
+                                <p:outputLabel for="from" value="Début:" />
                                 <p:calendar id="from" value="#{suiviEntrtienBean.event.startDate}" timeZone="GMT+0" pattern="dd/MM/yyyy HH:mm"/>
 
-                                <p:outputLabel for="to" value="To:" />
+                                <p:outputLabel for="to" value="Fin:" />
                                 <p:calendar id="to" value="#{suiviEntrtienBean.event.endDate}" timeZone="GMT+0" pattern="dd/MM/yyyy HH:mm"/>
 
                                 <p:outputLabel for="allDay" value="All Day:" />
