@@ -9,6 +9,7 @@ import com.gdc.services.Cv;
 import com.gdc.services.Imetier;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -56,9 +57,26 @@ public class CvthequeBean implements Serializable {
     }
 
     public String rechercher() {
-        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "cvthèque", filiation+"|"+competencesTechniques+"|"+copetencesFonctionnelles+"|"+experience+"|"+localité);
+         Integer val = null;
+        //Esk un candidat ayant la filiaition renseignée existe
+        
+        //Esk un candidat ayant les competences fonctionnelles demandées existent
+        
+        //Esk un candidat ayant les compétences techniques demandées existent
+        
+        //Esk un candidat ayant le nombre d'années d'expériences demandé existe
+        for (int i = 0; i < listeDesCvDesCandidatsTrouves.size(); i++) {
+            Cv cv = listeDesCvDesCandidatsTrouves.get(i);
+             val=cv.getProfilRecup().getNombreAnneesExperience();
+            if (val.compareTo(experience)==-1) {
+                listeDesCvDesCandidatsTrouves.remove(cv);
+            }
+        }
+        //Esk un candidat habitant la localité renseignée existe
+        
+        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "cvthèque", filiation + "|" + competencesTechniques + "|" + copetencesFonctionnelles + "|" + experience + "|" + localité);
         RequestContext.getCurrentInstance().showMessageInDialog(msg1);
-       return "cvtheque.AtoS?faces-redirect=true";
+        return "cvtheque.AtoS?faces-redirect=true";
     }
 
     public Imetier getMetier() {
