@@ -15,22 +15,32 @@
         <sec:intercept-url pattern="/inscription.AtoS" access="permitAll"/>
         <sec:intercept-url pattern="/employeur.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
         <sec:intercept-url pattern="/offresEmploi.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
+        <sec:intercept-url pattern="/cvtheque.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
+        <sec:intercept-url pattern="/employeurEtSesCandidats.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
+        <sec:intercept-url pattern="/fichePoste.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
+        <sec:intercept-url pattern="/ficheTest.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
+        <sec:intercept-url pattern="/suiviEntretiens.AtoS" access="hasRole('ROLE_RECRUTEUR')" />
         <sec:intercept-url pattern="/candidats.AtoS" access="hasRole('ROLE_CANDIDAT')" />
         <sec:intercept-url pattern="/redigerUnCv.AtoS" access="hasRole('ROLE_CANDIDAT')" />
-        <sec:form-login login-page="/connexion.AtoS"/>
-        <!--access denied page -->
-        <sec:access-denied-handler error-page="/acces-refuge.AtoS"/>
-        <sec:logout invalidate-session="true" delete-cookies="true"/>
-    </sec:http>
+        <sec:intercept-url pattern="/listeOffreEmploiProposesCandidat.AtoS" access="hasRole('ROLE_CANDIDAT')" />
+        <sec:intercept-url pattern="/mon-cv.AtoS" access="hasRole('ROLE_CANDIDAT')" />
+        <sec:intercept-url pattern="/notificationsEtatDossier.AtoS" access="hasRole('ROLE_CANDIDAT')" />
+        <sec:intercept-url pattern="/admin.AtoS" access="hasRole('ROLE_ADMIN')" />
+        <sec:intercept-url pattern="/tableau-de-bord.AtoS" access="hasRole('ROLE_ADMIN')" />
+    <sec:form-login login-page="/connexion.AtoS"/>
+    <!--access denied page -->
+    <sec:access-denied-handler error-page="/acces-refuge.AtoS"/>
+    <sec:logout invalidate-session="true" delete-cookies="true"/>
+</sec:http>
      
-    <!-- Select users and user_roles from database -->
-    <sec:authentication-manager alias="authenticationManager">
-        <sec:authentication-provider>
-            <sec:jdbc-user-service data-source-ref="DataSource"
-                                   users-by-username-query=
+<!-- Select users and user_roles from database -->
+<sec:authentication-manager alias="authenticationManager">
+    <sec:authentication-provider>
+        <sec:jdbc-user-service data-source-ref="DataSource"
+                               users-by-username-query=
 					"select username,password, enabled from users where username=?"
-                                   authorities-by-username-query=
+                               authorities-by-username-query=
 					"select username, role from user_roles where username =?"/>
-        </sec:authentication-provider>
-    </sec:authentication-manager> 
+    </sec:authentication-provider>
+</sec:authentication-manager> 
 </beans:beans>
