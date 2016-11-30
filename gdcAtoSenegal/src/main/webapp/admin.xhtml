@@ -43,14 +43,14 @@
                 <h:form>  
                     <p:growl id="messages"/>
                     <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
-                        <p:menuitem value="accueil" url="http://localhost:8080/gdcAtoSenegal/index.AtoS" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Publier les offres" url="http://localhost:8080/gdcAtoSenegal/offresEmploi.AtoS" icon="ui-icon-blog" style="color:white"/>
-                        <p:menuitem value="Accéder à la CVthèque" url="http://localhost:8080/gdcAtoSenegal/cvtheque.AtoS" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Fiche de test" url="http://localhost:8080/gdcAtoSenegal/ficheTest.AtoS" icon="ui-icon-home" style="color:white"/>
-                        <p:menuitem value="Fiche de poste" url="http://localhost:8080/gdcAtoSenegal/fichePoste.AtoS" icon="ui-icon-contact" style="color:white"/>
+                        <p:menuitem value="accueil" url="http://localhost:8080/gdcAtoSenegal/index.AtoS" icon="fa fa-home" style="color:white"/>
+                        <p:menuitem value="Publier les offres" url="http://localhost:8080/gdcAtoSenegal/offresEmploi.AtoS" icon="fa fa-won" style="color:white"/>
+                        <p:menuitem value="Accéder à la CVthèque" url="http://localhost:8080/gdcAtoSenegal/cvtheque.AtoS" icon="fa fa-folder-open" style="color:white"/>
+                        <p:menuitem value="Fiche de test" url="http://localhost:8080/gdcAtoSenegal/ficheTest.AtoS" icon="fa fa-edit" style="color:white"/>
+                        <p:menuitem value="Fiche de poste" url="http://localhost:8080/gdcAtoSenegal/fichePoste.AtoS" icon="fa fa-file-word-o" style="color:white"/>
 
                         <f:facet name="options">
-                             <p:commandButton id="logout" value="Déconnexion" action="#{redigerCV.controlDeConnexion()}" style="margin-right: 10px"/>
+                            <p:commandButton id="logout" value="Déconnexion" action="#{redigerCV.controlDeConnexion()}" icon="fa fa-sign-out" style="margin-right: 10px"/>
                             <p:inputText style="margin-right:10px" placeholder="Search"/>
                         </f:facet>
                     </p:menubar>
@@ -133,7 +133,7 @@
                                                                 <p style="text-align: justify">
                                                                     .Supprimer mon profil
                                                                 </p>
-                                                                <p:commandButton value="Mon profil" action="offresEmploi" ajax="false" style="width: 200px"/>
+                                                                <p:commandButton value="Mon profil" action="profilAdmin" ajax="false" style="width: 200px"/>
 
                                                             </h:panelGrid>
                                                         </p:panel>
@@ -154,7 +154,7 @@
                                                                 <p style="text-align: justify">
                                                                     .Statistiques sur les recruteurs
                                                                 </p>
-                                                                <p:commandButton value="Tableau de bord" action="cvtheque" ajax="false" style="width: 250px"/> <br/><br/>
+                                                                <p:commandButton value="Tableau de bord" action="tableauBordAdmin" ajax="false" style="width: 250px"/> <br/><br/>
                                                             </h:panelGrid>
                                                         </p:panel>
 
@@ -176,7 +176,7 @@
                                                                 <p class="myText">
                                                                     .Voir les candidatures 
                                                                 </p>
-                                                                <p:commandButton value="Candidats" action="fichePoste" ajax="false" style="width: 230px;"/><br/><br/>
+                                                                <p:commandButton value="Candidats" action="candidatsAdmin" ajax="false" style="width: 230px;"/><br/><br/>
                                                             </h:panelGrid>
                                                         </p:panel>
                                                     </h:form>
@@ -193,7 +193,7 @@
                                                                 <p class="myText">
                                                                     .Voir les fiches de poste
                                                                 </p>
-                                                                <p:commandButton value="Recruteurs" action="formulaire" ajax="false" style="width: 250px"/><br/><br/>
+                                                                <p:commandButton value="Recruteurs" action="recruteursAdmin" ajax="false" style="width: 250px"/><br/><br/>
                                                             </h:panelGrid>
                                                         </p:panel>
                                                     </h:form>

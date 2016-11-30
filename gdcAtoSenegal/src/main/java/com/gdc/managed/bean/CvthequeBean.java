@@ -9,14 +9,11 @@ import com.gdc.services.Cv;
 import com.gdc.services.Imetier;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -73,9 +70,10 @@ public class CvthequeBean implements Serializable {
             }
         }
         //Esk un candidat habitant la localité renseignée existe
+        //-------------------------------------------------------
         
-        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "cvthèque", filiation + "|" + competencesTechniques + "|" + copetencesFonctionnelles + "|" + experience + "|" + localité);
-        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
+//        FacesMessage msg1 = new FacesMessage(FacesMessage.SEVERITY_INFO, "cvthèque", filiation + "|" + competencesTechniques + "|" + copetencesFonctionnelles + "|" + experience + "|" + localité);
+//        RequestContext.getCurrentInstance().showMessageInDialog(msg1);
         return "cvtheque.AtoS?faces-redirect=true";
     }
 

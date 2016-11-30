@@ -79,7 +79,14 @@ public class Daojpa implements Idao {
     }
 
     public void updateUtilisateur(Users u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            getSessionFactory().getCurrentSession().update(u);
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode updateUtilisateur(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
     }
 
     public List getUtilisateurByName(String nom) {
@@ -1076,6 +1083,17 @@ public class Daojpa implements Idao {
         } catch (HibernateException th) {
             System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
             System.err.println("Erreurs lors de l'execution de la méthode addsuiviEntretien(): \n");
+            th.printStackTrace();
+            System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+    }
+    
+    public void updateUserRole(UserRoles userRole) {
+     try {
+            getSessionFactory().getCurrentSession().update(userRole);
+        } catch (HibernateException th) {
+            System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.err.println("Erreurs lors de l'execution de la méthode updateUserRole(): \n");
             th.printStackTrace();
             System.err.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         }

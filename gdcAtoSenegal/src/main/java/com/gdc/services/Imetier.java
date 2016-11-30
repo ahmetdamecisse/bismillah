@@ -22,6 +22,8 @@ public interface Imetier {
     public void addUtilisateur(Users u);
 
     public void addUserRole(UserRoles userRole);
+    
+      public void updateUserRole(UserRoles userRole);
 
     public void removeUtilisateur(Integer idUtili);
 

@@ -5,14 +5,15 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      >
 
     <h:head>
         <f:facet name="first">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <title>candidat</title>
+            <title>home</title>
         </f:facet>
         <f:facet name="middle">
             <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
@@ -25,7 +26,7 @@
             <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
             <h:outputStylesheet library="css" name="style.css"/>
-            <h:outputScript library="js" name="common.js" />
+
         </f:facet>
         <f:facet name="last">
             <h:outputStylesheet name="css/font-awesome.css" />
@@ -34,34 +35,38 @@
     <h:body style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQowKYcQsdGJ0scyENcCKh_KJRDGyJEVpHcq4OeYcpAgOGdL9KZ);background-repeat: no-repeat; background-size: cover">
         <div class="container">
             <div id='logo'>
-                <a>
-                    <img style="max-width:150px" src="resources/images/atoslogo.jpg"></img>
-                </a>
+                <img style="min-width: 150px" src="resources/images/atos1_1.jpg">
+                    <h:form>           
+                        <p style="text-align: right">
+                            <p:inputText style="margin-right:10px; text-align:left ;border-color:#357ebd; border-width: 3px " placeholder="Recherche"/>
+                        </p>
+                    </h:form>
+                </img>
+
                 <h:form>  
                     <p:growl id="messages"/>
                     <p:menubar styleClass="menubar" style="background-image:url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRA7E2PTLUWb4du8CcYnPNJZMCh_poQeBvG0NSKfvGQcMLJpBpxmbnWVd-r)">
-                        <p:menuitem value="accueil" url="http://localhost:8080/gdcAtoSenegal/index.AtoS" icon="fa fa-home" style="color:white"/>
-                        <p:menuitem value="Tableau de bord" url="http://localhost:8080/gdcAtoSenegal/tableau-de-bord.AtoS" icon="fa fa-dashboard" style="color:white"/>
-                        <p:menuitem value="Mon CV" url="http://localhost:8080/gdcAtoSenegal/mon-cv.AtoS" icon="fa fa fa-folder-open" style="color:white"/>
-                        <p:menuitem value="Offres d'emploi" url="http://localhost:8080/gdcAtoSenegal/offres-emploi.AtoS" icon="fa fa-won" style="color:white"/>
-        
+                        <p:menuitem value="accueil" url="http://localhost:8080/gdcAtoSenegal/" icon="fa fa-home" style="color:white"/>
+                        <p:menuitem value="Employeurs" url="http://localhost:8080/gdcAtoSenegal/employeur.AtoS" icon="fa fa-user-md" style="color:white"/>
+                        <p:menuitem value="Candidats" url="http://localhost:8080/gdcAtoSenegal/candidats.AtoS" icon="fa fa-user" style="color:white"/>
+                        <p:menuitem value="Offres d'emploi" url="http://localhost:8080/gdcAtoSenegal/offresEmploi.AtoS" icon="fa fa-won" style="color:white"/>
+                        <p:menuitem value="FAQ" url="http://localhost:8080/gdcAtoSenegal/faqCandidat.AtoS" icon="fa fa-question" style="color:white"/>
+                        <p:menuitem value="Contact" url="contacts.AtoS" icon="fa fa-phone" style="color:white"/>
                         <f:facet name="options">
-                            <p:inputText style="margin-right:10px" placeholder="Search"/>
+                            <p:commandButton  value="Créer un compte" action="inscription" icon="fa fa-plus" style="margin-right:10px; background: #ffffff; font-size: 15px;"/>
+                            <p:commandButton value="Se connecter" action="connexion" icon="fa fa-sign-in" style="background: #ffffff; font-size: 15px"/>
                         </f:facet>
                     </p:menubar>
                 </h:form>
-            </div>
+                <div style="background-color: #ffffff" >
 
-            <div style="background-color: #ffffff" >
-                <div class="row content panel-heading">
-                    <!--lister les offres d'emploi-->
-                     <p style="font-style: italic; color:#0073a0; text-align: center; font-size: 30px">Tableau de bord</p>
+                    Emplacement du contenu tableau de bord admin
+
                 </div>
                 <hr style="height: 1px; color: #357ebd; background-color: #357ebd; width: 100%; border: none;"></hr>
                 <footer >
-
                     <div class="copyright floatleft">
-                        <p>&#169; Atos Sénégal 2016 |&nbsp;</p>
+                        <p>&#169; Atos Sénégal 2016 |&nbsp; </p>
                     </div>
                     <div class="footer_bottom_text floatright">
                         <p>
@@ -70,8 +75,6 @@
                     </div>
                 </footer>
             </div>
-
         </div>
-
     </h:body>
 </html>

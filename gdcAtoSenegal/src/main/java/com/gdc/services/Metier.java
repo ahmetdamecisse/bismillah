@@ -50,9 +50,10 @@ public class Metier implements Imetier {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Transactional(readOnly = false)
     @Override
     public void updateUtilisateur(Users u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        getDaojpa().updateUtilisateur(u);
     }
 
     @Override
@@ -746,5 +747,10 @@ public class Metier implements Imetier {
     @Override
     public void addsuiviEntretien(Suivreentrtien se) {
        getDaojpa().addsuiviEntretien(se);
+    }
+
+    @Override
+    public void updateUserRole(UserRoles userRole) {
+    getDaojpa().updateUserRole(userRole);
     }
 }
